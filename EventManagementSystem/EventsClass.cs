@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace EventManagementSystem
 {
-    class Event
+
+    class EventsClass
     {
+        
         public string EventName { get; set; }
         public string EventDate { get; set; }
         public string EventTime { get; set; }
@@ -16,7 +20,7 @@ namespace EventManagementSystem
         public int EventCapacity { get; set; }
         public string EventEM {  get; set; }
 
-        public Event(string eventName, string eventDate, string eventTime, string eventLocation, string eventDescription, int eventCapacity, string eventEM) {
+        public EventsClass(string eventName, string eventDate, string eventTime, string eventLocation, string eventDescription, int eventCapacity, string eventEM) {
         
             EventName = eventName;
             EventDate = eventDate;
@@ -25,6 +29,17 @@ namespace EventManagementSystem
             EventDescription = eventDescription;
             EventCapacity = eventCapacity;
             EventEM = eventEM;
+        }
+        public EventsClass(string eventName)
+        {
+            EventName = eventName;
+        }
+
+        override
+        public String ToString()
+        {
+            String s = $"Id: {EventName}";
+            return s;
         }
     }
 }
