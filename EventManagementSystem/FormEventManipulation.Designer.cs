@@ -52,6 +52,7 @@
             btnEventEdit.TabIndex = 1;
             btnEventEdit.Text = "Edit";
             btnEventEdit.UseVisualStyleBackColor = true;
+            btnEventEdit.Click += btnEventEdit_Click;
             // 
             // btnEventDelete
             // 
@@ -61,6 +62,7 @@
             btnEventDelete.TabIndex = 2;
             btnEventDelete.Text = "Delete";
             btnEventDelete.UseVisualStyleBackColor = true;
+            btnEventDelete.Click += btnEventDelete_Click;
             // 
             // eventList
             // 

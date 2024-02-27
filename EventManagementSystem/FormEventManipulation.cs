@@ -25,7 +25,7 @@ namespace EventManagementSystem
         public void receiveData(string eventName, string eventDate, string eventTime, string eventCapacity, string eventLoc, string eventDes, string em)
         {
             int capacity = Convert.ToInt32(eventCapacity);
-            EventsClass eventsClass = new EventsClass(eventName,eventDate,eventTime,eventLoc,eventDes,capacity,em);
+            EventsClass eventsClass = new EventsClass(eventName, eventDate, eventTime, eventLoc, eventDes, capacity, em);
             eventObjectList.Add(eventsClass);
             string txt = eventName + " - " + em;
             eventNames.Add(txt);
@@ -48,6 +48,19 @@ namespace EventManagementSystem
         private void FormEventManipulation_Activated(object sender, EventArgs e)
         {
             bs.ResetBindings(false);
+        }
+
+        private void btnEventEdit_Click(object sender, EventArgs e)
+        {
+            FormEventEdit formEventEdit = new FormEventEdit();
+            formEventEdit.ShowDialog();
+
+        }
+
+        private void btnEventDelete_Click(object sender, EventArgs e)
+        {
+            FormEventDelete formEventDelete = new FormEventDelete();
+            formEventDelete.ShowDialog();
         }
     }
 }
