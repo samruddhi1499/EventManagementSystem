@@ -82,6 +82,7 @@
             Controls.Add(btnDeleteCancel);
             Name = "FormEventDelete";
             Text = "FormEventDelete";
+            Load += FormEventDelete_Load;
             ResumeLayout(false);
             PerformLayout();
         }

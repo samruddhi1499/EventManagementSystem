@@ -38,12 +38,12 @@
             label6 = new Label();
             label7 = new Label();
             eventListEdit = new ComboBox();
-            txtDateEdit = new TextBox();
             txtTimeEdit = new TextBox();
             txtLocEdit = new TextBox();
             txtCapaEdit = new TextBox();
             txtDesEdit = new TextBox();
             eventManagerListEdit = new ComboBox();
+            dateTimePickerEdit = new DateTimePicker();
             SuspendLayout();
             // 
             // btnEditCancel
@@ -64,6 +64,7 @@
             btnEditOK.TabIndex = 1;
             btnEditOK.Text = "OK";
             btnEditOK.UseVisualStyleBackColor = true;
+            btnEditOK.Click += btnEditOK_Click;
             // 
             // label1
             // 
@@ -137,13 +138,6 @@
             eventListEdit.TabIndex = 9;
             eventListEdit.SelectedIndexChanged += eventListEdit_SelectedIndexChanged;
             // 
-            // txtDateEdit
-            // 
-            txtDateEdit.Location = new Point(143, 92);
-            txtDateEdit.Name = "txtDateEdit";
-            txtDateEdit.Size = new Size(125, 27);
-            txtDateEdit.TabIndex = 10;
-            // 
             // txtTimeEdit
             // 
             txtTimeEdit.Location = new Point(143, 145);
@@ -174,23 +168,34 @@
             // 
             // eventManagerListEdit
             // 
+            eventManagerListEdit.DisplayMember = "(none)";
             eventManagerListEdit.FormattingEnabled = true;
+            eventManagerListEdit.Items.AddRange(new object[] { "saloni", "sam" });
             eventManagerListEdit.Location = new Point(135, 366);
             eventManagerListEdit.Name = "eventManagerListEdit";
             eventManagerListEdit.Size = new Size(151, 28);
             eventManagerListEdit.TabIndex = 15;
+            eventManagerListEdit.Tag = "";
+            eventManagerListEdit.Text = "sam";
+            // 
+            // dateTimePickerEdit
+            // 
+            dateTimePickerEdit.Location = new Point(135, 90);
+            dateTimePickerEdit.Name = "dateTimePickerEdit";
+            dateTimePickerEdit.Size = new Size(178, 27);
+            dateTimePickerEdit.TabIndex = 16;
             // 
             // FormEventEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(493, 519);
+            Controls.Add(dateTimePickerEdit);
             Controls.Add(eventManagerListEdit);
             Controls.Add(txtDesEdit);
             Controls.Add(txtCapaEdit);
             Controls.Add(txtLocEdit);
             Controls.Add(txtTimeEdit);
-            Controls.Add(txtDateEdit);
             Controls.Add(eventListEdit);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -221,11 +226,11 @@
         private Label label6;
         private Label label7;
         private ComboBox eventListEdit;
-        private TextBox txtDateEdit;
         private TextBox txtTimeEdit;
         private TextBox txtLocEdit;
         private TextBox txtCapaEdit;
         private TextBox txtDesEdit;
         private ComboBox eventManagerListEdit;
+        private DateTimePicker dateTimePickerEdit;
     }
 }
