@@ -38,13 +38,12 @@
             label6 = new Label();
             label7 = new Label();
             eventListEdit = new ComboBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
+            txtDateEdit = new TextBox();
+            txtTimeEdit = new TextBox();
+            txtLocEdit = new TextBox();
+            txtCapaEdit = new TextBox();
+            txtDesEdit = new TextBox();
             eventManagerListEdit = new ComboBox();
-            label8 = new Label();
             SuspendLayout();
             // 
             // btnEditCancel
@@ -136,41 +135,42 @@
             eventListEdit.Name = "eventListEdit";
             eventListEdit.Size = new Size(151, 28);
             eventListEdit.TabIndex = 9;
+            eventListEdit.SelectedIndexChanged += eventListEdit_SelectedIndexChanged;
             // 
-            // textBox1
+            // txtDateEdit
             // 
-            textBox1.Location = new Point(143, 92);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
-            textBox1.TabIndex = 10;
+            txtDateEdit.Location = new Point(143, 92);
+            txtDateEdit.Name = "txtDateEdit";
+            txtDateEdit.Size = new Size(125, 27);
+            txtDateEdit.TabIndex = 10;
             // 
-            // textBox2
+            // txtTimeEdit
             // 
-            textBox2.Location = new Point(143, 145);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
-            textBox2.TabIndex = 11;
+            txtTimeEdit.Location = new Point(143, 145);
+            txtTimeEdit.Name = "txtTimeEdit";
+            txtTimeEdit.Size = new Size(125, 27);
+            txtTimeEdit.TabIndex = 11;
             // 
-            // textBox3
+            // txtLocEdit
             // 
-            textBox3.Location = new Point(143, 205);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
-            textBox3.TabIndex = 12;
+            txtLocEdit.Location = new Point(143, 205);
+            txtLocEdit.Name = "txtLocEdit";
+            txtLocEdit.Size = new Size(125, 27);
+            txtLocEdit.TabIndex = 12;
             // 
-            // textBox4
+            // txtCapaEdit
             // 
-            textBox4.Location = new Point(143, 261);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(125, 27);
-            textBox4.TabIndex = 13;
+            txtCapaEdit.Location = new Point(143, 261);
+            txtCapaEdit.Name = "txtCapaEdit";
+            txtCapaEdit.Size = new Size(125, 27);
+            txtCapaEdit.TabIndex = 13;
             // 
-            // textBox5
+            // txtDesEdit
             // 
-            textBox5.Location = new Point(143, 317);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(125, 27);
-            textBox5.TabIndex = 14;
+            txtDesEdit.Location = new Point(143, 317);
+            txtDesEdit.Name = "txtDesEdit";
+            txtDesEdit.Size = new Size(125, 27);
+            txtDesEdit.TabIndex = 14;
             // 
             // eventManagerListEdit
             // 
@@ -180,27 +180,17 @@
             eventManagerListEdit.Size = new Size(151, 28);
             eventManagerListEdit.TabIndex = 15;
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Location = new Point(371, 378);
-            label8.Name = "label8";
-            label8.Size = new Size(50, 20);
-            label8.TabIndex = 16;
-            label8.Text = "label8";
-            // 
             // FormEventEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(493, 519);
-            Controls.Add(label8);
             Controls.Add(eventManagerListEdit);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtDesEdit);
+            Controls.Add(txtCapaEdit);
+            Controls.Add(txtLocEdit);
+            Controls.Add(txtTimeEdit);
+            Controls.Add(txtDateEdit);
             Controls.Add(eventListEdit);
             Controls.Add(label7);
             Controls.Add(label6);
@@ -231,12 +221,11 @@
         private Label label6;
         private Label label7;
         private ComboBox eventListEdit;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
+        private TextBox txtDateEdit;
+        private TextBox txtTimeEdit;
+        private TextBox txtLocEdit;
+        private TextBox txtCapaEdit;
+        private TextBox txtDesEdit;
         private ComboBox eventManagerListEdit;
-        private Label label8;
     }
 }

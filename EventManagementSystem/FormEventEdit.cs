@@ -29,21 +29,40 @@ namespace EventManagementSystem
 
         private void FormEventEdit_Load(object sender, EventArgs e)
         {
-            
+
             ArrayList arrayList = FormEventManipulation.eventObjectList;
             ArrayList eventNames = new ArrayList();
             foreach (EventsClass array in arrayList)
             {
-                EventsClass eventClass = (EventsClass) array;
+                EventsClass eventClass = (EventsClass)array;
                 eventListEdit.Items.Add(eventClass.EventName.ToString());
             }
-            
-            
+
+
         }
 
         private void FormEventEdit_Activated(object sender, EventArgs e)
         {
-           
+
+
+        }
+
+        private void eventListEdit_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string selectedValue = eventListEdit.SelectedItem.ToString();
+            ArrayList arrayList = FormEventManipulation.eventObjectList;
+            foreach (EventsClass array in arrayList)
+            {
+                if(selectedValue == array.EventName.ToString())
+                {
+                    txtDateEdit.Text = array.EventDate.ToString();
+                    txtTimeEdit.Text = array.EventTime.ToString();
+                    txtCapaEdit.Text = array.EventCapacity.ToString();
+                    txtLocEdit.Text = array.EventLocation.ToString();
+                    txtDesEdit.Text = array.EventDescription.ToString();
+                    break;
+                }
+            }
 
         }
     }
