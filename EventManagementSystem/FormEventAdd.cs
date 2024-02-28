@@ -12,6 +12,7 @@ namespace EventManagementSystem
 {
     public partial class FormEventAdd : Form
     {
+
         public FormEventAdd()
         {
             InitializeComponent();
