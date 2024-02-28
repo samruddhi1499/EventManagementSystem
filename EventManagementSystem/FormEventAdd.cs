@@ -25,6 +25,7 @@ namespace EventManagementSystem
             string em = emListAddEvent.SelectedItem.ToString();
             formEventManipulation.receiveData(txtAddEventName.Text,dateTimePickerEventAdd.Text,txtTimeAddEvent.Text,txtCapaAddEvent.Text,txtLocAddEvent.Text,txtDesAddEvent.Text
                 ,em );
+            MessageBox.Show("Event Added", "Event Addition Sucessfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
         }
 

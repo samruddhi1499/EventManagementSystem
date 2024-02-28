@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EventManagementSystem
 {
@@ -31,10 +33,60 @@ namespace EventManagementSystem
             eventNames.Add(txt);
 
         }
-        public ArrayList getEventNames()
+        public void receiveDataEdit(string eventName, string eventDate, string eventTime, string eventCapacity, string eventLoc, string eventDes, string em)
         {
-            return eventObjectList;
+            int capacity = Convert.ToInt32(eventCapacity);
+           
+            foreach(EventsClass val in eventObjectList)
+            {
+                if(val.EventName == eventName)
+                {
+                    val.EventEM = em;
+                    val.EventTime = eventTime;
+                    val.EventDate = eventDate;
+                    val.EventDescription = eventDes;
+                    val.EventLocation = eventLoc;
+                    val.EventCapacity = capacity;
+                    break;
+                }
+            }
+            foreach( string val in eventNames)
+            {
+                if (val.Contains(eventName))
+                {
+                    string txt = eventName + " - " + em;
+                    int myIndex = eventNames.IndexOf(val);
+                    eventNames.RemoveAt(myIndex);
+                    eventNames.Add( txt );
+                    break;
+                }
+            }
+
         }
+
+        public void receiveDataDelete(string eventName)
+        {
+            foreach (EventsClass val in eventObjectList)
+            {
+                if (val.EventName == eventName)
+                {
+                    eventObjectList.Remove(val);
+                    break;
+                }
+            }
+            foreach (string val in eventNames)
+            {
+                if (val.Contains(eventName))
+                {
+                    eventNames.Remove(val);
+                    break;
+                }
+            }
+
+
+        }
+
+
 
         private void btnEventAdd_Click(object sender, EventArgs e)
         {
