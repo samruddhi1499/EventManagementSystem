@@ -41,5 +41,10 @@ namespace EventManagementSystem
             String s = $"Id: {EventName}";
             return s;
         }
+
+        public static implicit operator EventsClass(ArrayList v)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

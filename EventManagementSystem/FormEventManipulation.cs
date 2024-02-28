@@ -13,7 +13,7 @@ namespace EventManagementSystem
 {
     public partial class FormEventManipulation : Form
     {
-        ArrayList eventObjectList = new ArrayList();
+        public static ArrayList eventObjectList = new ArrayList();
         static ArrayList eventNames = new ArrayList();
 
         BindingSource bs = new BindingSource();
@@ -30,6 +30,10 @@ namespace EventManagementSystem
             string txt = eventName + " - " + em;
             eventNames.Add(txt);
 
+        }
+        public ArrayList getEventNames()
+        {
+            return eventObjectList;
         }
 
         private void btnEventAdd_Click(object sender, EventArgs e)

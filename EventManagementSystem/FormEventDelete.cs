@@ -16,5 +16,16 @@ namespace EventManagementSystem
         {
             InitializeComponent();
         }
+
+        private void btnDeleteCancel_Click(object sender, EventArgs e)
+        {
+            // clear all text box and close form add event without saving
+            this.Close();
+        }
+
+        private void btnDeleteOK_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
