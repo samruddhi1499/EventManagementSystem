@@ -36,10 +36,10 @@ namespace EventManagementSystem
         public void receiveDataEdit(string eventName, string eventDate, string eventTime, string eventCapacity, string eventLoc, string eventDes, string em)
         {
             int capacity = Convert.ToInt32(eventCapacity);
-           
-            foreach(EventsClass val in eventObjectList)
+
+            foreach (EventsClass val in eventObjectList)
             {
-                if(val.EventName == eventName)
+                if (val.EventName == eventName)
                 {
                     val.EventEM = em;
                     val.EventTime = eventTime;
@@ -50,14 +50,14 @@ namespace EventManagementSystem
                     break;
                 }
             }
-            foreach( string val in eventNames)
+            foreach (string val in eventNames)
             {
                 if (val.Contains(eventName))
                 {
                     string txt = eventName + " - " + em;
                     int myIndex = eventNames.IndexOf(val);
                     eventNames.RemoveAt(myIndex);
-                    eventNames.Add( txt );
+                    eventNames.Add(txt);
                     break;
                 }
             }
@@ -117,6 +117,15 @@ namespace EventManagementSystem
         {
             FormEventDelete formEventDelete = new FormEventDelete();
             formEventDelete.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //FormEventEMEdit formEMEdit = new FormEventEMEdit();
+            //formEMEdit.ShowDialog();
+
+            EMAfterLogin eMAfterLogin = new EMAfterLogin();
+            eMAfterLogin.ShowDialog();
         }
     }
 }

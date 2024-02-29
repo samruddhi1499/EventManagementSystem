@@ -32,6 +32,7 @@
             btnEventEdit = new Button();
             btnEventDelete = new Button();
             eventList = new ListBox();
+            button1 = new Button();
             SuspendLayout();
             // 
             // btnEventAdd
@@ -72,11 +73,22 @@
             eventList.Size = new Size(281, 304);
             eventList.TabIndex = 3;
             // 
+            // button1
+            // 
+            button1.Location = new Point(84, 320);
+            button1.Name = "button1";
+            button1.Size = new Size(94, 29);
+            button1.TabIndex = 4;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FormEventManipulation
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(eventList);
             Controls.Add(btnEventDelete);
             Controls.Add(btnEventEdit);
@@ -94,5 +106,6 @@
         private Button btnEventEdit;
         private Button btnEventDelete;
         private ListBox eventList;
+        private Button button1;
     }
 }

@@ -14,6 +14,9 @@ namespace EventManagementSystem
             Application.Run(new FormEventManipulation());
             //Application.Run(new FormLogIn());
 
+            //Application.Run(new EMAfterLogin());
+
+
         }
     }
 }
