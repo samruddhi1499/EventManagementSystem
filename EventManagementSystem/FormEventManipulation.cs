@@ -108,15 +108,31 @@ namespace EventManagementSystem
 
         private void btnEventEdit_Click(object sender, EventArgs e)
         {
-            FormEventEdit formEventEdit = new FormEventEdit();
-            formEventEdit.ShowDialog();
+            if(eventList.Items.Count == 0)
+            {
+                MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                FormEventEdit formEventEdit = new FormEventEdit();
+                formEventEdit.ShowDialog();
+            }
+            
 
         }
 
         private void btnEventDelete_Click(object sender, EventArgs e)
         {
-            FormEventDelete formEventDelete = new FormEventDelete();
-            formEventDelete.ShowDialog();
+            
+            if (eventList.Items.Count == 0)
+            {
+                MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                FormEventDelete formEventDelete = new FormEventDelete();
+                formEventDelete.ShowDialog();
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)

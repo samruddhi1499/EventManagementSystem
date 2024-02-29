@@ -21,12 +21,23 @@ namespace EventManagementSystem
         private void btnAddEventOk_Click(object sender, EventArgs e)
         {
             // close form add event and go back to event manipulation with saved changes
-            FormEventManipulation formEventManipulation = new FormEventManipulation();
-            string em = emListAddEvent.SelectedItem.ToString();
-            formEventManipulation.receiveData(txtAddEventName.Text,dateTimePickerEventAdd.Text,txtTimeAddEvent.Text,txtCapaAddEvent.Text,txtLocAddEvent.Text,txtDesAddEvent.Text
-                ,em );
-            MessageBox.Show("Event Added", "Event Addition Sucessfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            
+
+            try
+            {
+                int capacity = Convert.ToInt32(txtCapaAddEvent.Text);
+                FormEventManipulation formEventManipulation = new FormEventManipulation();
+                string em = emListAddEvent.SelectedItem.ToString();
+                formEventManipulation.receiveData(txtAddEventName.Text, dateTimePickerEventAdd.Text, timePickerEventAdd.Text, txtCapaAddEvent.Text, txtLocAddEvent.Text, txtDesAddEvent.Text
+                    , em);
+                MessageBox.Show("Event Addition Sucessfull", "Event Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Check Capacity", "Invalid Type ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnAddEventCancel_Click(object sender, EventArgs e)

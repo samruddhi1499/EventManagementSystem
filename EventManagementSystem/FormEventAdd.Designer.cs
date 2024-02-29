@@ -38,12 +38,12 @@
             label5 = new Label();
             label6 = new Label();
             label7 = new Label();
-            txtTimeAddEvent = new TextBox();
             txtLocAddEvent = new TextBox();
             txtCapaAddEvent = new TextBox();
             txtDesAddEvent = new TextBox();
             dateTimePickerEventAdd = new DateTimePicker();
             emListAddEvent = new ComboBox();
+            timePickerEventAdd = new DateTimePicker();
             SuspendLayout();
             // 
             // label1
@@ -136,13 +136,6 @@
             label7.TabIndex = 9;
             label7.Text = "Event Manager";
             // 
-            // txtTimeAddEvent
-            // 
-            txtTimeAddEvent.Location = new Point(153, 129);
-            txtTimeAddEvent.Name = "txtTimeAddEvent";
-            txtTimeAddEvent.Size = new Size(125, 27);
-            txtTimeAddEvent.TabIndex = 11;
-            // 
             // txtLocAddEvent
             // 
             txtLocAddEvent.Location = new Point(153, 174);
@@ -180,17 +173,26 @@
             emListAddEvent.Size = new Size(151, 28);
             emListAddEvent.TabIndex = 17;
             // 
+            // timePickerEventAdd
+            // 
+            timePickerEventAdd.Format = DateTimePickerFormat.Time;
+            timePickerEventAdd.Location = new Point(153, 131);
+            timePickerEventAdd.Name = "timePickerEventAdd";
+            timePickerEventAdd.ShowUpDown = true;
+            timePickerEventAdd.Size = new Size(180, 27);
+            timePickerEventAdd.TabIndex = 18;
+            // 
             // FormEventAdd
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(475, 465);
+            Controls.Add(timePickerEventAdd);
             Controls.Add(emListAddEvent);
             Controls.Add(dateTimePickerEventAdd);
             Controls.Add(txtDesAddEvent);
             Controls.Add(txtCapaAddEvent);
             Controls.Add(txtLocAddEvent);
-            Controls.Add(txtTimeAddEvent);
             Controls.Add(label7);
             Controls.Add(label6);
             Controls.Add(label5);
@@ -219,11 +221,11 @@
         private Label label5;
         private Label label6;
         private Label label7;
-        private TextBox txtTimeAddEvent;
         private TextBox txtLocAddEvent;
         private TextBox txtCapaAddEvent;
         private TextBox txtDesAddEvent;
         private DateTimePicker dateTimePickerEventAdd;
         private ComboBox emListAddEvent;
+        private DateTimePicker timePickerEventAdd;
     }
 }

@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace EventManagementSystem
@@ -15,7 +16,7 @@ namespace EventManagementSystem
     public partial class FormEventEdit : Form
     {
 
-        BindingSource eventNameEdit = new BindingSource();
+        
         public FormEventEdit()
         {
             InitializeComponent();
@@ -62,7 +63,7 @@ namespace EventManagementSystem
                 if (selectedValue == array.EventName.ToString())
                 {
                     dateTimePickerEdit.Text = array.EventDate.ToString();
-                    txtTimeEdit.Text = array.EventTime.ToString();
+                    timePickerEventEdit.Text = array.EventTime.ToString();
                     txtCapaEdit.Text = array.EventCapacity.ToString();
                     txtLocEdit.Text = array.EventLocation.ToString();
                     txtDesEdit.Text = array.EventDescription.ToString();
@@ -78,10 +79,20 @@ namespace EventManagementSystem
             FormEventManipulation formEventManipulation = new FormEventManipulation();
             string em = eventManagerListEdit.SelectedItem.ToString();
             string eventName = eventListEdit.SelectedItem.ToString();
-            formEventManipulation.receiveDataEdit(eventName, dateTimePickerEdit.Text, txtTimeEdit.Text, txtCapaEdit.Text, txtLocEdit.Text, txtDesEdit.Text
+
+            try
+            {
+                int capacity = Convert.ToInt32(txtCapaEdit.Text);
+                formEventManipulation.receiveDataEdit(eventName, dateTimePickerEdit.Text, timePickerEventEdit.Text, txtCapaEdit.Text, txtLocEdit.Text, txtDesEdit.Text
                 , em);
-            MessageBox.Show("Event Edited", "Event Edit Sucessfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+                MessageBox.Show("Event Edit Sucessfull", "Event Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Check Capacity", "Invalid Type ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
         }
     }
 }
