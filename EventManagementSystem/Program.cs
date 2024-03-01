@@ -18,6 +18,9 @@ namespace EventManagementSystem
 
 
 
+            //Application.Run(new EMAfterLogin());
+
+
         }
     }
 }

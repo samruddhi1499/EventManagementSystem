@@ -31,7 +31,7 @@ namespace EventManagementSystem
 
             string eventName = eventListDelete.SelectedItem.ToString();
             formEventManipulation.receiveDataDelete(eventName);
-            MessageBox.Show("Event Deleted", "Event Deletion Sucessfull", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Event Deletion Sucessfull", "Event Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
             this.Close();
 
         }
