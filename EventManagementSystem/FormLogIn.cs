@@ -26,20 +26,23 @@ namespace EventManagementSystem
 
             if (userName == "admin" && password == "admin123")
             {
-                MessageBox.Show("LogIn Successful");
+                MessageBox.Show("LogIn Successful", "LogIn", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                MessageBox.Show("Enter valid Username and Password ");
+                MessageBox.Show("Enter valid Username and Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            txtUser.ResetText();
+            txtPass.ResetText();
         }
 
         private void SignUp_Click(object sender, EventArgs e)
         {
             FormSignUp formSignUp = new FormSignUp();
+            this.Hide();
             formSignUp.ShowDialog();
-            //FormEventAdd formEventAdd = new FormEventAdd();
-            //formEventAdd.ShowDialog();
+            
         }
     }
 }
