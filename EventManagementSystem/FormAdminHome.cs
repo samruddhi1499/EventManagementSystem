@@ -10,17 +10,25 @@ using System.Windows.Forms;
 
 namespace EventManagementSystem
 {
-    public partial class EMAfterLogin : Form
+    public partial class FormAdminHome : Form
     {
-        public EMAfterLogin()
+        public FormAdminHome()
         {
             InitializeComponent();
         }
 
-        private void btnEMEditEvent_Click(object sender, EventArgs e)
+        private void btnUserMan_Click(object sender, EventArgs e)
         {
-            FormEventEMEdit formEMEventEdit = new FormEventEMEdit();
-            formEMEventEdit.ShowDialog();
+            FormSelectRole role = new FormSelectRole();
+            this.Close();
+            role.Show();
+        }
+
+        private void btnEventMan_Click(object sender, EventArgs e)
+        {
+            FormEventManipulation formEventManipulation = new FormEventManipulation();
+            this.Close();
+            formEventManipulation.Show();
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)

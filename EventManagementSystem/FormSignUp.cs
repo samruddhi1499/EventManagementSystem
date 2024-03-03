@@ -35,6 +35,17 @@ namespace EventManagementSystem
             if (username == "admin" && pass =="admin123" && confirm == "admin123")
             {
                 MessageBox.Show("Register Successful", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormEventManipulation formEventManipulation = new FormEventManipulation();
+                this.Hide();
+                formEventManipulation.ShowDialog();
+                
+            }
+            else if ((username == "Sam" && pass == "sam123" && confirm == "sam123") || (username == "Saloni" && pass == "saloni123" && confirm == "saloni123") || (username == "Sruthi" && pass == "sruthi123" && confirm == "sruthi123"))
+            {
+                MessageBox.Show("Register Successful", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                EMAfterLogin eMAfterLogin = new EMAfterLogin();
+                this.Hide();
+                eMAfterLogin.ShowDialog();
             }
             else
             {

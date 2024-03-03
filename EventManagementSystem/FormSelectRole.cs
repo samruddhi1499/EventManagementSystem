@@ -60,11 +60,11 @@ namespace EventManagementSystem
         {
             try
             {
-                
+
                 string ar = selectRole.SelectedItem.ToString();
                 receiveData(name.Text, ar);
                 MessageBox.Show("Event Addition Sucessfull", "Event Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-               
+
             }
             catch
             {
@@ -94,6 +94,20 @@ namespace EventManagementSystem
         private void selectRole_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLogIn formLogIn = new FormLogIn();
+            this.Close();
+            formLogIn.Show();
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAdminHome home = new FormAdminHome();   
+            this.Close();
+            home.Show();
         }
     }
 }

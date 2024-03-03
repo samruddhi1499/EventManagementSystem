@@ -32,7 +32,12 @@
             btnEventEdit = new Button();
             btnEventDelete = new Button();
             eventList = new ListBox();
-            button1 = new Button();
+            menuStrip1 = new MenuStrip();
+            profileToolStripMenuItem = new ToolStripMenuItem();
+            editProfileToolStripMenuItem = new ToolStripMenuItem();
+            logoutToolStripMenuItem = new ToolStripMenuItem();
+            homeToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // btnEventAdd
@@ -73,31 +78,62 @@
             eventList.Size = new Size(281, 304);
             eventList.TabIndex = 3;
             // 
-            // button1
+            // menuStrip1
             // 
-            button1.Location = new Point(84, 320);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 29);
-            button1.TabIndex = 4;
-            button1.Text = "button1";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, homeToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 28);
+            menuStrip1.TabIndex = 5;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // profileToolStripMenuItem
+            // 
+            profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editProfileToolStripMenuItem, logoutToolStripMenuItem });
+            profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            profileToolStripMenuItem.Size = new Size(66, 24);
+            profileToolStripMenuItem.Text = "Profile";
+            // 
+            // editProfileToolStripMenuItem
+            // 
+            editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
+            editProfileToolStripMenuItem.Size = new Size(165, 26);
+            editProfileToolStripMenuItem.Text = "Edit Profile";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            logoutToolStripMenuItem.Size = new Size(165, 26);
+            logoutToolStripMenuItem.Text = "Logout";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
+            // 
+            // homeToolStripMenuItem
+            // 
+            homeToolStripMenuItem.Name = "homeToolStripMenuItem";
+            homeToolStripMenuItem.Size = new Size(64, 24);
+            homeToolStripMenuItem.Text = "Home";
+            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
             // FormEventManipulation
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(button1);
+            ClientSize = new Size(800, 335);
             Controls.Add(eventList);
             Controls.Add(btnEventDelete);
             Controls.Add(btnEventEdit);
             Controls.Add(btnEventAdd);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "FormEventManipulation";
             Text = "FormEventManipulation";
             Activated += FormEventManipulation_Activated;
             Load += FormEventManipulation_Load;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -107,5 +143,10 @@
         private Button btnEventDelete;
         private ListBox eventList;
         private Button button1;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem profileToolStripMenuItem;
+        private ToolStripMenuItem editProfileToolStripMenuItem;
+        private ToolStripMenuItem logoutToolStripMenuItem;
+        private ToolStripMenuItem homeToolStripMenuItem;
     }
 }

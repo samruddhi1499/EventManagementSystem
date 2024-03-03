@@ -108,7 +108,7 @@ namespace EventManagementSystem
 
         private void btnEventEdit_Click(object sender, EventArgs e)
         {
-            if(eventList.Items.Count == 0)
+            if (eventList.Items.Count == 0)
             {
                 MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -117,13 +117,13 @@ namespace EventManagementSystem
                 FormEventEdit formEventEdit = new FormEventEdit();
                 formEventEdit.ShowDialog();
             }
-            
+
 
         }
 
         private void btnEventDelete_Click(object sender, EventArgs e)
         {
-            
+
             if (eventList.Items.Count == 0)
             {
                 MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -135,13 +135,20 @@ namespace EventManagementSystem
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            //FormEventEMEdit formEMEdit = new FormEventEMEdit();
-            //formEMEdit.ShowDialog();
+       
 
-            EMAfterLogin eMAfterLogin = new EMAfterLogin();
-            eMAfterLogin.ShowDialog();
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLogIn formLogIn = new FormLogIn();
+            this.Close();
+            formLogIn.Show();
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAdminHome home = new FormAdminHome();
+            this.Close();
+            home.Show();
         }
     }
 }

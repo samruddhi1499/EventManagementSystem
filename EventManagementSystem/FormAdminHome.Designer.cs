@@ -1,6 +1,6 @@
 ﻿namespace EventManagementSystem
 {
-    partial class EMAfterLogin
+    partial class FormAdminHome
     {
         /// <summary>
         /// Required designer variable.
@@ -28,50 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnEMEditEvent = new Button();
-            button2 = new Button();
+            btnUserMan = new Button();
+            btnEventMan = new Button();
+            btnAttendeeMan = new Button();
             menuStrip1 = new MenuStrip();
-            profileToolStripMenuItem = new ToolStripMenuItem();
+            toolStripMenuItem1 = new ToolStripMenuItem();
             editProfileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
-            // btnEMEditEvent
+            // btnUserMan
             // 
-            btnEMEditEvent.Location = new Point(76, 221);
-            btnEMEditEvent.Name = "btnEMEditEvent";
-            btnEMEditEvent.Size = new Size(94, 29);
-            btnEMEditEvent.TabIndex = 0;
-            btnEMEditEvent.Text = "Edit Event";
-            btnEMEditEvent.UseVisualStyleBackColor = true;
-            btnEMEditEvent.Click += btnEMEditEvent_Click;
+            btnUserMan.Location = new Point(54, 98);
+            btnUserMan.Name = "btnUserMan";
+            btnUserMan.Size = new Size(94, 29);
+            btnUserMan.TabIndex = 0;
+            btnUserMan.Text = "User";
+            btnUserMan.UseVisualStyleBackColor = true;
+            btnUserMan.Click += btnUserMan_Click;
             // 
-            // button2
+            // btnEventMan
             // 
-            button2.Location = new Point(320, 225);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnEventMan.Location = new Point(236, 101);
+            btnEventMan.Name = "btnEventMan";
+            btnEventMan.Size = new Size(94, 29);
+            btnEventMan.TabIndex = 1;
+            btnEventMan.Text = "Event";
+            btnEventMan.UseVisualStyleBackColor = true;
+            btnEventMan.Click += btnEventMan_Click;
+            // 
+            // btnAttendeeMan
+            // 
+            btnAttendeeMan.Location = new Point(439, 107);
+            btnAttendeeMan.Name = "btnAttendeeMan";
+            btnAttendeeMan.Size = new Size(94, 29);
+            btnAttendeeMan.TabIndex = 2;
+            btnAttendeeMan.Text = "Attendee";
+            btnAttendeeMan.UseVisualStyleBackColor = true;
             // 
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(471, 28);
-            menuStrip1.TabIndex = 2;
+            menuStrip1.Size = new Size(652, 28);
+            menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
-            // profileToolStripMenuItem
+            // toolStripMenuItem1
             // 
-            profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editProfileToolStripMenuItem, logoutToolStripMenuItem });
-            profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            profileToolStripMenuItem.Size = new Size(66, 24);
-            profileToolStripMenuItem.Text = "Profile";
+            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { editProfileToolStripMenuItem, logoutToolStripMenuItem });
+            toolStripMenuItem1.Name = "toolStripMenuItem1";
+            toolStripMenuItem1.Size = new Size(66, 24);
+            toolStripMenuItem1.Text = "Profile";
             // 
             // editProfileToolStripMenuItem
             // 
@@ -86,17 +97,18 @@
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
-            // EMAfterLogin
+            // FormAdminHome
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(471, 450);
-            Controls.Add(button2);
-            Controls.Add(btnEMEditEvent);
+            ClientSize = new Size(652, 215);
+            Controls.Add(btnAttendeeMan);
+            Controls.Add(btnEventMan);
+            Controls.Add(btnUserMan);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
-            Name = "EMAfterLogin";
-            Text = "EMAfterLogin";
+            Name = "FormAdminHome";
+            Text = "FormAdminHome";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -105,10 +117,11 @@
 
         #endregion
 
-        private Button btnEMEditEvent;
-        private Button button2;
+        private Button btnUserMan;
+        private Button btnEventMan;
+        private Button btnAttendeeMan;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem profileToolStripMenuItem;
+        private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem editProfileToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
     }

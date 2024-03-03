@@ -36,18 +36,19 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new Point(458, 128);
+            label1.ForeColor = SystemColors.Highlight;
+            label1.Location = new Point(125, 39);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(121, 34);
+            label1.Size = new Size(270, 28);
             label1.TabIndex = 0;
-            label1.Text = "Welcome";
+            label1.Text = "Event Management System";
             // 
             // login
             // 
             login.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            login.Location = new Point(190, 300);
+            login.ForeColor = SystemColors.ActiveCaptionText;
+            login.Location = new Point(23, 143);
             login.Margin = new Padding(4);
             login.Name = "login";
             login.Size = new Size(157, 44);
@@ -59,7 +60,7 @@
             // signup
             // 
             signup.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            signup.Location = new Point(659, 300);
+            signup.Location = new Point(334, 143);
             signup.Margin = new Padding(4);
             signup.Name = "signup";
             signup.Size = new Size(157, 44);
@@ -70,9 +71,9 @@
             // 
             // FormMain
             // 
-            AutoScaleDimensions = new SizeF(14F, 32F);
+            AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1120, 576);
+            ClientSize = new Size(518, 231);
             Controls.Add(signup);
             Controls.Add(login);
             Controls.Add(label1);

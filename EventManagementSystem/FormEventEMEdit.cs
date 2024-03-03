@@ -13,6 +13,7 @@ namespace EventManagementSystem
 {
     public partial class FormEventEMEdit : Form
     {
+        public static string userName;
         public FormEventEMEdit()
         {
             InitializeComponent();
@@ -26,12 +27,13 @@ namespace EventManagementSystem
         private void FormEventEMEdit_Load(object sender, EventArgs e)
         {
             ArrayList arrayList = FormEventManipulation.eventObjectList;
-
-            string val = "sam";
+            
+            
+            
             foreach (EventsClass array in arrayList)
             {
                 EventsClass eventClass = (EventsClass)array;
-                if (eventClass.EventEM.ToLower() == val)
+                if (eventClass.EventEM.ToLower() == userName.ToLower())
                 {
                     eventListEMEdit.Items.Add(eventClass.EventName.ToString());
                     if (eventListEMEdit.Items.Count == 1)
@@ -56,7 +58,7 @@ namespace EventManagementSystem
 
                 string eventName = eventListEMEdit.SelectedItem.ToString();
                 formEventManipulation.receiveDataEdit(eventName, dateTimePickerEMEdit.Text, timePickerEMEdit.Text, txtCapaEMEdit.Text, txtLocEMEdit.Text, txtDesEMEdit.Text
-                    , "sam");
+                    , userName);
                 MessageBox.Show("Event Edit Sucessfull", "Event Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
 
@@ -87,6 +89,11 @@ namespace EventManagementSystem
                     break;
                 }
             }
+        }
+
+        public void getUserName(string userName)
+        {
+            FormEventEMEdit.userName = userName;
         }
     }
 }
