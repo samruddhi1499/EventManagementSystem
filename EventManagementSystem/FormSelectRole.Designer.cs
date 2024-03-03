@@ -35,7 +35,7 @@
             btnDelete = new Button();
             name = new TextBox();
             addList = new ListBox();
-            comboBox1 = new ComboBox();
+            selectRole = new ComboBox();
             textBox1 = new TextBox();
             SuspendLayout();
             // 
@@ -93,6 +93,7 @@
             name.Name = "name";
             name.Size = new Size(182, 31);
             name.TabIndex = 5;
+            name.TextChanged += name_TextChanged;
             // 
             // addList
             // 
@@ -102,14 +103,17 @@
             addList.Name = "addList";
             addList.Size = new Size(180, 254);
             addList.TabIndex = 7;
+            addList.SelectedIndexChanged += addList_SelectedIndexChanged;
             // 
-            // comboBox1
+            // selectRole
             // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(223, 186);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(182, 33);
-            comboBox1.TabIndex = 8;
+            selectRole.FormattingEnabled = true;
+            selectRole.Items.AddRange(new object[] { "Sam", "Saloni", "Sruthi" });
+            selectRole.Location = new Point(223, 186);
+            selectRole.Name = "selectRole";
+            selectRole.Size = new Size(182, 33);
+            selectRole.TabIndex = 8;
+            selectRole.SelectedIndexChanged += selectRole_SelectedIndexChanged;
             // 
             // textBox1
             // 
@@ -125,7 +129,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(textBox1);
-            Controls.Add(comboBox1);
+            Controls.Add(selectRole);
             Controls.Add(addList);
             Controls.Add(name);
             Controls.Add(btnDelete);
@@ -148,7 +152,7 @@
         private Button btnDelete;
         private TextBox name;
         private ListBox addList;
-        private ComboBox comboBox1;
+        private ComboBox selectRole;
         private TextBox textBox1;
     }
 }
