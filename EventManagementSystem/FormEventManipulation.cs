@@ -153,9 +153,17 @@ namespace EventManagementSystem
 
         private void btnEventView_Click(object sender, EventArgs e)
         {
-            FormAdminViewEvent formAdminViewEvent = new FormAdminViewEvent();
-            formAdminViewEvent.getVal(eventList.SelectedItem.ToString());
-            formAdminViewEvent.ShowDialog();
+            if (eventList.Items.Count == 0)
+            {
+                MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                FormAdminViewEvent formAdminViewEvent = new FormAdminViewEvent();
+                formAdminViewEvent.getVal(eventList.SelectedItem.ToString());
+                formAdminViewEvent.ShowDialog();
+            }
+            
         }
     }
 }
