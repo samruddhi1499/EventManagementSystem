@@ -6,8 +6,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace EventManagementSystem
 {
@@ -46,16 +48,45 @@ namespace EventManagementSystem
 
         private void register_Click(object sender, EventArgs e)
         {
+            
             FormAttendeeHome attendeeHome = new FormAttendeeHome();
             Attendees attendees = new Attendees(FormAttendeeHome.eventName, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
             attendeeObjectList.Add(attendees);
             attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
-            MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+            validateFields(nameVal.Text, phoneval.Text, emailval.Text, student.Text);
+            
+        }
+
+
+        public void validateFields(string name, string phone, string email, string studentno) {
+            Regex regexName = new Regex("^[a-zA-Z]+$");
+            int phoneNumber;
+            if (nameVal.Text == "" || phoneval.Text == "" || emailval.Text == "" || student.Text == "")
+            {
+                MessageBox.Show(" You need to fill all the fields", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (!regexName.IsMatch(nameVal.Text))
+            {
+                MessageBox.Show("Name should have only letters", "Invalid information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (!int.TryParse(phoneval.Text, out phoneNumber))
+            {
+                MessageBox.Show("Phone number should have only numbers", "Invalid information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else if (!emailval.Text.Contains("@"))
+            {
+                MessageBox.Show("Invalid EmailId", "Invalid information", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
         }
 
         private void FormRegister_Activated(object sender, EventArgs e)
         {
+
 
         }
     }
