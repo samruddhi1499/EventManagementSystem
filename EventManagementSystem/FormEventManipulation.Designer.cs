@@ -37,12 +37,13 @@
             editProfileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             homeToolStripMenuItem = new ToolStripMenuItem();
+            btnEventView = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // btnEventAdd
             // 
-            btnEventAdd.Location = new Point(38, 188);
+            btnEventAdd.Location = new Point(12, 188);
             btnEventAdd.Name = "btnEventAdd";
             btnEventAdd.Size = new Size(94, 29);
             btnEventAdd.TabIndex = 0;
@@ -52,7 +53,7 @@
             // 
             // btnEventEdit
             // 
-            btnEventEdit.Location = new Point(170, 188);
+            btnEventEdit.Location = new Point(125, 188);
             btnEventEdit.Name = "btnEventEdit";
             btnEventEdit.Size = new Size(94, 29);
             btnEventEdit.TabIndex = 1;
@@ -62,7 +63,7 @@
             // 
             // btnEventDelete
             // 
-            btnEventDelete.Location = new Point(307, 188);
+            btnEventDelete.Location = new Point(252, 188);
             btnEventDelete.Name = "btnEventDelete";
             btnEventDelete.Size = new Size(94, 29);
             btnEventDelete.TabIndex = 2;
@@ -115,11 +116,22 @@
             homeToolStripMenuItem.Text = "Home";
             homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
+            // btnEventView
+            // 
+            btnEventView.Location = new Point(383, 190);
+            btnEventView.Name = "btnEventView";
+            btnEventView.Size = new Size(94, 29);
+            btnEventView.TabIndex = 6;
+            btnEventView.Text = "View";
+            btnEventView.UseVisualStyleBackColor = true;
+            btnEventView.Click += btnEventView_Click;
+            // 
             // FormEventManipulation
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 335);
+            Controls.Add(btnEventView);
             Controls.Add(eventList);
             Controls.Add(btnEventDelete);
             Controls.Add(btnEventEdit);
@@ -148,5 +160,6 @@
         private ToolStripMenuItem editProfileToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem homeToolStripMenuItem;
+        private Button btnEventView;
     }
 }

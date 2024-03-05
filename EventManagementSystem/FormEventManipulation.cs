@@ -135,7 +135,7 @@ namespace EventManagementSystem
             }
         }
 
-       
+
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -149,6 +149,13 @@ namespace EventManagementSystem
             FormAdminHome home = new FormAdminHome();
             this.Close();
             home.Show();
+        }
+
+        private void btnEventView_Click(object sender, EventArgs e)
+        {
+            FormAdminViewEvent formAdminViewEvent = new FormAdminViewEvent();
+            formAdminViewEvent.getVal(eventList.SelectedItem.ToString());
+            formAdminViewEvent.ShowDialog();
         }
     }
 }
