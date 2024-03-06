@@ -18,10 +18,10 @@ namespace EventManagementSystem
     public partial class FormAttendeeHome : Form
     {
 
-        public static ArrayList eventObjectList = new ArrayList();
+
         public static ArrayList eventNames = new ArrayList();
-        
-        EventsClass eventsClass = new EventsClass("IT", "12 March", "2.30", "Humber", "Tech", 3, "sam");
+
+
         public static string eventName;
         public static string registeredEventName;
         BindingSource bs = new BindingSource();
@@ -29,17 +29,17 @@ namespace EventManagementSystem
         public FormAttendeeHome()
         {
             InitializeComponent();
-            if (eventObjectList.Count == 0)
-            {
-                eventObjectList.Add(eventsClass);
-            }
+            //if (FormEventManipulation.eventObjectList.Count == 0)
+            //{
+            //    MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
-            foreach (EventsClass val in eventObjectList)
+            foreach (EventsClass val in FormEventManipulation.eventObjectList)
             {
                 EventsClass eventClass = (EventsClass)val;
                 listEvents.Items.Add(eventClass.EventName.ToString());
             }
-            EventsClass eventClass1 = (EventsClass)eventObjectList[0];
+            EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
             listEvents.Text = eventClass1.EventName.ToString();
 
 
@@ -56,7 +56,7 @@ namespace EventManagementSystem
 
         private void button1_Click(object sender, EventArgs e)
         {
-            eventObjectList.Add(eventsClass);
+
 
         }
 
@@ -67,27 +67,35 @@ namespace EventManagementSystem
 
         private void listEvents_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string selectedValue = listEvents.SelectedItem.ToString();
+
         }
 
-        
+
         private void viewEvent_Click(object sender, EventArgs e)
         {
-            foreach (EventsClass val in eventObjectList)
+
+            if (FormEventManipulation.eventObjectList.Count == 0)
             {
-                if (listEvents.SelectedItem.ToString() == val.EventName.ToString())
+                MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
-                    string eventName = $"Event Name: {val.EventName}";
-                    string eventDate = $"Event Date: {val.EventDate}";
-                    string eventDesc = $"Event Description: {val.EventDescription}";
-                    string eventTime = $"Event Time: {val.EventTime}";
-                    string eventLoc = $"Event Location: {val.EventLocation}";
-                    string eventCap = $"Event Capacity: {val.EventCapacity}";
-                    string eventEm = $"Event Manager: {val.EventEM}";
-                    string[] events = { eventName, eventDate, eventDesc, eventTime, eventLoc, eventCap, eventEm };
-                    foreach (string details in events)
+                    if (listEvents.SelectedItem.ToString() == val.EventName.ToString())
                     {
-                        listEventDetails.Items.Add(details);
+                        string eventName = $"Event Name: {val.EventName}";
+                        string eventDate = $"Event Date: {val.EventDate}";
+                        string eventDesc = $"Event Description: {val.EventDescription}";
+                        string eventTime = $"Event Time: {val.EventTime}";
+                        string eventLoc = $"Event Location: {val.EventLocation}";
+                        string eventCap = $"Event Capacity: {val.EventCapacity}";
+                        string eventEm = $"Event Manager: {val.EventEM}";
+                        string[] events = { eventName, eventDate, eventDesc, eventTime, eventLoc, eventCap, eventEm };
+                        foreach (string details in events)
+                        {
+                            listEventDetails.Items.Add(details);
+                        }
                     }
                 }
             }
@@ -103,37 +111,52 @@ namespace EventManagementSystem
 
             //    }
             //}
-
-            eventName = listEvents.SelectedItem.ToString();
-            FormRegister register = new FormRegister();
-            register.ShowDialog();
+            if (FormEventManipulation.eventObjectList.Count == 0)
+            {
+                MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                eventName = listEvents.SelectedItem.ToString();
+                FormRegister register = new FormRegister();
+                register.ShowDialog();
+            }
         }
 
         private void View_Click(object sender, EventArgs e)
         {
-            foreach (EventsClass val in eventObjectList)
+            if (eventNames.Count == 0)
             {
-                if (regiterEvents.SelectedItem.ToString() == val.EventName.ToString())
+                MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
-                    string eventName = $"Event Name: {val.EventName}";
-                    string eventDate = $"Event Date: {val.EventDate}";
-                    string eventDesc = $"Event Description: {val.EventDescription}";
-                    string eventTime = $"Event Time: {val.EventTime}";
-                    string eventLoc = $"Event Location: {val.EventLocation}";
-                    string eventCap = $"Event Capacity: {val.EventCapacity}";
-                    string eventEm = $"Event Manager: {val.EventEM}";
-                    string[] events = { eventName, eventDate, eventDesc, eventTime, eventLoc, eventCap, eventEm };
-                    foreach (string details in events)
+                    if (regiterEvents.SelectedItem.ToString() == val.EventName.ToString())
                     {
-                        listEventDetails.Items.Add(details);
+                        string eventName = $"Event Name: {val.EventName}";
+                        string eventDate = $"Event Date: {val.EventDate}";
+                        string eventDesc = $"Event Description: {val.EventDescription}";
+                        string eventTime = $"Event Time: {val.EventTime}";
+                        string eventLoc = $"Event Location: {val.EventLocation}";
+                        string eventCap = $"Event Capacity: {val.EventCapacity}";
+                        string eventEm = $"Event Manager: {val.EventEM}";
+                        string[] events = { eventName, eventDate, eventDesc, eventTime, eventLoc, eventCap, eventEm };
+                        foreach (string details in events)
+                        {
+                            listEventDetails.Items.Add(details);
+                        }
                     }
                 }
             }
+
+
         }
 
         private void FormAttendeeHome_Activated(object sender, EventArgs e)
         {
-            
+
             if (registeredEventName != null)
             {
                 eventNames.Add(eventName);
@@ -147,6 +170,13 @@ namespace EventManagementSystem
                 }
             }
 
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLogIn formLogIn = new FormLogIn();
+            this.Close();
+            formLogIn.Show();
         }
     }
 }

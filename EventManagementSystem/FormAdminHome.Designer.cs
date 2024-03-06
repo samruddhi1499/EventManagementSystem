@@ -66,6 +66,7 @@
             btnAttendeeMan.TabIndex = 2;
             btnAttendeeMan.Text = "Attendee";
             btnAttendeeMan.UseVisualStyleBackColor = true;
+            btnAttendeeMan.Click += btnAttendeeMan_Click;
             // 
             // menuStrip1
             // 
@@ -87,13 +88,13 @@
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(224, 26);
+            editProfileToolStripMenuItem.Size = new Size(165, 26);
             editProfileToolStripMenuItem.Text = "Edit Profile";
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(224, 26);
+            logoutToolStripMenuItem.Size = new Size(165, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 

@@ -29,5 +29,11 @@ namespace EventManagementSystem
             this.Close();
             formLogIn.Show();
         }
+
+        private void btnAttendee_Click(object sender, EventArgs e)
+        {
+            FormManipulateAttendee formManipulateAttendee = new FormManipulateAttendee();   
+            formManipulateAttendee.ShowDialog();
+        }
     }
 }

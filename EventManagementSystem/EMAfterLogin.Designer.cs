@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             btnEMEditEvent = new Button();
-            button2 = new Button();
+            btnAttendee = new Button();
             menuStrip1 = new MenuStrip();
             profileToolStripMenuItem = new ToolStripMenuItem();
             editProfileToolStripMenuItem = new ToolStripMenuItem();
@@ -39,22 +39,23 @@
             // 
             // btnEMEditEvent
             // 
-            btnEMEditEvent.Location = new Point(76, 221);
+            btnEMEditEvent.Location = new Point(78, 225);
             btnEMEditEvent.Name = "btnEMEditEvent";
-            btnEMEditEvent.Size = new Size(94, 29);
+            btnEMEditEvent.Size = new Size(148, 29);
             btnEMEditEvent.TabIndex = 0;
             btnEMEditEvent.Text = "Edit Event";
             btnEMEditEvent.UseVisualStyleBackColor = true;
             btnEMEditEvent.Click += btnEMEditEvent_Click;
             // 
-            // button2
+            // btnAttendee
             // 
-            button2.Location = new Point(320, 225);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 29);
-            button2.TabIndex = 1;
-            button2.Text = "button2";
-            button2.UseVisualStyleBackColor = true;
+            btnAttendee.Location = new Point(257, 225);
+            btnAttendee.Name = "btnAttendee";
+            btnAttendee.Size = new Size(157, 29);
+            btnAttendee.TabIndex = 1;
+            btnAttendee.Text = "Edit Attendee";
+            btnAttendee.UseVisualStyleBackColor = true;
+            btnAttendee.Click += btnAttendee_Click;
             // 
             // menuStrip1
             // 
@@ -76,13 +77,13 @@
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(224, 26);
+            editProfileToolStripMenuItem.Size = new Size(165, 26);
             editProfileToolStripMenuItem.Text = "Edit Profile";
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(224, 26);
+            logoutToolStripMenuItem.Size = new Size(165, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
@@ -91,7 +92,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(471, 450);
-            Controls.Add(button2);
+            Controls.Add(btnAttendee);
             Controls.Add(btnEMEditEvent);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -106,7 +107,7 @@
         #endregion
 
         private Button btnEMEditEvent;
-        private Button button2;
+        private Button btnAttendee;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem profileToolStripMenuItem;
         private ToolStripMenuItem editProfileToolStripMenuItem;

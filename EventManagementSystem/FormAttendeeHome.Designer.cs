@@ -37,6 +37,11 @@ namespace EventManagementSystem
             regiterEvents = new ComboBox();
             View = new Button();
             listEventDetails = new ListBox();
+            menuStrip1 = new MenuStrip();
+            profileToolStripMenuItem = new ToolStripMenuItem();
+            editProfileToolStripMenuItem = new ToolStripMenuItem();
+            logoutToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // chooseEvent
@@ -115,6 +120,36 @@ namespace EventManagementSystem
             listEventDetails.TabIndex = 7;
             listEventDetails.SelectedIndexChanged += listEventDetails_SelectedIndexChanged;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(800, 28);
+            menuStrip1.TabIndex = 8;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // profileToolStripMenuItem
+            // 
+            profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editProfileToolStripMenuItem, logoutToolStripMenuItem });
+            profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            profileToolStripMenuItem.Size = new Size(66, 24);
+            profileToolStripMenuItem.Text = "Profile";
+            // 
+            // editProfileToolStripMenuItem
+            // 
+            editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
+            editProfileToolStripMenuItem.Size = new Size(224, 26);
+            editProfileToolStripMenuItem.Text = "Edit Profile";
+            // 
+            // logoutToolStripMenuItem
+            // 
+            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            logoutToolStripMenuItem.Size = new Size(224, 26);
+            logoutToolStripMenuItem.Text = "Logout";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
+            // 
             // FormAttendeeHome
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -128,10 +163,15 @@ namespace EventManagementSystem
             Controls.Add(viewEvent);
             Controls.Add(listEvents);
             Controls.Add(chooseEvent);
+            Controls.Add(menuStrip1);
+            MainMenuStrip = menuStrip1;
             Name = "FormAttendeeHome";
             Text = "FormAttendeeHome";
             Activated += FormAttendeeHome_Activated;
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         private void listEventDetails_SelectedIndexChanged(object sender, EventArgs e)
@@ -149,5 +189,9 @@ namespace EventManagementSystem
         private ComboBox regiterEvents;
         private Button View;
         private ListBox listEventDetails;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem profileToolStripMenuItem;
+        private ToolStripMenuItem editProfileToolStripMenuItem;
+        private ToolStripMenuItem logoutToolStripMenuItem;
     }
 }

@@ -46,6 +46,13 @@ namespace EventManagementSystem
                 eMAfterLogin.Show();
                 
             }
+            else if((UserName == "Attendee1" && PasswordLogin == "a123") || (UserName == "Attendee2" && PasswordLogin == "attendee_2_123"))
+            {
+                MessageBox.Show("Login Successful", "LogIn", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+                this.Hide();
+                formAttendeeHome.Show();
+            }
             else
             {
                 MessageBox.Show("Enter valid Username and Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
