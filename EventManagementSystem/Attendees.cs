@@ -15,6 +15,12 @@ namespace EventManagementSystem
         public string Emailid { get; set; }
         public string Studentno { get; set; }
 
+        public Attendees(string eventName, string attendeeName)
+        {
+
+            EventName = eventName;
+            AttendeeName = attendeeName;
+        }
         public Attendees(string eventName, string attendeeName, string phone, string emailid, string studentno)
         {
 

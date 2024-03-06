@@ -20,7 +20,7 @@ namespace EventManagementSystem
 
 
         public static ArrayList eventNames = new ArrayList();
-
+        public static ArrayList attendeeObjectList = new ArrayList();
 
         public static string eventName;
         public static string registeredEventName;
@@ -51,6 +51,14 @@ namespace EventManagementSystem
 
 
             registeredEventName = EventName;
+
+        }
+
+        public void addAttendee(string eventName, string attendeeName, string phone, string emailid, string studentno)
+        {
+
+            Attendees attendees = new Attendees(eventName, attendeeName, phone, emailid, studentno);
+            attendeeObjectList.Add(attendees);
 
         }
 
@@ -156,7 +164,7 @@ namespace EventManagementSystem
 
         private void FormAttendeeHome_Activated(object sender, EventArgs e)
         {
-
+            listEventDetails.Items.Clear();
             if (registeredEventName != null)
             {
                 eventNames.Add(eventName);

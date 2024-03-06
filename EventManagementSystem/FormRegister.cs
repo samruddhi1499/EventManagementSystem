@@ -50,9 +50,6 @@ namespace EventManagementSystem
         {
             
             FormAttendeeHome attendeeHome = new FormAttendeeHome();
-            Attendees attendees = new Attendees(FormAttendeeHome.eventName, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
-            attendeeObjectList.Add(attendees);
-            attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
             validateFields(nameVal.Text, phoneval.Text, emailval.Text, student.Text);
             
         }
@@ -80,7 +77,16 @@ namespace EventManagementSystem
             else
             {
                 MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                attendeeHome.addAttendee(FormAttendeeHome.eventName, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
+                attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
+                foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                {
+                    if(FormAttendeeHome.eventName == val.EventName.ToString())
+                    {
+                        val.EventCapacity -= 1;
+                    }
+                }
+                    this.Close();
             }
         }
 
