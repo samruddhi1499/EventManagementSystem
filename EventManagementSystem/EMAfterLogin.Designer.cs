@@ -42,26 +42,29 @@
             // 
             // btnEMEditEvent
             // 
-            btnEMEditEvent.Location = new Point(369, 71);
+            btnEMEditEvent.BackColor = SystemColors.ControlLight;
+            btnEMEditEvent.Location = new Point(387, 72);
             btnEMEditEvent.Name = "btnEMEditEvent";
-            btnEMEditEvent.Size = new Size(148, 29);
+            btnEMEditEvent.Size = new Size(157, 36);
             btnEMEditEvent.TabIndex = 0;
             btnEMEditEvent.Text = "Edit Event";
-            btnEMEditEvent.UseVisualStyleBackColor = true;
+            btnEMEditEvent.UseVisualStyleBackColor = false;
             btnEMEditEvent.Click += btnEMEditEvent_Click;
             // 
             // btnAttendee
             // 
-            btnAttendee.Location = new Point(369, 155);
+            btnAttendee.BackColor = SystemColors.ControlLight;
+            btnAttendee.Location = new Point(387, 156);
             btnAttendee.Name = "btnAttendee";
-            btnAttendee.Size = new Size(157, 29);
+            btnAttendee.Size = new Size(157, 36);
             btnAttendee.TabIndex = 1;
             btnAttendee.Text = "Edit Attendee";
-            btnAttendee.UseVisualStyleBackColor = true;
+            btnAttendee.UseVisualStyleBackColor = false;
             btnAttendee.Click += btnAttendee_Click;
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = SystemColors.MenuBar;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
@@ -111,7 +114,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "EMAfterLogin";
-            Text = "EMAfterLogin";
+            Text = "EM Home";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

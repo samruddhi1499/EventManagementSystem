@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdminViewEvent));
             eventViewList = new ListBox();
             btnCloseView = new Button();
             SuspendLayout();
             // 
             // eventViewList
             // 
+            eventViewList.BackColor = SystemColors.Control;
             eventViewList.FormattingEnabled = true;
             eventViewList.Location = new Point(12, 18);
             eventViewList.Name = "eventViewList";
@@ -42,23 +44,26 @@
             // 
             // btnCloseView
             // 
+            btnCloseView.BackColor = SystemColors.ControlLight;
             btnCloseView.Location = new Point(94, 360);
             btnCloseView.Name = "btnCloseView";
-            btnCloseView.Size = new Size(155, 29);
+            btnCloseView.Size = new Size(161, 36);
             btnCloseView.TabIndex = 1;
             btnCloseView.Text = "Close";
-            btnCloseView.UseVisualStyleBackColor = true;
+            btnCloseView.UseVisualStyleBackColor = false;
             btnCloseView.Click += btnCloseView_Click;
             // 
             // FormAdminViewEvent
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(364, 401);
+            BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(364, 413);
             Controls.Add(btnCloseView);
             Controls.Add(eventViewList);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormAdminViewEvent";
-            Text = "FormAdminViewEvent";
+            Text = "View Event";
             Load += FormAdminViewEvent_Load;
             ResumeLayout(false);
         }

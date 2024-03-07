@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEventManipulation));
             btnEventAdd = new Button();
             btnEventEdit = new Button();
             btnEventDelete = new Button();
@@ -43,49 +44,54 @@
             // 
             // btnEventAdd
             // 
-            btnEventAdd.Location = new Point(12, 188);
+            btnEventAdd.BackColor = SystemColors.ControlLight;
+            btnEventAdd.Location = new Point(12, 397);
             btnEventAdd.Name = "btnEventAdd";
-            btnEventAdd.Size = new Size(94, 29);
+            btnEventAdd.Size = new Size(108, 36);
             btnEventAdd.TabIndex = 0;
             btnEventAdd.Text = "Add";
-            btnEventAdd.UseVisualStyleBackColor = true;
+            btnEventAdd.UseVisualStyleBackColor = false;
             btnEventAdd.Click += btnEventAdd_Click;
             // 
             // btnEventEdit
             // 
-            btnEventEdit.Location = new Point(125, 188);
+            btnEventEdit.BackColor = SystemColors.ControlLight;
+            btnEventEdit.Location = new Point(142, 397);
             btnEventEdit.Name = "btnEventEdit";
-            btnEventEdit.Size = new Size(94, 29);
+            btnEventEdit.Size = new Size(108, 36);
             btnEventEdit.TabIndex = 1;
             btnEventEdit.Text = "Edit";
-            btnEventEdit.UseVisualStyleBackColor = true;
+            btnEventEdit.UseVisualStyleBackColor = false;
             btnEventEdit.Click += btnEventEdit_Click;
             // 
             // btnEventDelete
             // 
-            btnEventDelete.Location = new Point(252, 188);
+            btnEventDelete.BackColor = SystemColors.ControlLight;
+            btnEventDelete.Location = new Point(271, 397);
             btnEventDelete.Name = "btnEventDelete";
-            btnEventDelete.Size = new Size(94, 29);
+            btnEventDelete.Size = new Size(108, 36);
             btnEventDelete.TabIndex = 2;
             btnEventDelete.Text = "Delete";
-            btnEventDelete.UseVisualStyleBackColor = true;
+            btnEventDelete.UseVisualStyleBackColor = false;
             btnEventDelete.Click += btnEventDelete_Click;
             // 
             // eventList
             // 
+            eventList.BackColor = SystemColors.Control;
             eventList.FormattingEnabled = true;
-            eventList.Location = new Point(507, 12);
+            eventList.Location = new Point(60, 47);
             eventList.Name = "eventList";
-            eventList.Size = new Size(281, 304);
+            eventList.Size = new Size(401, 304);
             eventList.TabIndex = 3;
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = SystemColors.MenuBar;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, homeToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 28);
+            menuStrip1.Size = new Size(522, 28);
             menuStrip1.TabIndex = 5;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -118,28 +124,33 @@
             // 
             // btnEventView
             // 
-            btnEventView.Location = new Point(383, 190);
+            btnEventView.BackColor = SystemColors.ControlLight;
+            btnEventView.Location = new Point(402, 397);
             btnEventView.Name = "btnEventView";
-            btnEventView.Size = new Size(94, 29);
+            btnEventView.Size = new Size(108, 36);
             btnEventView.TabIndex = 6;
             btnEventView.Text = "View";
-            btnEventView.UseVisualStyleBackColor = true;
+            btnEventView.UseVisualStyleBackColor = false;
             btnEventView.Click += btnEventView_Click;
             // 
             // FormEventManipulation
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 335);
+            BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(522, 458);
             Controls.Add(btnEventView);
             Controls.Add(eventList);
             Controls.Add(btnEventDelete);
             Controls.Add(btnEventEdit);
             Controls.Add(btnEventAdd);
             Controls.Add(menuStrip1);
+            ForeColor = SystemColors.ControlText;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
+            MaximizeBox = false;
             Name = "FormEventManipulation";
-            Text = "FormEventManipulation";
+            Text = "Event Manipulation";
             Activated += FormEventManipulation_Activated;
             Load += FormEventManipulation_Load;
             menuStrip1.ResumeLayout(false);

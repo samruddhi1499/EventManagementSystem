@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEventEdit));
             btnEditCancel = new Button();
             btnEditOK = new Button();
             label1 = new Label();
@@ -48,22 +49,24 @@
             // 
             // btnEditCancel
             // 
+            btnEditCancel.BackColor = SystemColors.ControlLight;
             btnEditCancel.Location = new Point(26, 429);
             btnEditCancel.Name = "btnEditCancel";
-            btnEditCancel.Size = new Size(94, 29);
+            btnEditCancel.Size = new Size(108, 36);
             btnEditCancel.TabIndex = 0;
             btnEditCancel.Text = "Cancel";
-            btnEditCancel.UseVisualStyleBackColor = true;
+            btnEditCancel.UseVisualStyleBackColor = false;
             btnEditCancel.Click += btnEditCancel_Click;
             // 
             // btnEditOK
             // 
-            btnEditOK.Location = new Point(192, 429);
+            btnEditOK.BackColor = SystemColors.ControlLight;
+            btnEditOK.Location = new Point(215, 429);
             btnEditOK.Name = "btnEditOK";
-            btnEditOK.Size = new Size(94, 29);
+            btnEditOK.Size = new Size(108, 36);
             btnEditOK.TabIndex = 1;
             btnEditOK.Text = "OK";
-            btnEditOK.UseVisualStyleBackColor = true;
+            btnEditOK.UseVisualStyleBackColor = false;
             btnEditOK.Click += btnEditOK_Click;
             // 
             // label1
@@ -131,67 +134,75 @@
             // 
             // eventListEdit
             // 
+            eventListEdit.BackColor = SystemColors.ControlLight;
             eventListEdit.FormattingEnabled = true;
-            eventListEdit.Location = new Point(135, 36);
+            eventListEdit.Location = new Point(143, 36);
             eventListEdit.Name = "eventListEdit";
-            eventListEdit.Size = new Size(151, 28);
+            eventListEdit.Size = new Size(179, 28);
             eventListEdit.TabIndex = 9;
             eventListEdit.SelectedIndexChanged += eventListEdit_SelectedIndexChanged;
             // 
             // txtLocEdit
             // 
+            txtLocEdit.BackColor = SystemColors.ControlLight;
             txtLocEdit.Location = new Point(143, 205);
             txtLocEdit.Name = "txtLocEdit";
-            txtLocEdit.Size = new Size(125, 27);
+            txtLocEdit.Size = new Size(179, 27);
             txtLocEdit.TabIndex = 12;
             // 
             // txtCapaEdit
             // 
+            txtCapaEdit.BackColor = SystemColors.ControlLight;
             txtCapaEdit.Location = new Point(143, 261);
             txtCapaEdit.Name = "txtCapaEdit";
-            txtCapaEdit.Size = new Size(125, 27);
+            txtCapaEdit.Size = new Size(179, 27);
             txtCapaEdit.TabIndex = 13;
             // 
             // txtDesEdit
             // 
+            txtDesEdit.BackColor = SystemColors.ControlLight;
             txtDesEdit.Location = new Point(143, 317);
             txtDesEdit.Name = "txtDesEdit";
-            txtDesEdit.Size = new Size(125, 27);
+            txtDesEdit.Size = new Size(179, 27);
             txtDesEdit.TabIndex = 14;
             // 
             // eventManagerListEdit
             // 
+            eventManagerListEdit.BackColor = SystemColors.ControlLight;
             eventManagerListEdit.DisplayMember = "(none)";
             eventManagerListEdit.FormattingEnabled = true;
-            eventManagerListEdit.Items.AddRange(new object[] { "saloni", "sam" });
-            eventManagerListEdit.Location = new Point(135, 366);
+            eventManagerListEdit.Items.AddRange(new object[] { "Saloni", "Sam", "Sruthi" });
+            eventManagerListEdit.Location = new Point(143, 366);
             eventManagerListEdit.Name = "eventManagerListEdit";
-            eventManagerListEdit.Size = new Size(151, 28);
+            eventManagerListEdit.Size = new Size(179, 28);
             eventManagerListEdit.TabIndex = 15;
             eventManagerListEdit.Tag = "";
-            eventManagerListEdit.Text = "sam";
+            eventManagerListEdit.Text = "Sam";
             // 
             // dateTimePickerEdit
             // 
-            dateTimePickerEdit.Location = new Point(135, 90);
+            dateTimePickerEdit.CalendarMonthBackground = SystemColors.ControlLight;
+            dateTimePickerEdit.Location = new Point(143, 90);
             dateTimePickerEdit.Name = "dateTimePickerEdit";
-            dateTimePickerEdit.Size = new Size(178, 27);
+            dateTimePickerEdit.Size = new Size(179, 27);
             dateTimePickerEdit.TabIndex = 16;
             // 
             // timePickerEventEdit
             // 
+            timePickerEventEdit.CalendarMonthBackground = SystemColors.ControlLight;
             timePickerEventEdit.Format = DateTimePickerFormat.Time;
-            timePickerEventEdit.Location = new Point(135, 152);
+            timePickerEventEdit.Location = new Point(143, 147);
             timePickerEventEdit.Name = "timePickerEventEdit";
             timePickerEventEdit.ShowUpDown = true;
-            timePickerEventEdit.Size = new Size(160, 27);
+            timePickerEventEdit.Size = new Size(179, 27);
             timePickerEventEdit.TabIndex = 17;
             // 
             // FormEventEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(493, 519);
+            BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(349, 491);
             Controls.Add(timePickerEventEdit);
             Controls.Add(dateTimePickerEdit);
             Controls.Add(eventManagerListEdit);
@@ -208,8 +219,9 @@
             Controls.Add(label1);
             Controls.Add(btnEditOK);
             Controls.Add(btnEditCancel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormEventEdit";
-            Text = "FormEventEdit";
+            Text = "Edit Event";
             Activated += FormEventEdit_Activated;
             Load += FormEventEdit_Load;
             ResumeLayout(false);

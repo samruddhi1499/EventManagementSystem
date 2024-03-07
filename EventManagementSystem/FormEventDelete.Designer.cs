@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEventDelete));
             btnDeleteCancel = new Button();
             btnDeleteOK = new Button();
             label1 = new Label();
@@ -36,22 +37,24 @@
             // 
             // btnDeleteCancel
             // 
+            btnDeleteCancel.BackColor = SystemColors.ControlLight;
             btnDeleteCancel.Location = new Point(29, 128);
             btnDeleteCancel.Name = "btnDeleteCancel";
-            btnDeleteCancel.Size = new Size(94, 29);
+            btnDeleteCancel.Size = new Size(108, 36);
             btnDeleteCancel.TabIndex = 0;
             btnDeleteCancel.Text = "Cancel";
-            btnDeleteCancel.UseVisualStyleBackColor = true;
+            btnDeleteCancel.UseVisualStyleBackColor = false;
             btnDeleteCancel.Click += btnDeleteCancel_Click;
             // 
             // btnDeleteOK
             // 
-            btnDeleteOK.Location = new Point(247, 128);
+            btnDeleteOK.BackColor = SystemColors.ControlLight;
+            btnDeleteOK.Location = new Point(236, 128);
             btnDeleteOK.Name = "btnDeleteOK";
-            btnDeleteOK.Size = new Size(94, 29);
+            btnDeleteOK.Size = new Size(108, 36);
             btnDeleteOK.TabIndex = 1;
             btnDeleteOK.Text = "OK";
-            btnDeleteOK.UseVisualStyleBackColor = true;
+            btnDeleteOK.UseVisualStyleBackColor = false;
             btnDeleteOK.Click += btnDeleteOK_Click;
             // 
             // label1
@@ -65,6 +68,7 @@
             // 
             // eventListDelete
             // 
+            eventListDelete.BackColor = SystemColors.ControlLight;
             eventListDelete.FormattingEnabled = true;
             eventListDelete.Location = new Point(168, 53);
             eventListDelete.Name = "eventListDelete";
@@ -75,13 +79,15 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(375, 176);
             Controls.Add(eventListDelete);
             Controls.Add(label1);
             Controls.Add(btnDeleteOK);
             Controls.Add(btnDeleteCancel);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormEventDelete";
-            Text = "FormEventDelete";
+            Text = "Delete Event";
             Load += FormEventDelete_Load;
             ResumeLayout(false);
             PerformLayout();

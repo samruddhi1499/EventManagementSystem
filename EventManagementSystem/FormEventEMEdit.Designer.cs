@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormEventEMEdit));
             btnCancelEMEdit = new Button();
             btnOKEMEdit = new Button();
             label1 = new Label();
@@ -46,22 +47,24 @@
             // 
             // btnCancelEMEdit
             // 
+            btnCancelEMEdit.BackColor = SystemColors.ControlLight;
             btnCancelEMEdit.Location = new Point(49, 380);
             btnCancelEMEdit.Name = "btnCancelEMEdit";
-            btnCancelEMEdit.Size = new Size(94, 29);
+            btnCancelEMEdit.Size = new Size(108, 36);
             btnCancelEMEdit.TabIndex = 0;
             btnCancelEMEdit.Text = "Cancel";
-            btnCancelEMEdit.UseVisualStyleBackColor = true;
+            btnCancelEMEdit.UseVisualStyleBackColor = false;
             btnCancelEMEdit.Click += btnCancelEMEdit_Click;
             // 
             // btnOKEMEdit
             // 
-            btnOKEMEdit.Location = new Point(225, 380);
+            btnOKEMEdit.BackColor = SystemColors.ControlLight;
+            btnOKEMEdit.Location = new Point(215, 380);
             btnOKEMEdit.Name = "btnOKEMEdit";
-            btnOKEMEdit.Size = new Size(94, 29);
+            btnOKEMEdit.Size = new Size(108, 36);
             btnOKEMEdit.TabIndex = 1;
             btnOKEMEdit.Text = "OK";
-            btnOKEMEdit.UseVisualStyleBackColor = true;
+            btnOKEMEdit.UseVisualStyleBackColor = false;
             btnOKEMEdit.Click += btnOKEMEdit_Click;
             // 
             // label1
@@ -120,55 +123,62 @@
             // 
             // txtLocEMEdit
             // 
-            txtLocEMEdit.Location = new Point(181, 197);
+            txtLocEMEdit.BackColor = SystemColors.ControlLight;
+            txtLocEMEdit.Location = new Point(161, 197);
             txtLocEMEdit.Name = "txtLocEMEdit";
-            txtLocEMEdit.Size = new Size(125, 27);
+            txtLocEMEdit.Size = new Size(179, 27);
             txtLocEMEdit.TabIndex = 10;
             // 
             // txtDesEMEdit
             // 
-            txtDesEMEdit.Location = new Point(181, 247);
+            txtDesEMEdit.BackColor = SystemColors.ControlLight;
+            txtDesEMEdit.Location = new Point(161, 247);
             txtDesEMEdit.Name = "txtDesEMEdit";
-            txtDesEMEdit.Size = new Size(125, 27);
+            txtDesEMEdit.Size = new Size(179, 27);
             txtDesEMEdit.TabIndex = 11;
             // 
             // txtCapaEMEdit
             // 
-            txtCapaEMEdit.Location = new Point(181, 300);
+            txtCapaEMEdit.BackColor = SystemColors.ControlLight;
+            txtCapaEMEdit.Location = new Point(161, 300);
             txtCapaEMEdit.Name = "txtCapaEMEdit";
-            txtCapaEMEdit.Size = new Size(125, 27);
+            txtCapaEMEdit.Size = new Size(179, 27);
             txtCapaEMEdit.TabIndex = 12;
             // 
             // eventListEMEdit
             // 
+            eventListEMEdit.BackColor = SystemColors.ControlLight;
             eventListEMEdit.FormattingEnabled = true;
-            eventListEMEdit.Location = new Point(168, 42);
+            eventListEMEdit.Location = new Point(161, 37);
             eventListEMEdit.Name = "eventListEMEdit";
-            eventListEMEdit.Size = new Size(151, 28);
+            eventListEMEdit.Size = new Size(179, 28);
             eventListEMEdit.TabIndex = 13;
             eventListEMEdit.SelectedIndexChanged += eventListEMEdit_SelectedIndexChanged;
             // 
             // dateTimePickerEMEdit
             // 
-            dateTimePickerEMEdit.Location = new Point(155, 94);
+            dateTimePickerEMEdit.CalendarMonthBackground = SystemColors.ControlLight;
+            dateTimePickerEMEdit.Location = new Point(161, 94);
             dateTimePickerEMEdit.Name = "dateTimePickerEMEdit";
-            dateTimePickerEMEdit.Size = new Size(188, 27);
+            dateTimePickerEMEdit.Size = new Size(179, 27);
             dateTimePickerEMEdit.TabIndex = 14;
             // 
             // timePickerEMEdit
             // 
+            timePickerEMEdit.CalendarMonthBackground = SystemColors.ControlLight;
             timePickerEMEdit.Format = DateTimePickerFormat.Time;
-            timePickerEMEdit.Location = new Point(169, 144);
+            timePickerEMEdit.Location = new Point(161, 144);
             timePickerEMEdit.Name = "timePickerEMEdit";
             timePickerEMEdit.ShowUpDown = true;
-            timePickerEMEdit.Size = new Size(150, 27);
+            timePickerEMEdit.Size = new Size(179, 27);
             timePickerEMEdit.TabIndex = 16;
             // 
             // FormEventEMEdit
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(405, 460);
+            BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(368, 460);
             Controls.Add(timePickerEMEdit);
             Controls.Add(dateTimePickerEMEdit);
             Controls.Add(eventListEMEdit);
@@ -183,8 +193,9 @@
             Controls.Add(label1);
             Controls.Add(btnOKEMEdit);
             Controls.Add(btnCancelEMEdit);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormEventEMEdit";
-            Text = "FormEventEMEdit";
+            Text = "EM Event Edit";
             Load += FormEventEMEdit_Load;
             ResumeLayout(false);
             PerformLayout();

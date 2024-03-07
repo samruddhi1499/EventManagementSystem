@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAdminHome));
             btnUserMan = new Button();
             btnEventMan = new Button();
             btnAttendeeMan = new Button();
@@ -35,46 +36,53 @@
             toolStripMenuItem1 = new ToolStripMenuItem();
             editProfileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
+            pictureBox1 = new PictureBox();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // btnUserMan
             // 
-            btnUserMan.Location = new Point(54, 98);
+            btnUserMan.BackColor = SystemColors.ControlLight;
+            btnUserMan.Location = new Point(289, 249);
             btnUserMan.Name = "btnUserMan";
-            btnUserMan.Size = new Size(94, 29);
+            btnUserMan.Size = new Size(108, 36);
             btnUserMan.TabIndex = 0;
             btnUserMan.Text = "User";
-            btnUserMan.UseVisualStyleBackColor = true;
+            btnUserMan.UseVisualStyleBackColor = false;
             btnUserMan.Click += btnUserMan_Click;
             // 
             // btnEventMan
             // 
-            btnEventMan.Location = new Point(236, 101);
+            btnEventMan.BackColor = SystemColors.ControlLight;
+            btnEventMan.ForeColor = Color.Black;
+            btnEventMan.Location = new Point(12, 249);
             btnEventMan.Name = "btnEventMan";
-            btnEventMan.Size = new Size(94, 29);
+            btnEventMan.Size = new Size(108, 36);
             btnEventMan.TabIndex = 1;
             btnEventMan.Text = "Event";
-            btnEventMan.UseVisualStyleBackColor = true;
+            btnEventMan.UseVisualStyleBackColor = false;
             btnEventMan.Click += btnEventMan_Click;
             // 
             // btnAttendeeMan
             // 
-            btnAttendeeMan.Location = new Point(439, 107);
+            btnAttendeeMan.BackColor = SystemColors.ControlLight;
+            btnAttendeeMan.Location = new Point(144, 249);
             btnAttendeeMan.Name = "btnAttendeeMan";
-            btnAttendeeMan.Size = new Size(94, 29);
+            btnAttendeeMan.Size = new Size(108, 36);
             btnAttendeeMan.TabIndex = 2;
             btnAttendeeMan.Text = "Attendee";
-            btnAttendeeMan.UseVisualStyleBackColor = true;
+            btnAttendeeMan.UseVisualStyleBackColor = false;
             btnAttendeeMan.Click += btnAttendeeMan_Click;
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = SystemColors.MenuBar;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(652, 28);
+            menuStrip1.Size = new Size(409, 28);
             menuStrip1.TabIndex = 3;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -98,20 +106,33 @@
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(79, 49);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(257, 170);
+            pictureBox1.TabIndex = 4;
+            pictureBox1.TabStop = false;
+            // 
             // FormAdminHome
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(652, 215);
+            BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(409, 320);
+            Controls.Add(pictureBox1);
             Controls.Add(btnAttendeeMan);
             Controls.Add(btnEventMan);
             Controls.Add(btnUserMan);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "FormAdminHome";
-            Text = "FormAdminHome";
+            Text = "Admin Home";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -125,5 +146,6 @@
         private ToolStripMenuItem toolStripMenuItem1;
         private ToolStripMenuItem editProfileToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
+        private PictureBox pictureBox1;
     }
 }

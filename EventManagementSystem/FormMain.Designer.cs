@@ -28,27 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMain));
             login = new Button();
             signup = new Button();
+            pictureBox1 = new PictureBox();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.Highlight;
-            label1.Location = new Point(125, 39);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(270, 28);
-            label1.TabIndex = 0;
-            label1.Text = "Event Management System";
             // 
             // login
             // 
             login.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
             login.ForeColor = SystemColors.ActiveCaptionText;
-            login.Location = new Point(23, 143);
+            login.Location = new Point(24, 283);
             login.Margin = new Padding(4);
             login.Name = "login";
             login.Size = new Size(157, 44);
@@ -60,7 +51,7 @@
             // signup
             // 
             signup.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            signup.Location = new Point(334, 143);
+            signup.Location = new Point(339, 283);
             signup.Margin = new Padding(4);
             signup.Name = "signup";
             signup.Size = new Size(157, 44);
@@ -69,26 +60,35 @@
             signup.UseVisualStyleBackColor = true;
             signup.Click += signup_Click;
             // 
+            // pictureBox1
+            // 
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.Location = new Point(157, 12);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(216, 206);
+            pictureBox1.TabIndex = 3;
+            pictureBox1.TabStop = false;
+            // 
             // FormMain
             // 
             AutoScaleDimensions = new SizeF(12F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(518, 231);
+            BackColor = SystemColors.ControlLightLight;
+            ClientSize = new Size(518, 381);
+            Controls.Add(pictureBox1);
             Controls.Add(signup);
             Controls.Add(login);
-            Controls.Add(label1);
             Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
             Name = "FormMain";
             Text = "FormMain";
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private Label label1;
         private Button login;
         private Button signup;
+        private PictureBox pictureBox1;
     }
 }
