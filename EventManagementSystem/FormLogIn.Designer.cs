@@ -85,7 +85,6 @@
             txtUser.Name = "txtUser";
             txtUser.Size = new Size(150, 31);
             txtUser.TabIndex = 4;
-            txtUser.TextChanged += txtUser_TextChanged;
             // 
             // txtPass
             // 
