@@ -8,14 +8,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace EventManagementSystem
 {
     public partial class FormSelectRole : Form
     {
+
+
+
+
         public static ArrayList eventObjectList = new ArrayList();
         static ArrayList roleNames = new ArrayList();
         BindingSource bs = new BindingSource();
+
+        public string Role { get; private set; }
+        public string Name { get; private set; }
+
 
         public FormSelectRole()
         {
@@ -30,6 +39,8 @@ namespace EventManagementSystem
             roleNames.Add(txt);
             addList.Items.Add(txt);
 
+
+
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -40,6 +51,35 @@ namespace EventManagementSystem
         private void btnDelete_Click(object sender, EventArgs e)
         {
 
+            Name = name.Text;
+            Role = selectRole.Text;
+
+            int count = 0;
+            bool deleted = false;
+            foreach (addRoleClass role in eventObjectList)
+            {
+                if (role.Name.ToString() == name.Text && role.Role.ToString() == selectRole.Text)
+                {
+                    eventObjectList.RemoveAt(count);
+                    addList.Items.Remove(name.Text);
+                    addList.Items.Remove(selectRole.Text);
+                    deleted = true;
+                    break;
+                }
+                count++;
+            }
+            if (deleted)
+            {
+                MessageBox.Show("UserRole Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("User not present", "Invalid attendee", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            name.ResetText();
+            selectRole.ResetText();
+
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
@@ -47,23 +87,18 @@ namespace EventManagementSystem
 
         }
 
-        //public void receiveData(string name, string addRole)
-        //{
-        //    EventsClass eventsClass = new EventsClass(eventName, eventDate, eventTime, eventLoc, eventDes, capacity, em);
-        //    eventObjectList.Add(eventsClass);
-        //    string txt = eventName + " - " + em;
-        //    eventNames.Add(txt);
-
-        //}
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
+            Name = name.Text;
+            Role = selectRole.Text;
+
             try
             {
 
                 string ar = selectRole.SelectedItem.ToString();
                 receiveData(name.Text, ar);
-                MessageBox.Show("Event Addition Sucessfull", "Event Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Role Addition Sucessfull", "Role Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
             catch
@@ -72,14 +107,12 @@ namespace EventManagementSystem
 
             }
 
+            name.ResetText();
+            selectRole.ResetText();
+
 
         }
 
-        private void FormSelectRole_Load(object sender, EventArgs e)
-        {
-            bs.DataSource = roleNames;
-            addList.DataSource = bs;
-        }
 
         private void addList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -105,9 +138,17 @@ namespace EventManagementSystem
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAdminHome home = new FormAdminHome();   
+            FormAdminHome home = new FormAdminHome();
             this.Close();
             home.Show();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (addList.SelectedIndex > -1)
+            {
+               
+            }
         }
     }
 }

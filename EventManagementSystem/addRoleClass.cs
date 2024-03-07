@@ -13,6 +13,7 @@ namespace EventManagementSystem
         public string Role { get; set; }
 
 
+
         public addRoleClass(string name, string role)
         {
             Name = name;
