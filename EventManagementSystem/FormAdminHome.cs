@@ -41,8 +41,8 @@ namespace EventManagementSystem
         private void btnAttendeeMan_Click(object sender, EventArgs e)
         {
             FormManipulateAttendee formManipulateAttendee = new FormManipulateAttendee();
-            this.Close();
-            formManipulateAttendee.Show();
+            
+            formManipulateAttendee.ShowDialog();
         }
     }
 }

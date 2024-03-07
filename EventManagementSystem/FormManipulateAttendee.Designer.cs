@@ -36,11 +36,6 @@
             delete = new Button();
             attendeeInfo = new ListBox();
             menuStrip1 = new MenuStrip();
-            profileToolStripMenuItem = new ToolStripMenuItem();
-            editProfileToolStripMenuItem = new ToolStripMenuItem();
-            logoutToolStripMenuItem = new ToolStripMenuItem();
-            homeToolStripMenuItem = new ToolStripMenuItem();
-            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -110,37 +105,11 @@
             // menuStrip1
             // 
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, homeToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(667, 28);
             menuStrip1.TabIndex = 7;
             menuStrip1.Text = "menuStrip1";
-            // 
-            // profileToolStripMenuItem
-            // 
-            profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editProfileToolStripMenuItem, logoutToolStripMenuItem });
-            profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            profileToolStripMenuItem.Size = new Size(66, 24);
-            profileToolStripMenuItem.Text = "Profile";
-            // 
-            // editProfileToolStripMenuItem
-            // 
-            editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(165, 26);
-            editProfileToolStripMenuItem.Text = "Edit Profile";
-            // 
-            // logoutToolStripMenuItem
-            // 
-            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(165, 26);
-            logoutToolStripMenuItem.Text = "Logout";
-            // 
-            // homeToolStripMenuItem
-            // 
-            homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(64, 24);
-            homeToolStripMenuItem.Text = "Home";
             // 
             // FormManipulateAttendee
             // 
@@ -158,8 +127,6 @@
             MainMenuStrip = menuStrip1;
             Name = "FormManipulateAttendee";
             Text = "FormManipulateAttendee";
-            menuStrip1.ResumeLayout(false);
-            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -174,9 +141,5 @@
         private Button delete;
         private ListBox attendeeInfo;
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem profileToolStripMenuItem;
-        private ToolStripMenuItem editProfileToolStripMenuItem;
-        private ToolStripMenuItem logoutToolStripMenuItem;
-        private ToolStripMenuItem homeToolStripMenuItem;
     }
 }

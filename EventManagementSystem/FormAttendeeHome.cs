@@ -34,13 +34,17 @@ namespace EventManagementSystem
             //    MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
             //}
 
-            foreach (EventsClass val in FormEventManipulation.eventObjectList)
+            if (FormEventManipulation.eventObjectList.Count != 0)
             {
-                EventsClass eventClass = (EventsClass)val;
-                listEvents.Items.Add(eventClass.EventName.ToString());
+                foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                {
+                    EventsClass eventClass = (EventsClass)val;
+                    listEvents.Items.Add(eventClass.EventName.ToString());
+                }
+                EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
+                listEvents.Text = eventClass1.EventName.ToString();
             }
-            EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
-            listEvents.Text = eventClass1.EventName.ToString();
+            
 
 
         }

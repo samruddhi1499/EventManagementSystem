@@ -21,6 +21,7 @@ namespace EventManagementSystem
         {
             FormEventEMEdit formEMEventEdit = new FormEventEMEdit();
             formEMEventEdit.ShowDialog();
+            
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -34,6 +35,7 @@ namespace EventManagementSystem
         {
             FormManipulateAttendee formManipulateAttendee = new FormManipulateAttendee();   
             formManipulateAttendee.ShowDialog();
+            
         }
     }
 }

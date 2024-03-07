@@ -17,7 +17,7 @@ namespace EventManagementSystem
         public FormManipulateAttendee()
         {
             InitializeComponent();
-            
+
             if (FormEventManipulation.eventObjectList.Count != 0)
             {
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
@@ -64,8 +64,9 @@ namespace EventManagementSystem
             bool deleted = false;
             foreach (Attendees attendees in attendeeList)
             {
-                
-                if (attendees.AttendeeName.ToString() == attendeeName.Text && attendees.EventName.ToString() == eventName.Text) {
+
+                if (attendees.AttendeeName.ToString() == attendeeName.Text && attendees.EventName.ToString() == eventName.Text)
+                {
                     attendeeList.RemoveAt(count);
                     attendeeInfo.Items.Remove(attendeeName.Text);
                     deleted = true;
@@ -74,7 +75,8 @@ namespace EventManagementSystem
                 count++;
 
             }
-            if(deleted) {
+            if (deleted)
+            {
                 MessageBox.Show("Attendee Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
@@ -82,5 +84,7 @@ namespace EventManagementSystem
                 MessageBox.Show("Attendee not present", "Invalid attendee", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+       
     }
 }
