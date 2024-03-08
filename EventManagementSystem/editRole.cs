@@ -41,7 +41,7 @@ namespace EventManagementSystem
 
             try
             {
-                formSelectRole.receiveDataEdit(name.Text, selectrole);
+               // formSelectRole.receiveDataEdit(name.Text, selectrole);
                 MessageBox.Show("Event Edit Sucessfull", "Event Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
             }

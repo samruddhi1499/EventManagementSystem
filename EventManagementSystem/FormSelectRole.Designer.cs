@@ -41,36 +41,36 @@
             editProfileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             homeToolStripMenuItem = new ToolStripMenuItem();
+            btnClear = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(50, 51);
+            label1.Location = new Point(40, 41);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(59, 25);
+            label1.Size = new Size(49, 20);
             label1.TabIndex = 0;
             label1.Text = "Name";
-            label1.Click += label1_Click;
             // 
             // roleDropDown
             // 
             roleDropDown.AutoSize = true;
-            roleDropDown.Location = new Point(50, 132);
+            roleDropDown.Location = new Point(40, 106);
             roleDropDown.Margin = new Padding(2, 0, 2, 0);
             roleDropDown.Name = "roleDropDown";
-            roleDropDown.Size = new Size(46, 25);
+            roleDropDown.Size = new Size(39, 20);
             roleDropDown.TabIndex = 1;
             roleDropDown.Text = "Role";
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(24, 242);
+            btnAdd.Location = new Point(19, 194);
             btnAdd.Margin = new Padding(2);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(112, 34);
+            btnAdd.Size = new Size(90, 27);
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = true;
@@ -78,10 +78,10 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(198, 242);
+            btnEdit.Location = new Point(19, 194);
             btnEdit.Margin = new Padding(2);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(112, 34);
+            btnEdit.Size = new Size(90, 27);
             btnEdit.TabIndex = 3;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
@@ -89,10 +89,10 @@
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(371, 242);
+            btnDelete.Location = new Point(297, 194);
             btnDelete.Margin = new Padding(2);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(112, 34);
+            btnDelete.Size = new Size(90, 27);
             btnDelete.TabIndex = 4;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = true;
@@ -100,34 +100,32 @@
             // 
             // name
             // 
-            name.Location = new Point(222, 48);
+            name.Location = new Point(178, 38);
             name.Margin = new Padding(2);
             name.Name = "name";
-            name.Size = new Size(182, 31);
+            name.Size = new Size(146, 27);
             name.TabIndex = 5;
-            name.TextChanged += name_TextChanged;
             // 
             // addList
             // 
             addList.FormattingEnabled = true;
-            addList.ItemHeight = 25;
-            addList.Location = new Point(584, 22);
+            addList.Location = new Point(467, 18);
             addList.Margin = new Padding(2);
             addList.Name = "addList";
-            addList.Size = new Size(180, 254);
+            addList.Size = new Size(145, 204);
             addList.TabIndex = 7;
-            addList.SelectedIndexChanged += addList_SelectedIndexChanged;
+            addList.DoubleClick += addList_DoubleClick;
             // 
             // selectRole
             // 
+            selectRole.DropDownStyle = ComboBoxStyle.DropDownList;
             selectRole.FormattingEnabled = true;
             selectRole.Items.AddRange(new object[] { "Admin", "Event Manager", "Attendee" });
-            selectRole.Location = new Point(222, 124);
+            selectRole.Location = new Point(178, 99);
             selectRole.Margin = new Padding(2);
             selectRole.Name = "selectRole";
-            selectRole.Size = new Size(182, 33);
+            selectRole.Size = new Size(146, 28);
             selectRole.TabIndex = 8;
-            selectRole.SelectedIndexChanged += selectRole_SelectedIndexChanged;
             // 
             // menuStrip1
             // 
@@ -135,8 +133,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, homeToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(8, 2, 0, 2);
-            menuStrip1.Size = new Size(800, 33);
+            menuStrip1.Size = new Size(640, 28);
             menuStrip1.TabIndex = 10;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -144,34 +141,46 @@
             // 
             profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editProfileToolStripMenuItem, logoutToolStripMenuItem });
             profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            profileToolStripMenuItem.Size = new Size(78, 29);
+            profileToolStripMenuItem.Size = new Size(66, 24);
             profileToolStripMenuItem.Text = "Profile";
             // 
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(199, 34);
+            editProfileToolStripMenuItem.Size = new Size(165, 26);
             editProfileToolStripMenuItem.Text = "Edit Profile";
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(199, 34);
+            logoutToolStripMenuItem.Size = new Size(165, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
             // homeToolStripMenuItem
             // 
             homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(77, 29);
+            homeToolStripMenuItem.Size = new Size(64, 24);
             homeToolStripMenuItem.Text = "Home";
             homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(158, 194);
+            btnClear.Margin = new Padding(2);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(90, 27);
+            btnClear.TabIndex = 11;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
             // FormSelectRole
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(640, 360);
+            Controls.Add(btnClear);
             Controls.Add(selectRole);
             Controls.Add(addList);
             Controls.Add(name);
@@ -206,5 +215,6 @@
         private ToolStripMenuItem editProfileToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem homeToolStripMenuItem;
+        private Button btnClear;
     }
 }
