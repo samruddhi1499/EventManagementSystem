@@ -26,6 +26,7 @@ namespace EventManagementSystem
         public string Name { get; private set; }
 
 
+
         public FormSelectRole()
         {
             InitializeComponent();
@@ -38,9 +39,27 @@ namespace EventManagementSystem
             string txt = name + " - " + ar;
             roleNames.Add(txt);
             addList.Items.Add(txt);
+        }
 
-
-
+        public void receiveDataEdit(string selectName, string selectRole)
+        {
+            foreach (addRoleClass insert in eventObjectList)
+            {
+                if (insert.Name == selectName /*&& insert.Role == selectRole*/)
+                {
+                    insert.Name = selectName;
+                    insert.Role = selectRole;
+                    break;
+                }
+            }
+            foreach (string insert in roleNames)
+            {
+                string txt = selectName + " - " + selectRole;
+                int myIndex = roleNames.IndexOf(insert);
+                roleNames.RemoveAt(myIndex);
+                roleNames.Add(txt);
+                break;
+            }
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -61,8 +80,7 @@ namespace EventManagementSystem
                 if (role.Name.ToString() == name.Text && role.Role.ToString() == selectRole.Text)
                 {
                     eventObjectList.RemoveAt(count);
-                    addList.Items.Remove(name.Text);
-                    addList.Items.Remove(selectRole.Text);
+                    addList.Items.Remove($"{name.Text} - {selectRole.Text}");
                     deleted = true;
                     break;
                 }
@@ -71,6 +89,7 @@ namespace EventManagementSystem
             if (deleted)
             {
                 MessageBox.Show("UserRole Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
             else
             {
@@ -113,6 +132,14 @@ namespace EventManagementSystem
 
         }
 
+        
+
+        //private void FormSelectRole_Load(object sender, EventArgs e)
+        //{
+        //    bs.DataSource = roleNames;
+        //    addList.DataSource = bs;
+        //}
+
 
         private void addList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -143,12 +170,25 @@ namespace EventManagementSystem
             home.Show();
         }
 
+       
+
+        private void FormSelectRole_Activated(object sender, EventArgs e)
+        {
+            bs.ResetBindings(false);
+        }
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (addList.SelectedIndex > -1)
+            if (addList.Items.Count == 0)
             {
-               
+                MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                editRole EditRole = new editRole();
+                EditRole.ShowDialog();
+
             }
         }
+
     }
 }

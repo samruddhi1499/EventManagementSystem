@@ -14,10 +14,10 @@ namespace EventManagementSystem
             //Application.Run(new FormEventManipulation());
             //  Application.Run(new FormLogIn());
             //  Application.Run(new FormSignUp());
-          // Application.Run(new FormSelectRole());
+          Application.Run(new FormSelectRole());
             //Application.Run(new FormAttendeeHome());
 
-            Application.Run(new FormMain());
+         //   Application.Run(new FormMain());
 
 
             // Application.Run(new EMAfterLogin());
