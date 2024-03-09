@@ -63,14 +63,14 @@ namespace EventManagementSystem
         {
             Login.BackColor = Color.MediumPurple;
             Login.ForeColor = Color.White;
-            
+
         }
 
         private void Login_MouseLeave(object sender, EventArgs e)
         {
             Login.BackColor = Color.Gainsboro; ;
             Login.ForeColor = Color.Black;
-            
+
         }
 
         private void Signup_MouseHover(object sender, EventArgs e)
@@ -83,6 +83,11 @@ namespace EventManagementSystem
         {
             Signup.BackColor = Color.Gainsboro; ;
             Signup.ForeColor = Color.Black;
+        }
+
+        private void txtusername_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

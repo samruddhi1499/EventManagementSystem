@@ -45,7 +45,7 @@
             // 
             Login.BackColor = SystemColors.ControlLight;
             Login.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            Login.Location = new Point(401, 265);
+            Login.Location = new Point(383, 265);
             Login.Margin = new Padding(2);
             Login.Name = "Login";
             Login.Size = new Size(108, 36);
@@ -75,18 +75,19 @@
             // 
             txtusername.AutoSize = true;
             txtusername.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            txtusername.Location = new Point(389, 58);
+            txtusername.Location = new Point(364, 55);
             txtusername.Margin = new Padding(2, 0, 2, 0);
             txtusername.Name = "txtusername";
             txtusername.Size = new Size(87, 23);
             txtusername.TabIndex = 2;
             txtusername.Text = "Username";
+            txtusername.Click += txtusername_Click;
             // 
             // txtPass
             // 
             txtPass.AutoSize = true;
             txtPass.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            txtPass.Location = new Point(394, 128);
+            txtPass.Location = new Point(364, 125);
             txtPass.Margin = new Padding(2, 0, 2, 0);
             txtPass.Name = "txtPass";
             txtPass.Size = new Size(82, 23);

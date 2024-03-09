@@ -119,6 +119,7 @@
             Controls.Add(btnAttendee);
             Controls.Add(btnEMEditEvent);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "EMAfterLogin";
             StartPosition = FormStartPosition.CenterScreen;
