@@ -32,13 +32,13 @@ namespace EventManagementSystem
             string pass = txtPassword.Text;
             string confirm = txtConfrmPass.Text;
 
-            if (username == "admin" && pass =="admin123" && confirm == "admin123")
+            if (username == "admin" && pass == "admin123" && confirm == "admin123")
             {
                 MessageBox.Show("Register Successful", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormEventManipulation formEventManipulation = new FormEventManipulation();
                 this.Hide();
                 formEventManipulation.ShowDialog();
-                
+
             }
             else if ((username == "Sam" && pass == "sam123" && confirm == "sam123") || (username == "Saloni" && pass == "saloni123" && confirm == "saloni123") || (username == "Sruthi" && pass == "sruthi123" && confirm == "sruthi123"))
             {
@@ -57,6 +57,32 @@ namespace EventManagementSystem
             txtConfrmPass.ResetText();
 
             this.Hide();
+        }
+
+        private void Login_MouseHover(object sender, EventArgs e)
+        {
+            Login.BackColor = Color.MediumPurple;
+            Login.ForeColor = Color.White;
+            
+        }
+
+        private void Login_MouseLeave(object sender, EventArgs e)
+        {
+            Login.BackColor = Color.Gainsboro; ;
+            Login.ForeColor = Color.Black;
+            
+        }
+
+        private void Signup_MouseHover(object sender, EventArgs e)
+        {
+            Signup.BackColor = Color.MediumPurple;
+            Signup.ForeColor = Color.White;
+        }
+
+        private void Signup_MouseLeave(object sender, EventArgs e)
+        {
+            Signup.BackColor = Color.Gainsboro; ;
+            Signup.ForeColor = Color.Black;
         }
     }
 }

@@ -121,4 +121,10 @@
   <data name="ahome" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ahome.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Wavy_Gen-03_Single-02 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Wavy_Gen-03_Single-02 (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tablet login-amico (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tablet login-amico (1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>

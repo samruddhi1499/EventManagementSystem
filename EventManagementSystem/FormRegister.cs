@@ -15,7 +15,7 @@ namespace EventManagementSystem
 {
     public partial class FormRegister : Form
     {
-        
+
         public static ArrayList attendeeObjectList = new ArrayList();
         BindingSource bs = new BindingSource();
         FormAttendeeHome attendeeHome = new FormAttendeeHome();
@@ -30,7 +30,7 @@ namespace EventManagementSystem
         {
 
             InitializeComponent();
-            
+
             eventName.Text = $"Event: {FormAttendeeHome.eventName}";
 
         }
@@ -48,14 +48,15 @@ namespace EventManagementSystem
 
         private void register_Click(object sender, EventArgs e)
         {
-            
+
             FormAttendeeHome attendeeHome = new FormAttendeeHome();
             validateFields(nameVal.Text, phoneval.Text, emailval.Text, student.Text);
-            
+
         }
 
 
-        public void validateFields(string name, string phone, string email, string studentno) {
+        public void validateFields(string name, string phone, string email, string studentno)
+        {
             Regex regexName = new Regex("^[a-zA-Z]+$");
             int phoneNumber;
             if (nameVal.Text == "" || phoneval.Text == "" || emailval.Text == "" || student.Text == "")
@@ -80,23 +81,48 @@ namespace EventManagementSystem
                 {
                     if (FormAttendeeHome.eventName == val.EventName.ToString())
                     {
-                       val.EventCapacity -= 1;
-                            MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            attendeeHome.addAttendee(FormAttendeeHome.eventName, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
-                            attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
+                        val.EventCapacity -= 1;
+                        MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        attendeeHome.addAttendee(FormAttendeeHome.eventName, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
+                        attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
 
-                            this.Close();
-                        }
-                        
+                        this.Close();
                     }
-                
+
                 }
+
+            }
         }
 
-        private void FormRegister_Activated(object sender, EventArgs e)
+        //private void Close_MouseHover(object sender, EventArgs e)
+        //{
+        //    register.BackColor = Color.MediumPurple;
+        //    register.ForeColor = Color.White;
+        //}
+
+        private void Close_MouseLeave(object sender, EventArgs e)
         {
+            register.BackColor = Color.Gainsboro; ;
+            register.ForeColor = Color.Black;
+        }
 
+        private void register_MouseHover(object sender, EventArgs e)
+        {
+            register.BackColor = Color.MediumPurple;
+            register.ForeColor = Color.White;
 
+        }
+
+        private void register_MouseLeave(object sender, EventArgs e)
+        {
+            register.BackColor = Color.Gainsboro; ;
+            register.ForeColor = Color.Black;
+        }
+
+        private void Close_MouseHover(object sender, EventArgs e)
+        {
+            register.BackColor = Color.MediumPurple;
+            register.ForeColor = Color.White;
         }
     }
 }

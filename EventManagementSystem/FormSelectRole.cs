@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.Logging;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -114,8 +115,8 @@ namespace EventManagementSystem
             {
                 btnAdd.Hide();
                 btnEdit.Show();
-                
-                
+
+
 
                 foreach (addRoleClass item in eventObjectList)
                 {
@@ -159,6 +160,54 @@ namespace EventManagementSystem
         {
             FormEditProfile formEditProfile = new FormEditProfile();
             formEditProfile.ShowDialog();
+        }
+
+        private void btnAdd_MouseHover(object sender, EventArgs e)
+        {
+            btnAdd.BackColor = Color.MediumPurple;
+            btnAdd.ForeColor = Color.White;
+        }
+
+        private void btnAdd_MouseLeave(object sender, EventArgs e)
+        {
+            btnAdd.BackColor = Color.Gainsboro; ;
+            btnAdd.ForeColor = Color.Black;
+        }
+
+        private void btnEdit_MouseHover(object sender, EventArgs e)
+        {
+            btnEdit.BackColor = Color.MediumPurple;
+            btnEdit.ForeColor = Color.White;
+        }
+
+        private void btnEdit_MouseLeave(object sender, EventArgs e)
+        {
+            btnEdit.BackColor = Color.Gainsboro; ;
+            btnEdit.ForeColor = Color.Black;
+        }
+
+        private void btnClear_MouseHover(object sender, EventArgs e)
+        {
+            btnClear.BackColor = Color.MediumPurple;
+            btnClear.ForeColor = Color.White;
+        }
+
+        private void btnClear_MouseLeave(object sender, EventArgs e)
+        {
+            btnClear.BackColor = Color.Gainsboro; ;
+            btnClear.ForeColor = Color.Black;
+        }
+
+        private void btnDelete_MouseHover(object sender, EventArgs e)
+        {
+            btnDelete.BackColor = Color.MediumPurple;
+            btnDelete.ForeColor = Color.White;
+        }
+
+        private void btnDelete_MouseLeave(object sender, EventArgs e)
+        {
+            btnDelete.BackColor = Color.Gainsboro; ;
+            btnDelete.ForeColor = Color.Black;
         }
     }
 }

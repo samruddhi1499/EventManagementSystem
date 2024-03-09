@@ -48,83 +48,100 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(40, 41);
+            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Location = new Point(61, 90);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(49, 20);
+            label1.Size = new Size(56, 23);
             label1.TabIndex = 0;
             label1.Text = "Name";
             // 
             // roleDropDown
             // 
             roleDropDown.AutoSize = true;
-            roleDropDown.Location = new Point(40, 106);
+            roleDropDown.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            roleDropDown.Location = new Point(62, 173);
             roleDropDown.Margin = new Padding(2, 0, 2, 0);
             roleDropDown.Name = "roleDropDown";
-            roleDropDown.Size = new Size(39, 20);
+            roleDropDown.Size = new Size(43, 23);
             roleDropDown.TabIndex = 1;
             roleDropDown.Text = "Role";
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(19, 194);
+            btnAdd.BackColor = SystemColors.ControlLight;
+            btnAdd.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAdd.Location = new Point(11, 247);
             btnAdd.Margin = new Padding(2);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(90, 27);
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Add";
-            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.UseVisualStyleBackColor = false;
             btnAdd.Click += btnAdd_Click;
+            btnAdd.MouseLeave += btnAdd_MouseLeave;
+            btnAdd.MouseHover += btnAdd_MouseHover;
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(19, 194);
+            btnEdit.BackColor = SystemColors.ControlLight;
+            btnEdit.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnEdit.Location = new Point(20, 299);
             btnEdit.Margin = new Padding(2);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(90, 27);
             btnEdit.TabIndex = 3;
             btnEdit.Text = "Edit";
-            btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.UseVisualStyleBackColor = false;
             btnEdit.Click += btnEdit_Click;
+            btnEdit.MouseLeave += btnEdit_MouseLeave;
+            btnEdit.MouseHover += btnEdit_MouseHover;
             // 
             // btnDelete
             // 
-            btnDelete.Location = new Point(297, 194);
+            btnDelete.BackColor = SystemColors.ControlLight;
+            btnDelete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnDelete.Location = new Point(297, 247);
             btnDelete.Margin = new Padding(2);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(90, 27);
             btnDelete.TabIndex = 4;
             btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
+            btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += btnDelete_Click;
+            btnDelete.MouseLeave += btnDelete_MouseLeave;
+            btnDelete.MouseHover += btnDelete_MouseHover;
             // 
             // name
             // 
-            name.Location = new Point(178, 38);
+            name.BackColor = SystemColors.ControlLight;
+            name.Location = new Point(177, 90);
             name.Margin = new Padding(2);
             name.Name = "name";
-            name.Size = new Size(146, 27);
+            name.Size = new Size(164, 27);
             name.TabIndex = 5;
             // 
             // addList
             // 
+            addList.BackColor = Color.FromArgb(192, 192, 255);
             addList.FormattingEnabled = true;
-            addList.Location = new Point(467, 18);
+            addList.Location = new Point(424, 51);
             addList.Margin = new Padding(2);
             addList.Name = "addList";
-            addList.Size = new Size(145, 204);
+            addList.Size = new Size(194, 264);
             addList.TabIndex = 7;
             addList.DoubleClick += addList_DoubleClick;
             // 
             // selectRole
             // 
+            selectRole.BackColor = SystemColors.ControlLight;
             selectRole.DropDownStyle = ComboBoxStyle.DropDownList;
             selectRole.FormattingEnabled = true;
             selectRole.Items.AddRange(new object[] { "Admin", "Event Manager", "Attendee" });
-            selectRole.Location = new Point(178, 99);
+            selectRole.Location = new Point(177, 165);
             selectRole.Margin = new Padding(2);
             selectRole.Name = "selectRole";
-            selectRole.Size = new Size(146, 28);
+            selectRole.Size = new Size(164, 28);
             selectRole.TabIndex = 8;
             // 
             // menuStrip1
@@ -167,19 +184,24 @@
             // 
             // btnClear
             // 
-            btnClear.Location = new Point(158, 194);
+            btnClear.BackColor = SystemColors.ControlLight;
+            btnClear.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnClear.Location = new Point(153, 247);
             btnClear.Margin = new Padding(2);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(90, 27);
             btnClear.TabIndex = 11;
             btnClear.Text = "Clear";
-            btnClear.UseVisualStyleBackColor = true;
+            btnClear.UseVisualStyleBackColor = false;
             btnClear.Click += btnClear_Click;
+            btnClear.MouseLeave += btnClear_MouseLeave;
+            btnClear.MouseHover += btnClear_MouseHover;
             // 
             // FormSelectRole
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(640, 360);
             Controls.Add(btnClear);
             Controls.Add(selectRole);

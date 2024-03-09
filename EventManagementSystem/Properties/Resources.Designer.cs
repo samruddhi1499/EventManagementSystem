@@ -69,5 +69,25 @@ namespace EventManagementSystem.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tablet_login_amico__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Tablet login-amico (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Wavy_Gen_03_Single_02__1_ {
+            get {
+                object obj = ResourceManager.GetObject("Wavy_Gen-03_Single-02 (1)", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

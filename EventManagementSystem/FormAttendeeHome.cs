@@ -145,7 +145,7 @@ namespace EventManagementSystem
                         }
                     }
                 }
-                            
+
             }
         }
 
@@ -209,6 +209,42 @@ namespace EventManagementSystem
         {
             FormEditProfile formEditProfile = new FormEditProfile();
             formEditProfile.ShowDialog();
+        }
+
+        private void viewEvent_MouseHover(object sender, EventArgs e)
+        {
+            viewEvent.BackColor = Color.MediumPurple;
+            viewEvent.ForeColor = Color.White;
+        }
+
+        private void viewEvent_MouseLeave_1(object sender, EventArgs e)
+        {
+            viewEvent.BackColor = Color.Gainsboro; ;
+            viewEvent.ForeColor = Color.Black;
+        }
+
+        private void register_MouseHover_1(object sender, EventArgs e)
+        {
+            register.BackColor = Color.MediumPurple;
+            register.ForeColor = Color.White;
+        }
+
+        private void register_MouseLeave_1(object sender, EventArgs e)
+        {
+            register.BackColor = Color.Gainsboro; ;
+            register.ForeColor = Color.Black;
+        }
+
+        private void View_MouseHover(object sender, EventArgs e)
+        {
+            View.BackColor = Color.MediumPurple;
+            View.ForeColor = Color.White;
+        }
+
+        private void View_MouseLeave(object sender, EventArgs e)
+        {
+            View.BackColor = Color.Gainsboro; ;
+            View.ForeColor = Color.Black;
         }
     }
 }

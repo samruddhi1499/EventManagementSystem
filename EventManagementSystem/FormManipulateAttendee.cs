@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -28,11 +29,6 @@ namespace EventManagementSystem
                 EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
                 eventName.Text = eventClass1.EventName.ToString();
             }
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void eventName_SelectedIndexChanged(object sender, EventArgs e)
@@ -107,6 +103,45 @@ namespace EventManagementSystem
             }
         }
 
-       
+        private void add_MouseHover(object sender, EventArgs e)
+        {
+            add.BackColor = Color.MediumPurple;
+            add.ForeColor = Color.White;
+        }
+
+        private void add_MouseLeave(object sender, EventArgs e)
+        {
+            add.BackColor = Color.Gainsboro; ;
+            add.ForeColor = Color.Black;
+        }
+
+        private void delete_MouseHover(object sender, EventArgs e)
+        {
+            delete.BackColor = Color.MediumPurple;
+            delete.ForeColor = Color.White;
+        }
+
+        private void delete_MouseLeave(object sender, EventArgs e)
+        {
+            delete.BackColor = Color.Gainsboro; ;
+            delete.ForeColor = Color.Black;
+        }
+
+        private void button1_MouseHover(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.MediumPurple;
+            button1.ForeColor = Color.White;
+        }
+
+        private void button1_MouseLeave(object sender, EventArgs e)
+        {
+            button1.BackColor = Color.Gainsboro; ;
+            button1.ForeColor = Color.Black;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
