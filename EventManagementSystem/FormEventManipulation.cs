@@ -198,26 +198,26 @@ namespace EventManagementSystem
 
         private void btnEventDelete_MouseHover(object sender, EventArgs e)
         {
-            btnEventEdit.BackColor = Color.MediumPurple;
-            btnEventEdit.ForeColor = Color.White;
+            btnEventDelete.BackColor = Color.MediumPurple;
+            btnEventDelete.ForeColor = Color.White;
         }
 
         private void btnEventDelete_MouseLeave(object sender, EventArgs e)
         {
-            btnEventEdit.BackColor = Color.Gainsboro;
-            btnEventEdit.ForeColor = Color.Black;
+            btnEventDelete.BackColor = Color.Gainsboro;
+            btnEventDelete.ForeColor = Color.Black;
         }
 
         private void btnEventView_MouseHover(object sender, EventArgs e)
         {
-            btnEventEdit.BackColor = Color.MediumPurple;
-            btnEventEdit.ForeColor = Color.White;
+            btnEventView.BackColor = Color.MediumPurple;
+            btnEventView.ForeColor = Color.White;
         }
 
         private void btnEventView_MouseLeave(object sender, EventArgs e)
         {
-            btnEventEdit.BackColor = Color.Gainsboro;
-            btnEventEdit.ForeColor = Color.Black;
+            btnEventView.BackColor = Color.Gainsboro;
+            btnEventView.ForeColor = Color.Black;
         }
     }
 }
