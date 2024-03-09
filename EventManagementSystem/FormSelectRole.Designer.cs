@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            dropDown = new Label();
+            roleDropDown = new Label();
             btnAdd = new Button();
             btnEdit = new Button();
             btnDelete = new Button();
             name = new TextBox();
             addList = new ListBox();
             selectRole = new ComboBox();
-            textBox1 = new TextBox();
             menuStrip1 = new MenuStrip();
             profileToolStripMenuItem = new ToolStripMenuItem();
             editProfileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             homeToolStripMenuItem = new ToolStripMenuItem();
+            btnClear = new Button();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,21 +54,20 @@
             label1.Size = new Size(49, 20);
             label1.TabIndex = 0;
             label1.Text = "Name";
-            label1.Click += label1_Click;
             // 
-            // dropDown
+            // roleDropDown
             // 
-            dropDown.AutoSize = true;
-            dropDown.Location = new Point(40, 106);
-            dropDown.Margin = new Padding(2, 0, 2, 0);
-            dropDown.Name = "dropDown";
-            dropDown.Size = new Size(39, 20);
-            dropDown.TabIndex = 1;
-            dropDown.Text = "Role";
+            roleDropDown.AutoSize = true;
+            roleDropDown.Location = new Point(40, 106);
+            roleDropDown.Margin = new Padding(2, 0, 2, 0);
+            roleDropDown.Name = "roleDropDown";
+            roleDropDown.Size = new Size(39, 20);
+            roleDropDown.TabIndex = 1;
+            roleDropDown.Text = "Role";
             // 
             // btnAdd
             // 
-            btnAdd.Location = new Point(17, 194);
+            btnAdd.Location = new Point(19, 194);
             btnAdd.Margin = new Padding(2);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(90, 27);
@@ -79,13 +78,14 @@
             // 
             // btnEdit
             // 
-            btnEdit.Location = new Point(158, 194);
+            btnEdit.Location = new Point(19, 194);
             btnEdit.Margin = new Padding(2);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(90, 27);
             btnEdit.TabIndex = 3;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // btnDelete
             // 
@@ -105,7 +105,6 @@
             name.Name = "name";
             name.Size = new Size(146, 27);
             name.TabIndex = 5;
-            name.TextChanged += name_TextChanged;
             // 
             // addList
             // 
@@ -115,27 +114,18 @@
             addList.Name = "addList";
             addList.Size = new Size(145, 204);
             addList.TabIndex = 7;
-            addList.SelectedIndexChanged += addList_SelectedIndexChanged;
+            addList.DoubleClick += addList_DoubleClick;
             // 
             // selectRole
             // 
+            selectRole.DropDownStyle = ComboBoxStyle.DropDownList;
             selectRole.FormattingEnabled = true;
-            selectRole.Items.AddRange(new object[] { "Sam", "Saloni", "Sruthi" });
-            selectRole.Location = new Point(178, 149);
+            selectRole.Items.AddRange(new object[] { "Admin", "Event Manager", "Attendee" });
+            selectRole.Location = new Point(178, 99);
             selectRole.Margin = new Padding(2);
             selectRole.Name = "selectRole";
             selectRole.Size = new Size(146, 28);
             selectRole.TabIndex = 8;
-            selectRole.SelectedIndexChanged += selectRole_SelectedIndexChanged;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(178, 106);
-            textBox1.Margin = new Padding(2);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(146, 27);
-            textBox1.TabIndex = 9;
-            textBox1.TextChanged += textBox1_TextChanged;
             // 
             // menuStrip1
             // 
@@ -157,13 +147,13 @@
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(224, 26);
+            editProfileToolStripMenuItem.Size = new Size(165, 26);
             editProfileToolStripMenuItem.Text = "Edit Profile";
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(224, 26);
+            logoutToolStripMenuItem.Size = new Size(165, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
@@ -174,19 +164,30 @@
             homeToolStripMenuItem.Text = "Home";
             homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
+            // btnClear
+            // 
+            btnClear.Location = new Point(158, 194);
+            btnClear.Margin = new Padding(2);
+            btnClear.Name = "btnClear";
+            btnClear.Size = new Size(90, 27);
+            btnClear.TabIndex = 11;
+            btnClear.Text = "Clear";
+            btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
+            // 
             // FormSelectRole
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(640, 360);
-            Controls.Add(textBox1);
+            Controls.Add(btnClear);
             Controls.Add(selectRole);
             Controls.Add(addList);
             Controls.Add(name);
             Controls.Add(btnDelete);
             Controls.Add(btnEdit);
             Controls.Add(btnAdd);
-            Controls.Add(dropDown);
+            Controls.Add(roleDropDown);
             Controls.Add(label1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
@@ -202,18 +203,18 @@
         #endregion
 
         private Label label1;
-        private Label dropDown;
+        private Label roleDropDown;
         private Button btnAdd;
         private Button btnEdit;
         private Button btnDelete;
         private TextBox name;
         private ListBox addList;
         private ComboBox selectRole;
-        private TextBox textBox1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem profileToolStripMenuItem;
         private ToolStripMenuItem editProfileToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem homeToolStripMenuItem;
+        private Button btnClear;
     }
 }

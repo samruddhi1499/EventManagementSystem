@@ -8,92 +8,66 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace EventManagementSystem
 {
     public partial class FormSelectRole : Form
     {
         public static ArrayList eventObjectList = new ArrayList();
-        static ArrayList roleNames = new ArrayList();
         BindingSource bs = new BindingSource();
+        addRoleClass? currentItem = null;
 
         public FormSelectRole()
         {
             InitializeComponent();
+            SetControlsToDefault();
         }
 
-        public void receiveData(string name, string ar)
+        private void SetControlsToDefault()
         {
-            addRoleClass addroleClass = new addRoleClass(name, ar);
-            eventObjectList.Add(addroleClass);
-            string txt = name + " - " + ar;
-            roleNames.Add(txt);
-            addList.Items.Add(txt);
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
+            btnAdd.Show();
+            btnEdit.Hide();
+            btnDelete.Hide();
+            name.ResetText();
+            selectRole.SelectedItem = null;
+            currentItem = null;
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            bool deleted = false;
+            if (currentItem != null)
+            {
+                eventObjectList.Remove(currentItem);
+                setListValues();
+                deleted = true;
+            }
 
+            if (deleted)
+            {
+                MessageBox.Show("UserRole Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("User not present", "Invalid attendee", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            SetControlsToDefault();
         }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        //public void receiveData(string name, string addRole)
-        //{
-        //    EventsClass eventsClass = new EventsClass(eventName, eventDate, eventTime, eventLoc, eventDes, capacity, em);
-        //    eventObjectList.Add(eventsClass);
-        //    string txt = eventName + " - " + em;
-        //    eventNames.Add(txt);
-
-        //}
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
             {
-
-                string ar = selectRole.SelectedItem.ToString();
-                receiveData(name.Text, ar);
-                MessageBox.Show("Event Addition Sucessfull", "Event Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                string ar = Convert.ToString(selectRole.SelectedItem);
+                AddEditData();
+                MessageBox.Show("Role Added Sucessfully", "Role Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch
             {
                 MessageBox.Show("Check field", "Invalid Type ", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
             }
-
-
-        }
-
-        private void FormSelectRole_Load(object sender, EventArgs e)
-        {
-            bs.DataSource = roleNames;
-            addList.DataSource = bs;
-        }
-
-        private void addList_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void name_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void selectRole_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -105,9 +79,80 @@ namespace EventManagementSystem
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormAdminHome home = new FormAdminHome();   
+            FormAdminHome home = new FormAdminHome();
             this.Close();
             home.Show();
+        }
+
+        private void FormSelectRole_Activated(object sender, EventArgs e)
+        {
+            bs.ResetBindings(false);
+        }
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (addList.Items.Count == 0)
+            {
+                MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                if (currentItem != null)
+                {
+                    currentItem.Name = name.Text;
+                    currentItem.Role = Convert.ToString(selectRole.SelectedItem);
+                    AddEditData();
+
+                    MessageBox.Show("Role Edited Successfully", "Role Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+        }
+
+        private void addList_DoubleClick(object sender, EventArgs e)
+        {
+            var SelectedItem = Convert.ToString(((ListBox)sender).SelectedItem);
+
+            if (SelectedItem != null)
+            {
+                btnAdd.Hide();
+                btnEdit.Show();
+                btnDelete.Show();
+
+                foreach (addRoleClass item in eventObjectList)
+                {
+                    if ($"{item.Name} - {item.Role}" == SelectedItem)
+                    {
+                        currentItem = item;
+                        name.Text = item.Name;
+                        selectRole.SelectedItem = item.Role;
+                    }
+                }
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            SetControlsToDefault();
+        }
+
+        private void AddEditData()
+        {
+            if (currentItem == null)
+            {
+                addRoleClass addRoleClass = new addRoleClass(name.Text, Convert.ToString(selectRole.SelectedItem));
+                eventObjectList.Add(addRoleClass);
+            }
+
+            setListValues();
+            SetControlsToDefault();
+        }
+
+        private void setListValues()
+        {
+            addList.Items.Clear();
+            foreach (addRoleClass item in eventObjectList)
+            {
+                addList.Items.Add($"{item.Name} - {item.Role}");
+            }
         }
     }
 }
