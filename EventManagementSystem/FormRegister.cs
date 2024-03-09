@@ -76,18 +76,21 @@ namespace EventManagementSystem
             }
             else
             {
-                MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                attendeeHome.addAttendee(FormAttendeeHome.eventName, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
-                attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
-                    if(FormAttendeeHome.eventName == val.EventName.ToString())
+                    if (FormAttendeeHome.eventName == val.EventName.ToString())
                     {
-                        val.EventCapacity -= 1;
+                       val.EventCapacity -= 1;
+                            MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            attendeeHome.addAttendee(FormAttendeeHome.eventName, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
+                            attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
+
+                            this.Close();
+                        }
+                        
                     }
+                
                 }
-                    this.Close();
-            }
         }
 
         private void FormRegister_Activated(object sender, EventArgs e)

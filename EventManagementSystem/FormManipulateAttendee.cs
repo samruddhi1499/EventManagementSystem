@@ -53,6 +53,21 @@ namespace EventManagementSystem
         {
             Attendees newAttendee = new Attendees(eventName.SelectedItem.ToString(), attendeeName.Text);
             attendeeList.Add(newAttendee);
+            foreach (EventsClass val in FormEventManipulation.eventObjectList)
+            {
+                if (eventName.SelectedItem.ToString() == val.EventName.ToString())
+                {
+                    if (val.EventCapacity == 0)
+                    {
+                        MessageBox.Show("Sorry, the event is fully booked.", "Capacity Full", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+                        val.EventCapacity -= 1;
+                    }
+
+                }
+            }
             MessageBox.Show("Attendee Added ", "Adding Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
             attendeeInfo.Items.Add(attendeeName.Text);
 
@@ -77,7 +92,14 @@ namespace EventManagementSystem
             }
             if (deleted)
             {
-                MessageBox.Show("Attendee Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                {
+                    if (eventName.SelectedItem.ToString() == val.EventName.ToString())
+                    {
+                        val.EventCapacity -= 1;
+                        MessageBox.Show("Attendee Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
             }
             else
             {

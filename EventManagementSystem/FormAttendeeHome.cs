@@ -130,8 +130,22 @@ namespace EventManagementSystem
             else
             {
                 eventName = listEvents.SelectedItem.ToString();
-                FormRegister register = new FormRegister();
-                register.ShowDialog();
+                foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                {
+                    if (eventName == val.EventName.ToString())
+                    {
+                        if (val.EventCapacity == 0)
+                        {
+                            MessageBox.Show("Sorry, the event is fully booked.", "Capacity Full", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            FormRegister register = new FormRegister();
+                            register.ShowDialog();
+                        }
+                    }
+                }
+                            
             }
         }
 
