@@ -113,9 +113,9 @@ namespace EventManagementSystem
             listEventDetails.Font = new Font("Segoe UI", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 0);
             listEventDetails.FormattingEnabled = true;
             listEventDetails.ItemHeight = 23;
-            listEventDetails.Location = new Point(515, 43);
+            listEventDetails.Location = new Point(462, 43);
             listEventDetails.Name = "listEventDetails";
-            listEventDetails.Size = new Size(242, 303);
+            listEventDetails.Size = new Size(326, 303);
             listEventDetails.TabIndex = 7;
             listEventDetails.SelectedIndexChanged += listEventDetails_SelectedIndexChanged;
             // 

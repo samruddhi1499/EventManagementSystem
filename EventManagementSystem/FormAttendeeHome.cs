@@ -91,6 +91,7 @@ namespace EventManagementSystem
                 MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
+            listEventDetails.Items.Clear();
             {
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
@@ -157,6 +158,7 @@ namespace EventManagementSystem
             }
             else
             {
+                listEventDetails.Items.Clear();
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
                     if (regiterEvents.SelectedItem.ToString() == val.EventName.ToString())
