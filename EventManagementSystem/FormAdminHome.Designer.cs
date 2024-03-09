@@ -44,6 +44,7 @@
             // btnUserMan
             // 
             btnUserMan.BackColor = SystemColors.ControlLight;
+            btnUserMan.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnUserMan.Location = new Point(289, 249);
             btnUserMan.Name = "btnUserMan";
             btnUserMan.Size = new Size(108, 36);
@@ -51,6 +52,8 @@
             btnUserMan.Text = "User";
             btnUserMan.UseVisualStyleBackColor = false;
             btnUserMan.Click += btnUserMan_Click;
+            btnUserMan.MouseLeave += btnUserMan_MouseLeave;
+            btnUserMan.MouseHover += btnUserMan_MouseHover;
             // 
             // btnEventMan
             // 
@@ -70,6 +73,7 @@
             // btnAttendeeMan
             // 
             btnAttendeeMan.BackColor = SystemColors.ControlLight;
+            btnAttendeeMan.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnAttendeeMan.Location = new Point(144, 249);
             btnAttendeeMan.Name = "btnAttendeeMan";
             btnAttendeeMan.Size = new Size(108, 36);
@@ -77,6 +81,8 @@
             btnAttendeeMan.Text = "Attendee";
             btnAttendeeMan.UseVisualStyleBackColor = false;
             btnAttendeeMan.Click += btnAttendeeMan_Click;
+            btnAttendeeMan.MouseLeave += btnAttendeeMan_MouseLeave;
+            btnAttendeeMan.MouseHover += btnAttendeeMan_MouseHover;
             // 
             // menuStrip1
             // 
@@ -95,6 +101,8 @@
             toolStripMenuItem1.Name = "toolStripMenuItem1";
             toolStripMenuItem1.Size = new Size(66, 24);
             toolStripMenuItem1.Text = "Profile";
+            toolStripMenuItem1.MouseLeave += toolStripMenuItem1_MouseLeave;
+            toolStripMenuItem1.MouseHover += toolStripMenuItem1_MouseHover;
             // 
             // editProfileToolStripMenuItem
             // 
@@ -133,6 +141,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "FormAdminHome";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Admin Home";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

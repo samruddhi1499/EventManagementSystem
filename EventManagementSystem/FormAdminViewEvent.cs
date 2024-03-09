@@ -58,5 +58,17 @@ namespace EventManagementSystem
         {
             this.Close();
         }
+
+        private void btnCloseView_MouseHover(object sender, EventArgs e)
+        {
+            btnCloseView.BackColor = Color.MediumPurple;
+            btnCloseView.ForeColor = Color.White;
+        }
+
+        private void btnCloseView_MouseLeave(object sender, EventArgs e)
+        {
+            btnCloseView.BackColor = Color.Gainsboro;
+            btnCloseView.ForeColor = Color.Black;
+        }
     }
 }

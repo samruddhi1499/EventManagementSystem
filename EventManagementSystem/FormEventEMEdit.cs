@@ -27,9 +27,9 @@ namespace EventManagementSystem
         private void FormEventEMEdit_Load(object sender, EventArgs e)
         {
             ArrayList arrayList = FormEventManipulation.eventObjectList;
-            
-            
-            
+
+
+
             foreach (EventsClass array in arrayList)
             {
                 EventsClass eventClass = (EventsClass)array;
@@ -45,11 +45,11 @@ namespace EventManagementSystem
 
 
         }
-      
-      
+
+
         private void btnOKEMEdit_Click(object sender, EventArgs e)
         {
-            
+
 
             try
             {
@@ -76,7 +76,7 @@ namespace EventManagementSystem
 
             ArrayList arrayList = FormEventManipulation.eventObjectList;
             EventsClass eventClass1 = (EventsClass)arrayList[0];
-           
+
             foreach (EventsClass array in arrayList)
             {
                 if (selectedValue == array.EventName.ToString())
@@ -94,6 +94,30 @@ namespace EventManagementSystem
         public void getUserName(string userName)
         {
             FormEventEMEdit.userName = userName;
+        }
+
+        private void btnCancelEMEdit_MouseHover(object sender, EventArgs e)
+        {
+            btnCancelEMEdit.BackColor = Color.MediumPurple;
+            btnCancelEMEdit.ForeColor = Color.White;
+        }
+
+        private void btnCancelEMEdit_MouseLeave(object sender, EventArgs e)
+        {
+            btnCancelEMEdit.BackColor = Color.Gainsboro;
+            btnCancelEMEdit.ForeColor = Color.Black;
+        }
+
+        private void btnOKEMEdit_MouseHover(object sender, EventArgs e)
+        {
+            btnOKEMEdit.BackColor = Color.MediumPurple;
+            btnOKEMEdit.ForeColor = Color.White;
+        }
+
+        private void btnOKEMEdit_MouseLeave(object sender, EventArgs e)
+        {
+            btnOKEMEdit.BackColor = Color.Gainsboro;
+            btnOKEMEdit.ForeColor = Color.Black;
         }
     }
 }

@@ -122,14 +122,14 @@ namespace EventManagementSystem
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(224, 26);
+            editProfileToolStripMenuItem.Size = new Size(171, 26);
             editProfileToolStripMenuItem.Text = "View Profile";
             editProfileToolStripMenuItem.Click += editProfileToolStripMenuItem_Click;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(165, 26);
+            logoutToolStripMenuItem.Size = new Size(171, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
@@ -177,6 +177,7 @@ namespace EventManagementSystem
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "FormAttendeeHome";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "FormAttendeeHome";
             Activated += FormAttendeeHome_Activated;
             menuStrip1.ResumeLayout(false);

@@ -55,11 +55,53 @@ namespace EventManagementSystem
         private void btnEventMan_MouseHover(object sender, EventArgs e)
         {
             btnEventMan.BackColor = Color.MediumPurple;
+            btnEventMan.ForeColor = Color.White;
         }
 
         private void btnEventMan_MouseLeave(object sender, EventArgs e)
         {
             btnEventMan.BackColor = Color.Gainsboro;
+            btnEventMan.ForeColor = Color.Black;
         }
+
+
+
+        private void btnAttendeeMan_MouseHover(object sender, EventArgs e)
+        {
+            btnAttendeeMan.BackColor = Color.MediumPurple; 
+            btnAttendeeMan.ForeColor = Color.White;
+        }
+
+        private void btnAttendeeMan_MouseLeave(object sender, EventArgs e)
+        {
+            btnAttendeeMan.BackColor = Color.Gainsboro;
+            btnAttendeeMan.ForeColor= Color.Black;
+        }
+
+        private void btnUserMan_MouseHover(object sender, EventArgs e)
+        {
+            btnUserMan.BackColor = Color.MediumPurple;
+            btnUserMan.ForeColor = Color.White;
+        }
+
+        private void btnUserMan_MouseLeave(object sender, EventArgs e)
+        {
+            btnUserMan.BackColor = Color.Gainsboro;
+            btnUserMan.ForeColor = Color.Black;
+        }
+
+        private void toolStripMenuItem1_MouseHover(object sender, EventArgs e)
+        {
+            toolStripMenuItem1.BackColor = Color.MediumPurple;
+            toolStripMenuItem1.ForeColor = Color.White;
+        }
+
+        private void toolStripMenuItem1_MouseLeave(object sender, EventArgs e)
+        {
+            toolStripMenuItem1.BackColor = Color.Gainsboro;
+            toolStripMenuItem1.ForeColor = Color.Black;
+        }
+
+        
     }
 }

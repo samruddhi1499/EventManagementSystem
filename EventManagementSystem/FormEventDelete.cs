@@ -45,7 +45,7 @@ namespace EventManagementSystem
         {
             ArrayList arrayList = FormEventManipulation.eventObjectList;
 
-           
+
 
             foreach (EventsClass array in arrayList)
             {
@@ -55,6 +55,30 @@ namespace EventManagementSystem
             EventsClass eventClass1 = (EventsClass)arrayList[0];
 
             eventListDelete.Text = eventClass1.EventName.ToString();
+        }
+
+        private void btnDeleteCancel_MouseHover(object sender, EventArgs e)
+        {
+            btnDeleteCancel.BackColor = Color.MediumPurple;
+            btnDeleteCancel.ForeColor = Color.White;
+        }
+
+        private void btnDeleteCancel_MouseLeave(object sender, EventArgs e)
+        {
+            btnDeleteCancel.BackColor = Color.Gainsboro;
+            btnDeleteCancel.ForeColor = Color.Black;
+        }
+
+        private void btnDeleteOK_MouseHover(object sender, EventArgs e)
+        {
+            btnDeleteOK.BackColor = Color.MediumPurple;
+            btnDeleteOK.ForeColor = Color.White;
+        }
+
+        private void btnDeleteOK_MouseLeave(object sender, EventArgs e)
+        {
+            btnDeleteOK.BackColor = Color.Gainsboro;
+            btnDeleteOK.ForeColor = Color.Black;
         }
     }
 }

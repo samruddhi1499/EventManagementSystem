@@ -28,7 +28,6 @@ namespace EventManagementSystem
         {
             btnAdd.Show();
             btnEdit.Hide();
-            btnDelete.Hide();
             name.ResetText();
             selectRole.SelectedItem = null;
             currentItem = null;
@@ -115,7 +114,8 @@ namespace EventManagementSystem
             {
                 btnAdd.Hide();
                 btnEdit.Show();
-                btnDelete.Show();
+                
+                
 
                 foreach (addRoleClass item in eventObjectList)
                 {

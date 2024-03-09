@@ -45,6 +45,7 @@
             // btnEventAdd
             // 
             btnEventAdd.BackColor = SystemColors.ControlLight;
+            btnEventAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnEventAdd.Location = new Point(12, 397);
             btnEventAdd.Name = "btnEventAdd";
             btnEventAdd.Size = new Size(108, 36);
@@ -52,10 +53,13 @@
             btnEventAdd.Text = "Add";
             btnEventAdd.UseVisualStyleBackColor = false;
             btnEventAdd.Click += btnEventAdd_Click;
+            btnEventAdd.MouseLeave += btnEventAdd_MouseLeave;
+            btnEventAdd.MouseHover += btnEventAdd_MouseHover;
             // 
             // btnEventEdit
             // 
             btnEventEdit.BackColor = SystemColors.ControlLight;
+            btnEventEdit.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnEventEdit.Location = new Point(142, 397);
             btnEventEdit.Name = "btnEventEdit";
             btnEventEdit.Size = new Size(108, 36);
@@ -63,10 +67,13 @@
             btnEventEdit.Text = "Edit";
             btnEventEdit.UseVisualStyleBackColor = false;
             btnEventEdit.Click += btnEventEdit_Click;
+            btnEventEdit.MouseLeave += btnEventEdit_MouseLeave;
+            btnEventEdit.MouseHover += btnEventEdit_MouseHover;
             // 
             // btnEventDelete
             // 
             btnEventDelete.BackColor = SystemColors.ControlLight;
+            btnEventDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnEventDelete.Location = new Point(271, 397);
             btnEventDelete.Name = "btnEventDelete";
             btnEventDelete.Size = new Size(108, 36);
@@ -74,14 +81,18 @@
             btnEventDelete.Text = "Delete";
             btnEventDelete.UseVisualStyleBackColor = false;
             btnEventDelete.Click += btnEventDelete_Click;
+            btnEventDelete.MouseLeave += btnEventDelete_MouseLeave;
+            btnEventDelete.MouseHover += btnEventDelete_MouseHover;
             // 
             // eventList
             // 
-            eventList.BackColor = SystemColors.Control;
+            eventList.BackColor = Color.Lavender;
+            eventList.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             eventList.FormattingEnabled = true;
+            eventList.ItemHeight = 23;
             eventList.Location = new Point(60, 47);
             eventList.Name = "eventList";
-            eventList.Size = new Size(401, 304);
+            eventList.Size = new Size(401, 303);
             eventList.TabIndex = 3;
             // 
             // menuStrip1
@@ -105,14 +116,14 @@
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(224, 26);
+            editProfileToolStripMenuItem.Size = new Size(171, 26);
             editProfileToolStripMenuItem.Text = "View Profile";
             editProfileToolStripMenuItem.Click += editProfileToolStripMenuItem_Click;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(224, 26);
+            logoutToolStripMenuItem.Size = new Size(171, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
@@ -126,6 +137,7 @@
             // btnEventView
             // 
             btnEventView.BackColor = SystemColors.ControlLight;
+            btnEventView.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnEventView.Location = new Point(402, 397);
             btnEventView.Name = "btnEventView";
             btnEventView.Size = new Size(108, 36);
@@ -133,6 +145,8 @@
             btnEventView.Text = "View";
             btnEventView.UseVisualStyleBackColor = false;
             btnEventView.Click += btnEventView_Click;
+            btnEventView.MouseLeave += btnEventView_MouseLeave;
+            btnEventView.MouseHover += btnEventView_MouseHover;
             // 
             // FormEventManipulation
             // 
@@ -151,6 +165,7 @@
             MainMenuStrip = menuStrip1;
             MaximizeBox = false;
             Name = "FormEventManipulation";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Event Manipulation";
             Activated += FormEventManipulation_Activated;
             Load += FormEventManipulation_Load;

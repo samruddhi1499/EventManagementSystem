@@ -43,6 +43,7 @@
             // btnEMEditEvent
             // 
             btnEMEditEvent.BackColor = SystemColors.ControlLight;
+            btnEMEditEvent.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnEMEditEvent.Location = new Point(387, 72);
             btnEMEditEvent.Name = "btnEMEditEvent";
             btnEMEditEvent.Size = new Size(157, 36);
@@ -50,10 +51,13 @@
             btnEMEditEvent.Text = "Edit Event";
             btnEMEditEvent.UseVisualStyleBackColor = false;
             btnEMEditEvent.Click += btnEMEditEvent_Click;
+            btnEMEditEvent.MouseLeave += btnEMEditEvent_MouseLeave;
+            btnEMEditEvent.MouseHover += btnEMEditEvent_MouseHover;
             // 
             // btnAttendee
             // 
             btnAttendee.BackColor = SystemColors.ControlLight;
+            btnAttendee.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnAttendee.Location = new Point(387, 156);
             btnAttendee.Name = "btnAttendee";
             btnAttendee.Size = new Size(157, 36);
@@ -61,6 +65,8 @@
             btnAttendee.Text = "Edit Attendee";
             btnAttendee.UseVisualStyleBackColor = false;
             btnAttendee.Click += btnAttendee_Click;
+            btnAttendee.MouseLeave += btnAttendee_MouseLeave;
+            btnAttendee.MouseHover += btnAttendee_MouseHover;
             // 
             // menuStrip1
             // 
@@ -83,14 +89,14 @@
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(224, 26);
+            editProfileToolStripMenuItem.Size = new Size(171, 26);
             editProfileToolStripMenuItem.Text = "View Profile";
             editProfileToolStripMenuItem.Click += editProfileToolStripMenuItem_Click;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(224, 26);
+            logoutToolStripMenuItem.Size = new Size(171, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
@@ -115,6 +121,7 @@
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
             Name = "EMAfterLogin";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "EM Home";
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

@@ -38,31 +38,41 @@
             // btnDeleteCancel
             // 
             btnDeleteCancel.BackColor = SystemColors.ControlLight;
-            btnDeleteCancel.Location = new Point(29, 128);
+            btnDeleteCancel.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            btnDeleteCancel.Location = new Point(36, 147);
+            btnDeleteCancel.Margin = new Padding(4, 3, 4, 3);
             btnDeleteCancel.Name = "btnDeleteCancel";
-            btnDeleteCancel.Size = new Size(108, 36);
+            btnDeleteCancel.Size = new Size(135, 41);
             btnDeleteCancel.TabIndex = 0;
             btnDeleteCancel.Text = "Cancel";
             btnDeleteCancel.UseVisualStyleBackColor = false;
             btnDeleteCancel.Click += btnDeleteCancel_Click;
+            btnDeleteCancel.MouseLeave += btnDeleteCancel_MouseLeave;
+            btnDeleteCancel.MouseHover += btnDeleteCancel_MouseHover;
             // 
             // btnDeleteOK
             // 
             btnDeleteOK.BackColor = SystemColors.ControlLight;
-            btnDeleteOK.Location = new Point(236, 128);
+            btnDeleteOK.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            btnDeleteOK.Location = new Point(295, 147);
+            btnDeleteOK.Margin = new Padding(4, 3, 4, 3);
             btnDeleteOK.Name = "btnDeleteOK";
-            btnDeleteOK.Size = new Size(108, 36);
+            btnDeleteOK.Size = new Size(135, 41);
             btnDeleteOK.TabIndex = 1;
             btnDeleteOK.Text = "OK";
             btnDeleteOK.UseVisualStyleBackColor = false;
             btnDeleteOK.Click += btnDeleteOK_Click;
+            btnDeleteOK.MouseLeave += btnDeleteOK_MouseLeave;
+            btnDeleteOK.MouseHover += btnDeleteOK_MouseHover;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(47, 56);
+            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(59, 64);
+            label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
-            label1.Size = new Size(89, 20);
+            label1.Size = new Size(104, 23);
             label1.TabIndex = 2;
             label1.Text = "Event Name";
             // 
@@ -70,23 +80,27 @@
             // 
             eventListDelete.BackColor = SystemColors.ControlLight;
             eventListDelete.FormattingEnabled = true;
-            eventListDelete.Location = new Point(168, 53);
+            eventListDelete.Location = new Point(210, 61);
+            eventListDelete.Margin = new Padding(4, 3, 4, 3);
             eventListDelete.Name = "eventListDelete";
-            eventListDelete.Size = new Size(151, 28);
+            eventListDelete.Size = new Size(188, 31);
             eventListDelete.TabIndex = 3;
             // 
             // FormEventDelete
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 23F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(375, 176);
+            ClientSize = new Size(469, 202);
             Controls.Add(eventListDelete);
             Controls.Add(label1);
             Controls.Add(btnDeleteOK);
             Controls.Add(btnDeleteCancel);
+            Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            Margin = new Padding(4, 3, 4, 3);
             Name = "FormEventDelete";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Delete Event";
             Load += FormEventDelete_Load;
             ResumeLayout(false);

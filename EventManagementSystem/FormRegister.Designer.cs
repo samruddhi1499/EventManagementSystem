@@ -131,6 +131,7 @@
             // 
             eventName.Location = new Point(312, 40);
             eventName.Name = "eventName";
+            eventName.ReadOnly = true;
             eventName.Size = new Size(125, 27);
             eventName.TabIndex = 12;
             // 

@@ -50,18 +50,20 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(46, 352);
             label1.Name = "label1";
-            label1.Size = new Size(75, 20);
+            label1.Size = new Size(87, 23);
             label1.TabIndex = 1;
             label1.Text = "Username";
             // 
             // label2
             // 
             label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label2.Location = new Point(46, 406);
             label2.Name = "label2";
-            label2.Size = new Size(70, 20);
+            label2.Size = new Size(82, 23);
             label2.TabIndex = 2;
             label2.Text = "Password";
             // 
@@ -86,6 +88,7 @@
             // button1
             // 
             button1.BackColor = SystemColors.ControlLight;
+            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(82, 468);
             button1.Name = "button1";
             button1.Size = new Size(190, 36);
@@ -93,6 +96,8 @@
             button1.Text = "Close";
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
+            button1.MouseLeave += button1_MouseLeave;
+            button1.MouseHover += button1_MouseHover;
             // 
             // FormEditProfile
             // 
@@ -108,6 +113,7 @@
             Controls.Add(pictureBox1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormEditProfile";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "View Profile";
             Load += FormEditProfile_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

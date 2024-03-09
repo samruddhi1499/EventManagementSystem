@@ -171,5 +171,53 @@ namespace EventManagementSystem
             FormEditProfile formEditProfile = new FormEditProfile();
             formEditProfile.ShowDialog();
         }
+
+        private void btnEventAdd_MouseHover(object sender, EventArgs e)
+        {
+            btnEventAdd.BackColor = Color.MediumPurple;
+            btnEventAdd.ForeColor = Color.White;
+        }
+
+        private void btnEventAdd_MouseLeave(object sender, EventArgs e)
+        {
+            btnEventAdd.BackColor = Color.Gainsboro;
+            btnEventAdd.ForeColor = Color.Black;
+        }
+
+        private void btnEventEdit_MouseHover(object sender, EventArgs e)
+        {
+            btnEventEdit.BackColor = Color.MediumPurple;
+            btnEventEdit.ForeColor = Color.White;
+        }
+
+        private void btnEventEdit_MouseLeave(object sender, EventArgs e)
+        {
+            btnEventEdit.BackColor = Color.Gainsboro;
+            btnEventEdit.ForeColor = Color.Black;
+        }
+
+        private void btnEventDelete_MouseHover(object sender, EventArgs e)
+        {
+            btnEventEdit.BackColor = Color.MediumPurple;
+            btnEventEdit.ForeColor = Color.White;
+        }
+
+        private void btnEventDelete_MouseLeave(object sender, EventArgs e)
+        {
+            btnEventEdit.BackColor = Color.Gainsboro;
+            btnEventEdit.ForeColor = Color.Black;
+        }
+
+        private void btnEventView_MouseHover(object sender, EventArgs e)
+        {
+            btnEventEdit.BackColor = Color.MediumPurple;
+            btnEventEdit.ForeColor = Color.White;
+        }
+
+        private void btnEventView_MouseLeave(object sender, EventArgs e)
+        {
+            btnEventEdit.BackColor = Color.Gainsboro;
+            btnEventEdit.ForeColor = Color.Black;
+        }
     }
 }

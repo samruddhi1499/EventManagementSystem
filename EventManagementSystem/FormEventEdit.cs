@@ -16,7 +16,7 @@ namespace EventManagementSystem
     public partial class FormEventEdit : Form
     {
 
-        
+
         public FormEventEdit()
         {
             InitializeComponent();
@@ -31,7 +31,7 @@ namespace EventManagementSystem
         private void FormEventEdit_Load(object sender, EventArgs e)
         {
 
-            
+
             ArrayList arrayList = FormEventManipulation.eventObjectList;
 
 
@@ -56,7 +56,7 @@ namespace EventManagementSystem
         private void eventListEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
             string selectedValue = eventListEdit.SelectedItem.ToString();
-            
+
             ArrayList arrayList = FormEventManipulation.eventObjectList;
             foreach (EventsClass array in arrayList)
             {
@@ -92,7 +92,32 @@ namespace EventManagementSystem
             {
                 MessageBox.Show("Check Capacity", "Invalid Type ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
+
+        }
+
+        private void btnEditCancel_MouseHover(object sender, EventArgs e)
+        {
+            btnEditCancel.BackColor = Color.MediumPurple;
+            btnEditCancel.ForeColor = Color.White;
+        }
+
+        private void btnEditCancel_MouseLeave(object sender, EventArgs e)
+        {
+            btnEditCancel.BackColor = Color.Gainsboro;
+            btnEditCancel.ForeColor = Color.Black;
+
+        }
+
+        private void btnEditOK_MouseHover(object sender, EventArgs e)
+        {
+            btnEditOK.BackColor = Color.MediumPurple;
+            btnEditOK.ForeColor = Color.White;
+        }
+
+        private void btnEditOK_MouseLeave(object sender, EventArgs e)
+        {
+            btnEditOK.BackColor = Color.Gainsboro;
+            btnEditOK.ForeColor = Color.Black;
         }
     }
 }

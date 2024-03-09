@@ -40,8 +40,32 @@ namespace EventManagementSystem
 
         private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            FormEditProfile formEditProfile = new FormEditProfile();    
+            FormEditProfile formEditProfile = new FormEditProfile();
             formEditProfile.ShowDialog();
+        }
+
+        private void btnEMEditEvent_MouseHover(object sender, EventArgs e)
+        {
+            btnEMEditEvent.BackColor = Color.MediumPurple;
+            btnEMEditEvent.ForeColor = Color.White;
+        }
+
+        private void btnEMEditEvent_MouseLeave(object sender, EventArgs e)
+        {
+            btnEMEditEvent.BackColor = Color.Gainsboro;
+            btnEMEditEvent.ForeColor = Color.Black;
+        }
+
+        private void btnAttendee_MouseHover(object sender, EventArgs e)
+        {
+            btnAttendee.BackColor = Color.MediumPurple;
+            btnAttendee.ForeColor = Color.White;
+        }
+
+        private void btnAttendee_MouseLeave(object sender, EventArgs e)
+        {
+            btnAttendee.BackColor = Color.Gainsboro;
+            btnAttendee.ForeColor = Color.Black;
         }
     }
 }

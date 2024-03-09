@@ -35,16 +35,19 @@
             // 
             // eventViewList
             // 
-            eventViewList.BackColor = SystemColors.Control;
+            eventViewList.BackColor = Color.Lavender;
+            eventViewList.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             eventViewList.FormattingEnabled = true;
+            eventViewList.ItemHeight = 23;
             eventViewList.Location = new Point(12, 18);
             eventViewList.Name = "eventViewList";
-            eventViewList.Size = new Size(340, 324);
+            eventViewList.Size = new Size(340, 303);
             eventViewList.TabIndex = 0;
             // 
             // btnCloseView
             // 
             btnCloseView.BackColor = SystemColors.ControlLight;
+            btnCloseView.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCloseView.Location = new Point(94, 360);
             btnCloseView.Name = "btnCloseView";
             btnCloseView.Size = new Size(161, 36);
@@ -52,6 +55,8 @@
             btnCloseView.Text = "Close";
             btnCloseView.UseVisualStyleBackColor = false;
             btnCloseView.Click += btnCloseView_Click;
+            btnCloseView.MouseLeave += btnCloseView_MouseLeave;
+            btnCloseView.MouseHover += btnCloseView_MouseHover;
             // 
             // FormAdminViewEvent
             // 
@@ -63,6 +68,7 @@
             Controls.Add(eventViewList);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormAdminViewEvent";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "View Event";
             Load += FormAdminViewEvent_Load;
             ResumeLayout(false);
