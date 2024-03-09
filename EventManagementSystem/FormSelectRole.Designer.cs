@@ -139,7 +139,7 @@
             // 
             selectRole.BackColor = SystemColors.ControlLight;
             selectRole.DropDownStyle = ComboBoxStyle.DropDownList;
-            selectRole.ForeColor = SystemColors.ControlLight;
+            selectRole.ForeColor = SystemColors.WindowText;
             selectRole.FormattingEnabled = true;
             selectRole.Items.AddRange(new object[] { "Admin", "Event Manager", "Attendee" });
             selectRole.Location = new Point(177, 165);
