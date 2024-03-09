@@ -150,10 +150,10 @@
             // 
             eventName.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             eventName.ForeColor = Color.MediumSlateBlue;
-            eventName.Location = new Point(543, 45);
+            eventName.Location = new Point(437, 43);
             eventName.Name = "eventName";
             eventName.ReadOnly = true;
-            eventName.Size = new Size(191, 31);
+            eventName.Size = new Size(354, 31);
             eventName.TabIndex = 12;
             // 
             // pictureBox1
