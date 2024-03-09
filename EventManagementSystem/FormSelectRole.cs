@@ -154,5 +154,11 @@ namespace EventManagementSystem
                 addList.Items.Add($"{item.Name} - {item.Role}");
             }
         }
+
+        private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEditProfile formEditProfile = new FormEditProfile();
+            formEditProfile.ShowDialog();
+        }
     }
 }

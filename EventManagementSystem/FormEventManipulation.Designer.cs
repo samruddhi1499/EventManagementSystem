@@ -105,13 +105,14 @@
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(165, 26);
-            editProfileToolStripMenuItem.Text = "Edit Profile";
+            editProfileToolStripMenuItem.Size = new Size(224, 26);
+            editProfileToolStripMenuItem.Text = "View Profile";
+            editProfileToolStripMenuItem.Click += editProfileToolStripMenuItem_Click;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(165, 26);
+            logoutToolStripMenuItem.Size = new Size(224, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 

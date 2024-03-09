@@ -40,9 +40,10 @@
             // 
             // Login
             // 
-            Login.Location = new Point(83, 331);
+            Login.Location = new Point(66, 265);
+            Login.Margin = new Padding(2, 2, 2, 2);
             Login.Name = "Login";
-            Login.Size = new Size(112, 34);
+            Login.Size = new Size(90, 27);
             Login.TabIndex = 0;
             Login.Text = "LogIn";
             Login.UseVisualStyleBackColor = true;
@@ -50,9 +51,10 @@
             // 
             // Signup
             // 
-            Signup.Location = new Point(410, 331);
+            Signup.Location = new Point(328, 265);
+            Signup.Margin = new Padding(2, 2, 2, 2);
             Signup.Name = "Signup";
-            Signup.Size = new Size(112, 34);
+            Signup.Size = new Size(90, 27);
             Signup.TabIndex = 1;
             Signup.Text = "Submit";
             Signup.UseVisualStyleBackColor = true;
@@ -61,56 +63,62 @@
             // txtusername
             // 
             txtusername.AutoSize = true;
-            txtusername.Location = new Point(83, 68);
+            txtusername.Location = new Point(66, 54);
+            txtusername.Margin = new Padding(2, 0, 2, 0);
             txtusername.Name = "txtusername";
-            txtusername.Size = new Size(91, 25);
+            txtusername.Size = new Size(75, 20);
             txtusername.TabIndex = 2;
             txtusername.Text = "Username";
             // 
             // txtPass
             // 
             txtPass.AutoSize = true;
-            txtPass.Location = new Point(83, 151);
+            txtPass.Location = new Point(66, 121);
+            txtPass.Margin = new Padding(2, 0, 2, 0);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(87, 25);
+            txtPass.Size = new Size(70, 20);
             txtPass.TabIndex = 3;
             txtPass.Text = "Password";
             // 
             // txtCnfPass
             // 
             txtCnfPass.AutoSize = true;
-            txtCnfPass.Location = new Point(83, 228);
+            txtCnfPass.Location = new Point(66, 182);
+            txtCnfPass.Margin = new Padding(2, 0, 2, 0);
             txtCnfPass.Name = "txtCnfPass";
-            txtCnfPass.Size = new Size(156, 25);
+            txtCnfPass.Size = new Size(127, 20);
             txtCnfPass.TabIndex = 4;
             txtCnfPass.Text = "Confirm Password";
             // 
             // txtuser
             // 
-            txtuser.Location = new Point(309, 68);
+            txtuser.Location = new Point(247, 54);
+            txtuser.Margin = new Padding(2, 2, 2, 2);
             txtuser.Name = "txtuser";
-            txtuser.Size = new Size(213, 31);
+            txtuser.Size = new Size(171, 27);
             txtuser.TabIndex = 5;
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(309, 148);
+            txtPassword.Location = new Point(247, 118);
+            txtPassword.Margin = new Padding(2, 2, 2, 2);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(213, 31);
+            txtPassword.Size = new Size(171, 27);
             txtPassword.TabIndex = 6;
             // 
             // txtConfrmPass
             // 
-            txtConfrmPass.Location = new Point(309, 228);
+            txtConfrmPass.Location = new Point(247, 182);
+            txtConfrmPass.Margin = new Padding(2, 2, 2, 2);
             txtConfrmPass.Name = "txtConfrmPass";
-            txtConfrmPass.Size = new Size(213, 31);
+            txtConfrmPass.Size = new Size(171, 27);
             txtConfrmPass.TabIndex = 7;
             // 
             // FormSignUp
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(779, 349);
             Controls.Add(txtConfrmPass);
             Controls.Add(txtPassword);
             Controls.Add(txtuser);
@@ -119,6 +127,7 @@
             Controls.Add(txtusername);
             Controls.Add(Signup);
             Controls.Add(Login);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "FormSignUp";
             Text = "FormSignUp";
             ResumeLayout(false);

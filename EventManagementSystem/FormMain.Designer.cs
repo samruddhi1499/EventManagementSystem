@@ -79,9 +79,10 @@
             Controls.Add(signup);
             Controls.Add(login);
             Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FormMain";
-            Text = "FormMain";
+            Text = "Event Management";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }

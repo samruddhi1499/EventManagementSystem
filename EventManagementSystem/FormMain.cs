@@ -24,15 +24,17 @@ namespace EventManagementSystem
             //formMain.ShowDialog();
 
             FormLogIn formLogin = new FormLogIn();
-            this.Hide();
+            
             formLogin.Show();
+            this.Hide();
         }
 
         private void signup_Click(object sender, EventArgs e)
         {
             FormSignUp formSignUp = new FormSignUp();
-            this.Hide();
+            
             formSignUp.Show();
+            this.Hide();
         }
 
         private void label1_Click(object sender, EventArgs e)

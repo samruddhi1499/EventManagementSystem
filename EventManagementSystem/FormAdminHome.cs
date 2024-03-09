@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -41,8 +42,24 @@ namespace EventManagementSystem
         private void btnAttendeeMan_Click(object sender, EventArgs e)
         {
             FormManipulateAttendee formManipulateAttendee = new FormManipulateAttendee();
-            
+
             formManipulateAttendee.ShowDialog();
+        }
+
+        private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEditProfile formEditProfile = new FormEditProfile();
+            formEditProfile.ShowDialog();
+        }
+
+        private void btnEventMan_MouseHover(object sender, EventArgs e)
+        {
+            btnEventMan.BackColor = Color.MediumPurple;
+        }
+
+        private void btnEventMan_MouseLeave(object sender, EventArgs e)
+        {
+            btnEventMan.BackColor = Color.Gainsboro;
         }
     }
 }

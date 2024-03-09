@@ -141,7 +141,8 @@ namespace EventManagementSystem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
             editProfileToolStripMenuItem.Size = new Size(224, 26);
-            editProfileToolStripMenuItem.Text = "Edit Profile";
+            editProfileToolStripMenuItem.Text = "View Profile";
+            editProfileToolStripMenuItem.Click += editProfileToolStripMenuItem_Click;
             // 
             // logoutToolStripMenuItem
             // 

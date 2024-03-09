@@ -44,7 +44,7 @@ namespace EventManagementSystem
                 EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
                 listEvents.Text = eventClass1.EventName.ToString();
             }
-            
+
 
 
         }
@@ -189,6 +189,12 @@ namespace EventManagementSystem
             FormLogIn formLogIn = new FormLogIn();
             this.Close();
             formLogIn.Show();
+        }
+
+        private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEditProfile formEditProfile = new FormEditProfile();
+            formEditProfile.ShowDialog();
         }
     }
 }

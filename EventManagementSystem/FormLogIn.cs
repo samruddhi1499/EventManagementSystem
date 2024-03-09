@@ -32,6 +32,8 @@ namespace EventManagementSystem
             {
                 MessageBox.Show("LogIn Successful", "LogIn", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormAdminHome formAdminHome = new FormAdminHome();
+                FormEditProfile formEditProfile = new FormEditProfile();
+                formEditProfile.getCredsForView(UserName, PasswordLogin);
                 this.Hide();
                 formAdminHome.Show();
                 
@@ -42,6 +44,8 @@ namespace EventManagementSystem
                 EMAfterLogin eMAfterLogin = new EMAfterLogin();
                 FormEventEMEdit formEventEMEdit = new FormEventEMEdit();
                 formEventEMEdit.getUserName(UserName);
+                FormEditProfile formEditProfile = new FormEditProfile();
+                formEditProfile.getCredsForView(UserName, PasswordLogin);
                 this.Hide();
                 eMAfterLogin.Show();
                 
@@ -50,6 +54,8 @@ namespace EventManagementSystem
             {
                 MessageBox.Show("Login Successful", "LogIn", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+                FormEditProfile formEditProfile = new FormEditProfile();
+                formEditProfile.getCredsForView(UserName, PasswordLogin);
                 this.Hide();
                 formAttendeeHome.Show();
             }

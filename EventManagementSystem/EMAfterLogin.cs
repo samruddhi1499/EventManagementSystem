@@ -21,7 +21,7 @@ namespace EventManagementSystem
         {
             FormEventEMEdit formEMEventEdit = new FormEventEMEdit();
             formEMEventEdit.ShowDialog();
-            
+
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -33,9 +33,15 @@ namespace EventManagementSystem
 
         private void btnAttendee_Click(object sender, EventArgs e)
         {
-            FormManipulateAttendee formManipulateAttendee = new FormManipulateAttendee();   
+            FormManipulateAttendee formManipulateAttendee = new FormManipulateAttendee();
             formManipulateAttendee.ShowDialog();
-            
+
+        }
+
+        private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEditProfile formEditProfile = new FormEditProfile();    
+            formEditProfile.ShowDialog();
         }
     }
 }

@@ -163,7 +163,13 @@ namespace EventManagementSystem
                 formAdminViewEvent.getVal(eventList.SelectedItem.ToString());
                 formAdminViewEvent.ShowDialog();
             }
-            
+
+        }
+
+        private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEditProfile formEditProfile = new FormEditProfile();
+            formEditProfile.ShowDialog();
         }
     }
 }

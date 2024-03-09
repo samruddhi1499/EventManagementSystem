@@ -54,7 +54,8 @@
             // 
             // btnEventMan
             // 
-            btnEventMan.BackColor = SystemColors.ControlLight;
+            btnEventMan.BackColor = Color.Gainsboro;
+            btnEventMan.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnEventMan.ForeColor = Color.Black;
             btnEventMan.Location = new Point(12, 249);
             btnEventMan.Name = "btnEventMan";
@@ -63,6 +64,8 @@
             btnEventMan.Text = "Event";
             btnEventMan.UseVisualStyleBackColor = false;
             btnEventMan.Click += btnEventMan_Click;
+            btnEventMan.MouseLeave += btnEventMan_MouseLeave;
+            btnEventMan.MouseHover += btnEventMan_MouseHover;
             // 
             // btnAttendeeMan
             // 
@@ -96,13 +99,14 @@
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(165, 26);
-            editProfileToolStripMenuItem.Text = "Edit Profile";
+            editProfileToolStripMenuItem.Size = new Size(171, 26);
+            editProfileToolStripMenuItem.Text = "View Profile";
+            editProfileToolStripMenuItem.Click += editProfileToolStripMenuItem_Click;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(165, 26);
+            logoutToolStripMenuItem.Size = new Size(171, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
