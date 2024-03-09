@@ -42,6 +42,13 @@ namespace EventManagementSystem
 
 
             }
+            if(eventListEMEdit.Items.Count == 0)
+            {
+                MessageBox.Show("No Event Assigned", "No Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.Close();
+            }
+            
+
 
 
         }

@@ -19,6 +19,7 @@ namespace EventManagementSystem
 
         private void btnEMEditEvent_Click(object sender, EventArgs e)
         {
+            
             FormEventEMEdit formEMEventEdit = new FormEventEMEdit();
             formEMEventEdit.ShowDialog();
 
