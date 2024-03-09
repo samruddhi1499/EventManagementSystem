@@ -60,12 +60,13 @@ namespace EventManagementSystem
                     else
                     {
                         val.EventCapacity -= 1;
+                        MessageBox.Show("Attendee Added ", "Adding Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        attendeeInfo.Items.Add(attendeeName.Text);
                     }
 
                 }
             }
-            MessageBox.Show("Attendee Added ", "Adding Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            attendeeInfo.Items.Add(attendeeName.Text);
+            
 
         }
 
@@ -92,7 +93,7 @@ namespace EventManagementSystem
                 {
                     if (eventName.SelectedItem.ToString() == val.EventName.ToString())
                     {
-                        val.EventCapacity -= 1;
+                        val.EventCapacity += 1;
                         MessageBox.Show("Attendee Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }

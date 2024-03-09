@@ -24,7 +24,7 @@ namespace EventManagementSystem
             //formMain.ShowDialog();
 
             FormLogIn formLogin = new FormLogIn();
-            
+
             formLogin.Show();
             this.Hide();
         }
@@ -32,7 +32,7 @@ namespace EventManagementSystem
         private void signup_Click(object sender, EventArgs e)
         {
             FormSignUp formSignUp = new FormSignUp();
-            
+
             formSignUp.Show();
             this.Hide();
         }
@@ -40,6 +40,30 @@ namespace EventManagementSystem
         private void label1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void login_MouseHover(object sender, EventArgs e)
+        {
+            login.BackColor = Color.MediumPurple;
+            login.ForeColor = Color.White;
+        }
+
+        private void login_MouseLeave(object sender, EventArgs e)
+        {
+            login.BackColor = Color.Gainsboro;
+            login.ForeColor = Color.Black;
+        }
+
+        private void signup_MouseHover(object sender, EventArgs e)
+        {
+            signup.BackColor = Color.MediumPurple;
+            signup.ForeColor = Color.White;
+        }
+
+        private void signup_MouseLeave(object sender, EventArgs e)
+        {
+            signup.BackColor = Color.Gainsboro;
+            signup.ForeColor = Color.Black;
         }
     }
 }

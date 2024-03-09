@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogIn));
             LogIn = new Button();
             SignUp = new Button();
             Username = new Label();
@@ -41,11 +42,11 @@
             // LogIn
             // 
             LogIn.BackColor = SystemColors.ControlLight;
-            LogIn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            LogIn.Location = new Point(311, 226);
+            LogIn.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            LogIn.Location = new Point(295, 226);
             LogIn.Margin = new Padding(2);
             LogIn.Name = "LogIn";
-            LogIn.Size = new Size(90, 27);
+            LogIn.Size = new Size(108, 36);
             LogIn.TabIndex = 0;
             LogIn.Text = "LogIn";
             LogIn.UseVisualStyleBackColor = false;
@@ -56,11 +57,11 @@
             // SignUp
             // 
             SignUp.BackColor = SystemColors.ControlLight;
-            SignUp.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SignUp.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             SignUp.Location = new Point(445, 226);
             SignUp.Margin = new Padding(2);
             SignUp.Name = "SignUp";
-            SignUp.Size = new Size(90, 27);
+            SignUp.Size = new Size(108, 36);
             SignUp.TabIndex = 1;
             SignUp.Text = "SignUp";
             SignUp.UseVisualStyleBackColor = false;
@@ -71,7 +72,7 @@
             // Username
             // 
             Username.AutoSize = true;
-            Username.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Username.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             Username.Location = new Point(288, 62);
             Username.Margin = new Padding(2, 0, 2, 0);
             Username.Name = "Username";
@@ -82,11 +83,11 @@
             // Password
             // 
             Password.AutoSize = true;
-            Password.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            Password.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             Password.Location = new Point(295, 133);
             Password.Margin = new Padding(2, 0, 2, 0);
             Password.Name = "Password";
-            Password.Size = new Size(80, 23);
+            Password.Size = new Size(82, 23);
             Password.TabIndex = 3;
             Password.Text = "Password";
             // 
@@ -110,7 +111,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Tablet_login_amico__1_;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(26, 43);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(217, 210);
@@ -130,9 +131,11 @@
             Controls.Add(Username);
             Controls.Add(SignUp);
             Controls.Add(LogIn);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
             Name = "FormLogIn";
-            Text = "FormLogIn";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Login Page";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

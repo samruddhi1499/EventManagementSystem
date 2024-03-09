@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormSignUp));
             Login = new Button();
             Signup = new Button();
             txtusername = new Label();
@@ -43,11 +44,11 @@
             // Login
             // 
             Login.BackColor = SystemColors.ControlLight;
-            Login.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Login.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             Login.Location = new Point(401, 265);
             Login.Margin = new Padding(2);
             Login.Name = "Login";
-            Login.Size = new Size(90, 27);
+            Login.Size = new Size(108, 36);
             Login.TabIndex = 0;
             Login.Text = "LogIn";
             Login.UseVisualStyleBackColor = false;
@@ -58,11 +59,11 @@
             // Signup
             // 
             Signup.BackColor = SystemColors.ControlLight;
-            Signup.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Signup.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             Signup.Location = new Point(580, 265);
             Signup.Margin = new Padding(2);
             Signup.Name = "Signup";
-            Signup.Size = new Size(90, 27);
+            Signup.Size = new Size(108, 36);
             Signup.TabIndex = 1;
             Signup.Text = "Submit";
             Signup.UseVisualStyleBackColor = false;
@@ -73,7 +74,7 @@
             // txtusername
             // 
             txtusername.AutoSize = true;
-            txtusername.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtusername.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtusername.Location = new Point(389, 58);
             txtusername.Margin = new Padding(2, 0, 2, 0);
             txtusername.Name = "txtusername";
@@ -84,22 +85,22 @@
             // txtPass
             // 
             txtPass.AutoSize = true;
-            txtPass.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtPass.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtPass.Location = new Point(394, 128);
             txtPass.Margin = new Padding(2, 0, 2, 0);
             txtPass.Name = "txtPass";
-            txtPass.Size = new Size(80, 23);
+            txtPass.Size = new Size(82, 23);
             txtPass.TabIndex = 3;
             txtPass.Text = "Password";
             // 
             // txtCnfPass
             // 
             txtCnfPass.AutoSize = true;
-            txtCnfPass.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtCnfPass.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             txtCnfPass.Location = new Point(364, 201);
             txtCnfPass.Margin = new Padding(2, 0, 2, 0);
             txtCnfPass.Name = "txtCnfPass";
-            txtCnfPass.Size = new Size(146, 23);
+            txtCnfPass.Size = new Size(149, 23);
             txtCnfPass.TabIndex = 4;
             txtCnfPass.Text = "Confirm Password";
             // 
@@ -132,7 +133,7 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Image = Properties.Resources.Wavy_Gen_03_Single_02__1_;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
             pictureBox1.Location = new Point(37, 36);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(250, 256);
@@ -154,9 +155,11 @@
             Controls.Add(txtusername);
             Controls.Add(Signup);
             Controls.Add(Login);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(2);
             Name = "FormSignUp";
-            Text = "FormSignUp";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Sign up";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormManipulateAttendee));
             label1 = new Label();
             label2 = new Label();
             eventName = new ComboBox();
@@ -35,24 +36,23 @@
             add = new Button();
             delete = new Button();
             attendeeInfo = new ListBox();
-            menuStrip1 = new MenuStrip();
             button1 = new Button();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label1.Location = new Point(12, 41);
             label1.Name = "label1";
-            label1.Size = new Size(103, 23);
+            label1.Size = new Size(104, 23);
             label1.TabIndex = 0;
             label1.Text = "Event Name";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label2.Location = new Point(12, 132);
             label2.Name = "label2";
             label2.Size = new Size(131, 23);
@@ -80,10 +80,10 @@
             // add
             // 
             add.BackColor = SystemColors.ControlLight;
-            add.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            add.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             add.Location = new Point(12, 235);
             add.Name = "add";
-            add.Size = new Size(94, 29);
+            add.Size = new Size(108, 36);
             add.TabIndex = 4;
             add.Text = "Add";
             add.UseVisualStyleBackColor = false;
@@ -94,10 +94,10 @@
             // delete
             // 
             delete.BackColor = SystemColors.ControlLight;
-            delete.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            delete.Location = new Point(132, 235);
+            delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            delete.Location = new Point(143, 235);
             delete.Name = "delete";
-            delete.Size = new Size(94, 29);
+            delete.Size = new Size(108, 36);
             delete.TabIndex = 5;
             delete.Text = "Delete";
             delete.UseVisualStyleBackColor = false;
@@ -107,7 +107,7 @@
             // 
             // attendeeInfo
             // 
-            attendeeInfo.BackColor = Color.FromArgb(192, 192, 255);
+            attendeeInfo.BackColor = Color.Lavender;
             attendeeInfo.FormattingEnabled = true;
             attendeeInfo.Location = new Point(398, 27);
             attendeeInfo.Name = "attendeeInfo";
@@ -115,22 +115,13 @@
             attendeeInfo.TabIndex = 6;
             attendeeInfo.TabStop = false;
             // 
-            // menuStrip1
-            // 
-            menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Location = new Point(0, 0);
-            menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(667, 24);
-            menuStrip1.TabIndex = 7;
-            menuStrip1.Text = "menuStrip1";
-            // 
             // button1
             // 
             button1.BackColor = SystemColors.ControlLight;
-            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             button1.Location = new Point(273, 235);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(108, 36);
             button1.TabIndex = 8;
             button1.Text = "Close";
             button1.UseVisualStyleBackColor = false;
@@ -152,10 +143,10 @@
             Controls.Add(eventName);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(menuStrip1);
-            MainMenuStrip = menuStrip1;
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormManipulateAttendee";
-            Text = "FormManipulateAttendee";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Attendee Manipulation";
             ResumeLayout(false);
             PerformLayout();
         }
@@ -169,7 +160,6 @@
         private Button add;
         private Button delete;
         private ListBox attendeeInfo;
-        private MenuStrip menuStrip1;
         private Button button1;
     }
 }

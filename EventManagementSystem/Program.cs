@@ -13,12 +13,12 @@ namespace EventManagementSystem
             ApplicationConfiguration.Initialize();
             //Application.Run(new FormEventManipulation());
             //  Application.Run(new FormLogIn());
-              Application.Run(new FormSignUp());
+              //Application.Run(new FormSignUp());
          //Application.Run(new FormSelectRole());
             //Application.Run(new FormAttendeeHome());
             //Application.Run(new FormRegister());
 
-            //Application.Run(new FormMain());
+            Application.Run(new FormMain());
 
 
             // Application.Run(new EMAfterLogin());

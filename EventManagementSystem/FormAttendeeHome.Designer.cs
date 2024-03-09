@@ -29,6 +29,7 @@ namespace EventManagementSystem
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormAttendeeHome));
             listEvents = new ComboBox();
             viewEvent = new Button();
             register = new Button();
@@ -58,10 +59,10 @@ namespace EventManagementSystem
             // viewEvent
             // 
             viewEvent.BackColor = SystemColors.ControlLight;
-            viewEvent.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            viewEvent.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             viewEvent.Location = new Point(82, 163);
             viewEvent.Name = "viewEvent";
-            viewEvent.Size = new Size(94, 29);
+            viewEvent.Size = new Size(108, 36);
             viewEvent.TabIndex = 2;
             viewEvent.Text = "View";
             viewEvent.UseVisualStyleBackColor = false;
@@ -72,10 +73,10 @@ namespace EventManagementSystem
             // register
             // 
             register.BackColor = SystemColors.ControlLight;
-            register.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            register.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             register.Location = new Point(255, 163);
             register.Name = "register";
-            register.Size = new Size(94, 29);
+            register.Size = new Size(108, 36);
             register.TabIndex = 3;
             register.Text = "Register";
             register.UseVisualStyleBackColor = false;
@@ -95,10 +96,10 @@ namespace EventManagementSystem
             // View
             // 
             View.BackColor = SystemColors.ControlLight;
-            View.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            View.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             View.Location = new Point(183, 366);
             View.Name = "View";
-            View.Size = new Size(94, 29);
+            View.Size = new Size(108, 36);
             View.TabIndex = 6;
             View.Text = "View";
             View.UseVisualStyleBackColor = false;
@@ -108,7 +109,7 @@ namespace EventManagementSystem
             // 
             // listEventDetails
             // 
-            listEventDetails.BackColor = Color.FromArgb(192, 192, 255);
+            listEventDetails.BackColor = Color.Lavender;
             listEventDetails.Font = new Font("Segoe UI", 10.2F, FontStyle.Italic, GraphicsUnit.Point, 0);
             listEventDetails.FormattingEnabled = true;
             listEventDetails.ItemHeight = 23;
@@ -120,6 +121,7 @@ namespace EventManagementSystem
             // 
             // menuStrip1
             // 
+            menuStrip1.BackColor = SystemColors.MenuBar;
             menuStrip1.ImageScalingSize = new Size(20, 20);
             menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
@@ -152,20 +154,20 @@ namespace EventManagementSystem
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label1.Location = new Point(82, 103);
             label1.Name = "label1";
-            label1.Size = new Size(59, 23);
+            label1.Size = new Size(60, 23);
             label1.TabIndex = 9;
             label1.Text = "Events";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             label2.Location = new Point(68, 297);
             label2.Name = "label2";
-            label2.Size = new Size(144, 23);
+            label2.Size = new Size(146, 23);
             label2.TabIndex = 10;
             label2.Text = "Registered Events";
             // 
@@ -181,7 +183,7 @@ namespace EventManagementSystem
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ButtonHighlight;
+            BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(800, 450);
             Controls.Add(label3);
             Controls.Add(label2);
@@ -193,10 +195,11 @@ namespace EventManagementSystem
             Controls.Add(viewEvent);
             Controls.Add(listEvents);
             Controls.Add(menuStrip1);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "FormAttendeeHome";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "FormAttendeeHome";
+            Text = "Attendee Home";
             Activated += FormAttendeeHome_Activated;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

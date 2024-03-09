@@ -47,7 +47,7 @@
             // name
             // 
             name.AutoSize = true;
-            name.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            name.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             name.Location = new Point(420, 135);
             name.Name = "name";
             name.Size = new Size(56, 23);
@@ -58,7 +58,7 @@
             // phone
             // 
             phone.AutoSize = true;
-            phone.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            phone.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             phone.Location = new Point(419, 195);
             phone.Name = "phone";
             phone.Size = new Size(59, 23);
@@ -68,7 +68,7 @@
             // email
             // 
             email.AutoSize = true;
-            email.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            email.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             email.Location = new Point(419, 257);
             email.Name = "email";
             email.Size = new Size(68, 23);
@@ -78,11 +78,11 @@
             // studentno
             // 
             studentno.AutoSize = true;
-            studentno.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            studentno.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             studentno.Location = new Point(406, 329);
             studentno.Name = "studentno";
             studentno.RightToLeft = RightToLeft.No;
-            studentno.Size = new Size(97, 23);
+            studentno.Size = new Size(98, 23);
             studentno.TabIndex = 3;
             studentno.Text = "Student No";
             // 
@@ -121,10 +121,10 @@
             // register
             // 
             register.BackColor = SystemColors.ControlLight;
-            register.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            register.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             register.Location = new Point(588, 387);
             register.Name = "register";
-            register.Size = new Size(94, 29);
+            register.Size = new Size(108, 36);
             register.TabIndex = 10;
             register.Text = "Register";
             register.UseVisualStyleBackColor = false;
@@ -135,10 +135,10 @@
             // Close
             // 
             Close.BackColor = SystemColors.ControlLight;
-            Close.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            Close.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             Close.Location = new Point(406, 387);
             Close.Name = "Close";
-            Close.Size = new Size(94, 29);
+            Close.Size = new Size(108, 36);
             Close.TabIndex = 11;
             Close.Text = "Close";
             Close.UseVisualStyleBackColor = false;
@@ -150,10 +150,10 @@
             // 
             eventName.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             eventName.ForeColor = Color.MediumSlateBlue;
-            eventName.Location = new Point(500, 41);
+            eventName.Location = new Point(543, 45);
             eventName.Name = "eventName";
             eventName.ReadOnly = true;
-            eventName.Size = new Size(182, 31);
+            eventName.Size = new Size(191, 31);
             eventName.TabIndex = 12;
             // 
             // pictureBox1
@@ -183,8 +183,10 @@
             Controls.Add(email);
             Controls.Add(phone);
             Controls.Add(name);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "FormRegister";
-            Text = "FormRegister";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Atendee Register";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
             PerformLayout();

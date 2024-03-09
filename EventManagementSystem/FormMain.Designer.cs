@@ -37,33 +37,39 @@
             // 
             // login
             // 
-            login.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            login.BackColor = Color.Gainsboro;
+            login.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             login.ForeColor = SystemColors.ActiveCaptionText;
-            login.Location = new Point(24, 283);
+            login.Location = new Point(72, 283);
             login.Margin = new Padding(4);
             login.Name = "login";
-            login.Size = new Size(157, 44);
+            login.Size = new Size(108, 36);
             login.TabIndex = 1;
             login.Text = "LogIn";
-            login.UseVisualStyleBackColor = true;
+            login.UseVisualStyleBackColor = false;
             login.Click += login_Click;
+            login.MouseLeave += login_MouseLeave;
+            login.MouseHover += login_MouseHover;
             // 
             // signup
             // 
-            signup.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            signup.Location = new Point(339, 283);
+            signup.BackColor = Color.Gainsboro;
+            signup.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            signup.Location = new Point(332, 283);
             signup.Margin = new Padding(4);
             signup.Name = "signup";
-            signup.Size = new Size(157, 44);
+            signup.Size = new Size(108, 36);
             signup.TabIndex = 2;
             signup.Text = "SignUp";
-            signup.UseVisualStyleBackColor = true;
+            signup.UseVisualStyleBackColor = false;
             signup.Click += signup_Click;
+            signup.MouseLeave += signup_MouseLeave;
+            signup.MouseHover += signup_MouseHover;
             // 
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(157, 12);
+            pictureBox1.Location = new Point(148, 22);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(216, 206);
             pictureBox1.TabIndex = 3;
@@ -82,6 +88,7 @@
             Icon = (Icon)resources.GetObject("$this.Icon");
             Margin = new Padding(4);
             Name = "FormMain";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Event Management";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
