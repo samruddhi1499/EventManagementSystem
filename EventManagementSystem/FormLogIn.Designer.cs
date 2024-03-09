@@ -38,10 +38,10 @@
             // 
             // LogIn
             // 
-            LogIn.Location = new Point(68, 226);
+            LogIn.Location = new Point(85, 282);
             LogIn.Margin = new Padding(2);
             LogIn.Name = "LogIn";
-            LogIn.Size = new Size(90, 27);
+            LogIn.Size = new Size(112, 34);
             LogIn.TabIndex = 0;
             LogIn.Text = "LogIn";
             LogIn.UseVisualStyleBackColor = true;
@@ -49,10 +49,10 @@
             // 
             // SignUp
             // 
-            SignUp.Location = new Point(204, 226);
+            SignUp.Location = new Point(255, 282);
             SignUp.Margin = new Padding(2);
             SignUp.Name = "SignUp";
-            SignUp.Size = new Size(90, 27);
+            SignUp.Size = new Size(112, 34);
             SignUp.TabIndex = 1;
             SignUp.Text = "SignUp";
             SignUp.UseVisualStyleBackColor = true;
@@ -61,44 +61,45 @@
             // Username
             // 
             Username.AutoSize = true;
-            Username.Location = new Point(68, 58);
+            Username.Location = new Point(85, 72);
             Username.Margin = new Padding(2, 0, 2, 0);
             Username.Name = "Username";
-            Username.Size = new Size(75, 20);
+            Username.Size = new Size(91, 25);
             Username.TabIndex = 2;
             Username.Text = "Username";
             // 
             // Password
             // 
             Password.AutoSize = true;
-            Password.Location = new Point(68, 123);
+            Password.Location = new Point(85, 154);
             Password.Margin = new Padding(2, 0, 2, 0);
             Password.Name = "Password";
-            Password.Size = new Size(70, 20);
+            Password.Size = new Size(87, 25);
             Password.TabIndex = 3;
             Password.Text = "Password";
             // 
             // txtUser
             // 
-            txtUser.Location = new Point(204, 58);
+            txtUser.Location = new Point(255, 72);
             txtUser.Margin = new Padding(2);
             txtUser.Name = "txtUser";
-            txtUser.Size = new Size(121, 27);
+            txtUser.Size = new Size(150, 31);
             txtUser.TabIndex = 4;
             // 
             // txtPass
             // 
-            txtPass.Location = new Point(200, 123);
+            txtPass.Location = new Point(250, 154);
+            txtPass.Margin = new Padding(4, 4, 4, 4);
             txtPass.Name = "txtPass";
             txtPass.PasswordChar = '*';
-            txtPass.Size = new Size(125, 27);
+            txtPass.Size = new Size(155, 31);
             txtPass.TabIndex = 6;
             // 
             // FormLogIn
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(434, 277);
+            ClientSize = new Size(542, 346);
             Controls.Add(txtPass);
             Controls.Add(txtUser);
             Controls.Add(Password);
