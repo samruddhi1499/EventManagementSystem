@@ -10,6 +10,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using MySqlConnector;
+using System.Data;
+using Mysqlx.Crud;
 
 namespace EventManagementSystem
 {
@@ -30,7 +33,10 @@ namespace EventManagementSystem
 
         private void FormEventEdit_Load(object sender, EventArgs e)
         {
-
+            foreach (string em in FormEventManipulation.eventManager)
+            {
+                eventManagerListEdit.Items.Add(em);
+            }
 
             ArrayList arrayList = FormEventManipulation.eventObjectList;
 
@@ -82,15 +88,28 @@ namespace EventManagementSystem
 
             try
             {
+                FormMain.mySqlConnection.Open();
                 int capacity = Convert.ToInt32(txtCapaEdit.Text);
+                string sqlUpdateEvent = $"UPDATE event SET event_date = '{dateTimePickerEdit.Text}', event_time = '{timePickerEventEdit.Text}', event_loaction = '{txtLocEdit.Text}', event_capacity = {capacity}, event_description = '{txtDesEdit.Text}',event_manager = '{em}' WHERE event_name = '{eventName}'";
+                MySqlCommand cmd = new MySqlCommand(sqlUpdateEvent, FormMain.mySqlConnection);
+                cmd.ExecuteNonQuery();
                 formEventManipulation.receiveDataEdit(eventName, dateTimePickerEdit.Text, timePickerEventEdit.Text, txtCapaEdit.Text, txtLocEdit.Text, txtDesEdit.Text
                 , em);
                 MessageBox.Show("Event Edit Sucessfull", "Event Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
                 this.Close();
+            }
+            catch (MySqlException msqlex)
+            {
+                MessageBox.Show("Database Error", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Check Capacity", "Invalid Type ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                FormMain.mySqlConnection.Close();
             }
 
         }

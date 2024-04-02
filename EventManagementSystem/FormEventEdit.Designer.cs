@@ -184,13 +184,11 @@
             eventManagerListEdit.BackColor = SystemColors.ControlLight;
             eventManagerListEdit.DisplayMember = "(none)";
             eventManagerListEdit.FormattingEnabled = true;
-            eventManagerListEdit.Items.AddRange(new object[] { "Saloni", "Sam", "Sruthi" });
             eventManagerListEdit.Location = new Point(154, 374);
             eventManagerListEdit.Name = "eventManagerListEdit";
             eventManagerListEdit.Size = new Size(179, 28);
             eventManagerListEdit.TabIndex = 15;
             eventManagerListEdit.Tag = "";
-            eventManagerListEdit.Text = "Sam";
             // 
             // dateTimePickerEdit
             // 

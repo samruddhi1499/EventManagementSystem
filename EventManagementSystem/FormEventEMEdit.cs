@@ -8,6 +8,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySqlConnector;
+using System.Data;
+using Mysqlx.Crud;
 
 namespace EventManagementSystem
 {
@@ -60,19 +63,31 @@ namespace EventManagementSystem
 
             try
             {
+                FormMain.mySqlConnection.Open();
                 int capacity = Convert.ToInt32(txtCapaEMEdit.Text);
                 FormEventManipulation formEventManipulation = new FormEventManipulation();
 
                 string eventName = eventListEMEdit.SelectedItem.ToString();
+                string sqlUpdateEMEvent = $"UPDATE event SET event_date = '{dateTimePickerEMEdit.Text}', event_time = '{timePickerEMEdit.Text}', event_loaction = '{txtLocEMEdit.Text}', event_capacity = {capacity}, event_description = '{txtDesEMEdit.Text}' WHERE event_name = '{eventName}'";
+                MySqlCommand cmd = new MySqlCommand(sqlUpdateEMEvent, FormMain.mySqlConnection);
+                cmd.ExecuteNonQuery();
                 formEventManipulation.receiveDataEdit(eventName, dateTimePickerEMEdit.Text, timePickerEMEdit.Text, txtCapaEMEdit.Text, txtLocEMEdit.Text, txtDesEMEdit.Text
                     , userName);
                 MessageBox.Show("Event Edit Sucessfull", "Event Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
 
             }
+            catch (MySqlException msqlex)
+            {
+                MessageBox.Show("Database Error", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
                 MessageBox.Show("Check Capacity", "Invalid Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                FormMain.mySqlConnection.Close();
             }
         }
 

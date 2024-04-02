@@ -1,6 +1,7 @@
 ﻿using MySqlConnector;
 using System.Data;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -44,11 +45,6 @@ namespace EventManagementSystem
 
 
                 this.Close();
-
-
-
-
-
             }
             catch (MySqlException msqlex)
             {
@@ -62,7 +58,7 @@ namespace EventManagementSystem
             {
                 FormMain.mySqlConnection.Close();
             }
-           
+
         }
 
         private void btnAddEventCancel_Click(object sender, EventArgs e)
@@ -84,7 +80,7 @@ namespace EventManagementSystem
             btnAddEventCancel.ForeColor = Color.Black;
         }
 
-      
+
 
         private void btnAddEventOk_MouseLeave(object sender, EventArgs e)
         {
@@ -96,6 +92,15 @@ namespace EventManagementSystem
         {
             btnAddEventOk.BackColor = Color.MediumPurple;
             btnAddEventOk.ForeColor = Color.White;
+        }
+
+        private void FormEventAdd_Load(object sender, EventArgs e)
+        {
+            foreach(string em in FormEventManipulation.eventManager)
+            {
+                emListAddEvent.Items.Add(em);
+            }
+                
         }
     }
 }

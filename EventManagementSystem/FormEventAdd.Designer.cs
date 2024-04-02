@@ -189,7 +189,6 @@
             // 
             emListAddEvent.BackColor = SystemColors.Control;
             emListAddEvent.FormattingEnabled = true;
-            emListAddEvent.Items.AddRange(new object[] { "Sam", "Saloni", "Sruthi" });
             emListAddEvent.Location = new Point(174, 321);
             emListAddEvent.Name = "emListAddEvent";
             emListAddEvent.Size = new Size(180, 28);
@@ -231,6 +230,7 @@
             Name = "FormEventAdd";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Add Event";
+            Load += FormEventAdd_Load;
             ResumeLayout(false);
             PerformLayout();
         }

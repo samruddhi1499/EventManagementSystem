@@ -22,6 +22,7 @@ namespace EventManagementSystem
     {
         public static ArrayList eventObjectList = new ArrayList();
         static ArrayList eventNames = new ArrayList();
+        public static ArrayList eventManager = new ArrayList();
 
         BindingSource bs = new BindingSource();
         public FormEventManipulation()
@@ -107,7 +108,7 @@ namespace EventManagementSystem
             try
             {
 
-                LoadAll();
+                //LoadAll();
                 bs.DataSource = eventNames;
                 eventList.DataSource = bs;
             }
@@ -120,6 +121,7 @@ namespace EventManagementSystem
         }
         public void LoadAll()
         {
+            FormMain.mySqlConnection.Open();
             string selectLoadSQL = "select * from event";
             MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
@@ -141,6 +143,21 @@ namespace EventManagementSystem
             {
                 EventsClass eventClass = (EventsClass)array;
                 eventNames.Add(eventClass.EventName + " - " + eventClass.EventEM);
+            }
+            FormMain.mySqlConnection.Close();
+        }
+        public void LoadAllEM()
+        {
+            FormMain.mySqlConnection.Open();
+            string selectLoadEMSQL = $"select username from user where role = 'EM'";
+            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadEMSQL, FormMain.mySqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                
+                string eventEM = dataReader["username"] + "";
+                eventManager.Add(eventEM);
+
             }
             FormMain.mySqlConnection.Close();
         }
