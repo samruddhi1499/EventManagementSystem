@@ -209,5 +209,10 @@ namespace EventManagementSystem
             btnDelete.BackColor = Color.Gainsboro; ;
             btnDelete.ForeColor = Color.Black;
         }
+
+        private void addList_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

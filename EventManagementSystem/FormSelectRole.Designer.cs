@@ -50,12 +50,12 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label1.Location = new Point(61, 90);
+            label1.Location = new Point(43, 90);
             label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(56, 23);
+            label1.Size = new Size(87, 23);
             label1.TabIndex = 0;
-            label1.Text = "Name";
+            label1.Text = "Username";
             // 
             // roleDropDown
             // 
@@ -133,6 +133,7 @@
             addList.Name = "addList";
             addList.Size = new Size(194, 257);
             addList.TabIndex = 7;
+            addList.SelectedIndexChanged += addList_SelectedIndexChanged;
             addList.DoubleClick += addList_DoubleClick;
             // 
             // selectRole
