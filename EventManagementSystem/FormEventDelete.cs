@@ -8,6 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySqlConnector;
+using System.Data;
+using Mysqlx.Crud;
+
 
 namespace EventManagementSystem
 {
@@ -27,12 +31,33 @@ namespace EventManagementSystem
 
         private void btnDeleteOK_Click(object sender, EventArgs e)
         {
-            FormEventManipulation formEventManipulation = new FormEventManipulation();
+            try {
+                FormMain.mySqlConnection.Open();
+                FormEventManipulation formEventManipulation = new FormEventManipulation();
+                string eventName = eventListDelete.SelectedItem.ToString();
+                string sqlDeleteEvent = $"DELETE FROM event WHERE event_name = '{eventName}'";
+               
+                MySqlCommand cmd = new MySqlCommand(sqlDeleteEvent, FormMain.mySqlConnection);
+                cmd.ExecuteNonQuery();
+                formEventManipulation.receiveDataDelete(eventName);
+                MessageBox.Show("Event Deletion Sucessfull", "Event Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
 
-            string eventName = eventListDelete.SelectedItem.ToString();
-            formEventManipulation.receiveDataDelete(eventName);
-            MessageBox.Show("Event Deletion Sucessfull", "Event Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.Close();
+
+            }
+            catch (MySqlException msqlex)
+            {
+                MessageBox.Show("Database Error", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                FormMain.mySqlConnection.Close();
+            }
+
 
         }
         private void FormEventDelete_Activated(object sender, EventArgs e)
@@ -43,6 +68,9 @@ namespace EventManagementSystem
 
         private void FormEventDelete_Load(object sender, EventArgs e)
         {
+           
+
+
             ArrayList arrayList = FormEventManipulation.eventObjectList;
 
 
@@ -55,6 +83,7 @@ namespace EventManagementSystem
             EventsClass eventClass1 = (EventsClass)arrayList[0];
 
             eventListDelete.Text = eventClass1.EventName.ToString();
+
         }
 
         private void btnDeleteCancel_MouseHover(object sender, EventArgs e)

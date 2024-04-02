@@ -10,6 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using MySqlConnector;
+using System.Data;
+using static Mysqlx.Datatypes.Scalar.Types;
+using System.Data.Common;
+
 
 namespace EventManagementSystem
 {
@@ -26,7 +31,9 @@ namespace EventManagementSystem
 
         public void receiveData(string eventName, string eventDate, string eventTime, string eventCapacity, string eventLoc, string eventDes, string em)
         {
+
             int capacity = Convert.ToInt32(eventCapacity);
+            
             EventsClass eventsClass = new EventsClass(eventName, eventDate, eventTime, eventLoc, eventDes, capacity, em);
             eventObjectList.Add(eventsClass);
             string txt = eventName + " - " + em;
@@ -97,12 +104,50 @@ namespace EventManagementSystem
 
         private void FormEventManipulation_Load(object sender, EventArgs e)
         {
-            bs.DataSource = eventNames;
-            eventList.DataSource = bs;
+            try
+            {
+
+                LoadAll();
+                bs.DataSource = eventNames;
+                eventList.DataSource = bs;
+            }
+            catch(Exception ex)
+            {
+
+            }
+           
+            
+        }
+        public void LoadAll()
+        {
+            string selectLoadSQL = "select * from event";
+            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                string eventName = dataReader["event_name"] + "";
+                string eventDate = dataReader["event_date"] + "";
+                string eventTime = dataReader["event_time"] + "";
+                string eventLocation = dataReader["event_loaction"] + "";
+                string eventDes = dataReader["event_description"] + "";
+                string em = dataReader["event_manager"] + "";
+                int capacity = Convert.ToInt32(dataReader["event_capacity"]);
+
+                EventsClass events = new EventsClass(eventName, eventDate, eventTime, eventLocation, eventDes, capacity, em);
+                eventObjectList.Add(events);
+
+            }
+            foreach (EventsClass array in eventObjectList)
+            {
+                EventsClass eventClass = (EventsClass)array;
+                eventNames.Add(eventClass.EventName + " - " + eventClass.EventEM);
+            }
+            FormMain.mySqlConnection.Close();
         }
 
         private void FormEventManipulation_Activated(object sender, EventArgs e)
         {
+            
             bs.ResetBindings(false);
         }
 

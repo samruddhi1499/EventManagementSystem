@@ -14,7 +14,7 @@ namespace EventManagementSystem
     public partial class FormMain : Form
     {
         public Database MYDB;
-        public MySqlConnection mySqlConnection;
+        public static MySqlConnection mySqlConnection;
         public FormMain()
         {
             InitializeComponent();
@@ -73,16 +73,8 @@ namespace EventManagementSystem
         {
             MYDB = new Database("localhost", "root", "S@mmy123", "event_management", "3306");
             mySqlConnection = MYDB.Connect();
-            mySqlConnection.Open();
-            if (mySqlConnection != null && mySqlConnection.State == ConnectionState.Open)
-            {
-                MessageBox.Show(" Connected to Database successfully!!!", "Database Connection", MessageBoxButtons.OK);
+            FormMain.mySqlConnection.Open();
 
-            }
-            else
-            {
-                MessageBox.Show(" Error in Connection to Database", "Database Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
 
         }
     }
