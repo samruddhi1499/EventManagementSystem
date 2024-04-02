@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using MySqlConnector;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,8 @@ namespace EventManagementSystem
 {
     public partial class FormMain : Form
     {
+        public Database MYDB;
+        public MySqlConnection mySqlConnection;
         public FormMain()
         {
             InitializeComponent();
@@ -64,6 +67,23 @@ namespace EventManagementSystem
         {
             signup.BackColor = Color.Gainsboro;
             signup.ForeColor = Color.Black;
+        }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+            MYDB = new Database("localhost", "root", "S@mmy123", "event_management", "3306");
+            mySqlConnection = MYDB.Connect();
+            mySqlConnection.Open();
+            if (mySqlConnection != null && mySqlConnection.State == ConnectionState.Open)
+            {
+                MessageBox.Show(" Connected to Database successfully!!!", "Database Connection", MessageBoxButtons.OK);
+
+            }
+            else
+            {
+                MessageBox.Show(" Error in Connection to Database", "Database Connection", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
         }
     }
 }
