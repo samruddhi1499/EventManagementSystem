@@ -71,7 +71,7 @@ namespace EventManagementSystem
                 string sqlUpdateEMEvent = $"UPDATE event SET event_date = '{dateTimePickerEMEdit.Text}', event_time = '{timePickerEMEdit.Text}', event_loaction = '{txtLocEMEdit.Text}', event_capacity = {capacity}, event_description = '{txtDesEMEdit.Text}' WHERE event_name = '{eventName}'";
                 MySqlCommand cmd = new MySqlCommand(sqlUpdateEMEvent, FormMain.mySqlConnection);
                 cmd.ExecuteNonQuery();
-                formEventManipulation.receiveDataEdit(eventName, dateTimePickerEMEdit.Text, timePickerEMEdit.Text, txtCapaEMEdit.Text, txtLocEMEdit.Text, txtDesEMEdit.Text
+                formEventManipulation.receiveDataEdit(eventName, dateTimePickerEMEdit.Text, timePickerEMEdit.Text, capacity, txtLocEMEdit.Text, txtDesEMEdit.Text
                     , userName);
                 MessageBox.Show("Event Edit Sucessfull", "Event Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
@@ -81,9 +81,13 @@ namespace EventManagementSystem
             {
                 MessageBox.Show("Database Error", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            catch (FormatException fe)
+            {
+                MessageBox.Show("Check Capacity", "Invalid Type ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show("Check Capacity", "Invalid Type", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

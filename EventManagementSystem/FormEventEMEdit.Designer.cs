@@ -174,6 +174,7 @@
             // eventListEMEdit
             // 
             eventListEMEdit.BackColor = SystemColors.ControlLight;
+            eventListEMEdit.DropDownStyle = ComboBoxStyle.DropDownList;
             eventListEMEdit.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             eventListEMEdit.FormattingEnabled = true;
             eventListEMEdit.Location = new Point(201, 43);

@@ -188,6 +188,7 @@
             // emListAddEvent
             // 
             emListAddEvent.BackColor = SystemColors.Control;
+            emListAddEvent.DropDownStyle = ComboBoxStyle.DropDownList;
             emListAddEvent.FormattingEnabled = true;
             emListAddEvent.Location = new Point(174, 321);
             emListAddEvent.Name = "emListAddEvent";

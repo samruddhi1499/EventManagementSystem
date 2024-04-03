@@ -31,7 +31,6 @@ namespace EventManagementSystem
             try
             {
                 FormMain.mySqlConnection.Open();
-                MessageBox.Show(" Connection is Valid!!!", "Database Connection", MessageBoxButtons.OK);
                 int capacity = Convert.ToInt32(txtCapaAddEvent.Text);
                 FormEventManipulation formEventManipulation = new FormEventManipulation();
                 string em = emListAddEvent.SelectedItem.ToString();
@@ -39,7 +38,7 @@ namespace EventManagementSystem
                 string sqlInertEvent = $"INSERT INTO event VALUES ('{txtAddEventName.Text}','{dateTimePickerEventAdd.Text}','{timePickerEventAdd.Text}','{txtLocAddEvent.Text}',{capacity},'{txtDesAddEvent.Text}','{em}')";
                 MySqlCommand cmd = new MySqlCommand(sqlInertEvent, FormMain.mySqlConnection);
                 cmd.ExecuteNonQuery();
-                formEventManipulation.receiveData(txtAddEventName.Text, dateTimePickerEventAdd.Text, timePickerEventAdd.Text, txtCapaAddEvent.Text, txtLocAddEvent.Text, txtDesAddEvent.Text
+                formEventManipulation.receiveData(txtAddEventName.Text, dateTimePickerEventAdd.Text, timePickerEventAdd.Text, capacity, txtLocAddEvent.Text, txtDesAddEvent.Text
                     , em);
                 MessageBox.Show("Event Addition Sucessfull", "Event Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -50,9 +49,13 @@ namespace EventManagementSystem
             {
                 MessageBox.Show("Database Error", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+            catch (FormatException fe)
             {
                 MessageBox.Show("Check Capacity", "Invalid Type ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {

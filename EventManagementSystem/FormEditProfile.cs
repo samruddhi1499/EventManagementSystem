@@ -26,21 +26,10 @@ namespace EventManagementSystem
 
         private void FormEditProfile_Load(object sender, EventArgs e)
         {
-            if (userNameForView == "admin")
-            {
+          
                 txtViewUsername.Text = userNameForView;
                 txtViewPass.Text = passwordForView;
-            }
-            else if (userNameForView == "Sam" || userNameForView == "Saloni" || userNameForView == "Sruthi")
-            {
-                txtViewUsername.Text = userNameForView;
-                txtViewPass.Text = passwordForView;
-            }
-            else
-            {
-                txtViewUsername.Text = userNameForView;
-                txtViewPass.Text = passwordForView;
-            }
+            
         }
 
         public void getCredsForView(string userName, string password)
