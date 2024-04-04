@@ -39,92 +39,123 @@ namespace EventManagementSystem
         // Event handler for eventName ComboBox selection change
         private void eventName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            // Clear the attendeeInfo and username ComboBoxes
-            attendeeInfo.Items.Clear();
-            username.Items.Clear();
-
-            // Open MySQL connection
-            FormMain.mySqlConnection.Open();
-            // SQL command to select all users
-            string selectLoadSQL = "SELECT * FROM user";
-            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
-            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
-
-            // Add header to attendeeInfo
-            attendeeInfo.Items.Add("Attendee Name\tUsername\n");
-
-            // Loop through each attendee and check if they are registered for the selected event
-            if (attendeeList.Count > 0)
+            try
             {
-                foreach (Attendees attendees in attendeeList)
+                // Clear the attendeeInfo and username ComboBoxes
+                attendeeInfo.Items.Clear();
+                username.Items.Clear();
+
+                // Open MySQL connection
+                FormMain.mySqlConnection.Open();
+                // SQL command to select all users
+                string selectLoadSQL = "SELECT * FROM user";
+                MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
+                MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+
+                // Add header to attendeeInfo
+                attendeeInfo.Items.Add("Attendee Name\tUsername\n");
+
+                // Loop through each attendee and check if they are registered for the selected event
+                if (attendeeList.Count > 0)
                 {
-                    while (dataReader.Read())
+                    foreach (Attendees attendees in attendeeList)
                     {
-                        if (eventName.SelectedItem.ToString().Equals(attendees.EventName) && !dataReader["username"].Equals(attendees.Username))
+                        while (dataReader.Read())
                         {
-                            username.Items.Add(dataReader["username"]);
+                            if (eventName.SelectedItem.ToString().Equals(attendees.EventName) && !dataReader["username"].Equals(attendees.Username))
+                            {
+                                username.Items.Add(dataReader["username"]);
+                            }
+                            else if (!eventName.SelectedItem.ToString().Equals(attendees.EventName))
+                            {
+                                username.Items.Add(dataReader["username"]);
+                            }
                         }
-                        else if (!eventName.SelectedItem.ToString().Equals(attendees.EventName))
-                        {
-                            username.Items.Add(dataReader["username"]);
-                        }
+                        // Display attendee information for the selected event
+                        if (eventName.SelectedItem.ToString() == attendees.EventName.ToString())
+                            attendeeInfo.Items.Add($"{attendees.AttendeeName}\t\t{attendees.Username}");
                     }
-                    // Display attendee information for the selected event
-                    if (eventName.SelectedItem.ToString() == attendees.EventName.ToString())
-                        attendeeInfo.Items.Add($"{attendees.AttendeeName}\t\t{attendees.Username}");
                 }
-            }
-            // If there are no attendees registered for any event
-            else if (attendeeList.Count == 0)
+                // If there are no attendees registered for any event
+                else if (attendeeList.Count == 0)
+                {
+                    // Display all usernames
+                    while (dataReader.Read())
+                        username.Items.Add(dataReader["username"]);
+                }
+            } // Show any error
+            catch (MySqlException ex)
             {
-                // Display all usernames
-                while (dataReader.Read())
-                    username.Items.Add(dataReader["username"]);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Close MySQL connection
+                FormMain.mySqlConnection.Close();
             }
 
-            // Close MySQL connection
-            FormMain.mySqlConnection.Close();
+            
         }
 
         // Event handler for adding an attendee to an event
         private void add_Click(object sender, EventArgs e)
         {
-            // Open MySQL connection
-            FormMain.mySqlConnection.Open();
-
-            // SQL command to insert attendee registration into the database
-            string selectLoadSQL = $"INSERT INTO attendeeregistration (event_name, username, attendee_name) VALUES (\"{eventName.SelectedItem.ToString()}\", \"{username.SelectedItem.ToString()}\", \"{attendeeName.Text}\")";
-            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
-            mySqlCommand.ExecuteNonQuery();
-
-            // Create new Attendees object for the new attendee
-            Attendees newAttendee = new Attendees(eventName.SelectedItem.ToString(), username.SelectedItem.ToString(), attendeeName.Text);
-            attendeeList.Add(newAttendee);
-
-            // Update event capacity
-            foreach (EventsClass val in FormEventManipulation.eventObjectList)
+            try
             {
-                if (eventName.SelectedItem.ToString() == val.EventName.ToString())
-                {
-                    if (val.EventCapacity == 0)
-                    {
-                        MessageBox.Show("Sorry, the event is fully booked.", "Capacity Full", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    else
-                    {
-                        string updateCapacity = $"UPDATE event SET event_capacity = {val.EventCapacity - 1} WHERE event_name = \"{FormAttendeeHome.eventName}\"";
-                        MySqlCommand mySqlUpdateCommand = new MySqlCommand(updateCapacity, FormMain.mySqlConnection);
-                        mySqlUpdateCommand.ExecuteNonQuery();
+                // Open MySQL connection
+                FormMain.mySqlConnection.Open();
 
-                        MessageBox.Show("Attendee Added ", "Adding Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        val.EventCapacity -= 1;
-                        attendeeInfo.Items.Add($"{attendeeName.Text}\t\t{username.SelectedItem.ToString()}");
+                // SQL command to insert attendee registration into the database
+                string selectLoadSQL = $"INSERT INTO attendeeregistration (event_name, username, attendee_name) VALUES (\"{eventName.SelectedItem.ToString()}\", \"{username.SelectedItem.ToString()}\", \"{attendeeName.Text}\")";
+                MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
+                mySqlCommand.ExecuteNonQuery();
+
+                // Create new Attendees object for the new attendee
+                Attendees newAttendee = new Attendees(eventName.SelectedItem.ToString(), username.SelectedItem.ToString(), attendeeName.Text);
+                attendeeList.Add(newAttendee);
+
+                // Update event capacity
+                foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                {
+                    if (eventName.SelectedItem.ToString() == val.EventName.ToString())
+                    {
+                        if (val.EventCapacity == 0)
+                        {
+                            MessageBox.Show("Sorry, the event is fully booked.", "Capacity Full", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            string updateCapacity = $"UPDATE event SET event_capacity = {val.EventCapacity - 1} WHERE event_name = \"{FormAttendeeHome.eventName}\"";
+                            MySqlCommand mySqlUpdateCommand = new MySqlCommand(updateCapacity, FormMain.mySqlConnection);
+                            mySqlUpdateCommand.ExecuteNonQuery();
+
+                            MessageBox.Show("Attendee Added ", "Adding Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            val.EventCapacity -= 1;
+                            attendeeInfo.Items.Add($"{attendeeName.Text}\t\t{username.SelectedItem.ToString()}");
+                        }
                     }
                 }
             }
+            // Show any error
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Close MySQL connection
+                FormMain.mySqlConnection.Close();
+            }
+        
 
-            // Close MySQL connection
-            FormMain.mySqlConnection.Close();
         }
 
         // Event handler for deleting an attendee from an event

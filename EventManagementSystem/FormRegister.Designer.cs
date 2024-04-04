@@ -53,7 +53,6 @@
             name.Size = new Size(56, 23);
             name.TabIndex = 0;
             name.Text = "Name";
-            name.Click += label1_Click;
             // 
             // phone
             // 

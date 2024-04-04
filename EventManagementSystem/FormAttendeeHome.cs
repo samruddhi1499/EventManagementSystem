@@ -29,7 +29,6 @@ namespace EventManagementSystem
         public FormAttendeeHome()
         {
             InitializeComponent();
-
             // Initialize form components when the form is loaded
             if (FormEventManipulation.eventObjectList.Count != 0)
             {
