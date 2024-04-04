@@ -12,15 +12,13 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using MySqlConnector;
-
+using MySqlConnector; // Import MySQL Connector for database operations
 
 namespace EventManagementSystem
 {
     public partial class FormAttendeeHome : Form
     {
-
-
+        // Define variables to store event names and attendee objects
         public static ArrayList eventNames = new ArrayList();
         public static ArrayList attendeeObjectList = new ArrayList();
         public static string Username;
@@ -32,35 +30,36 @@ namespace EventManagementSystem
         {
             InitializeComponent();
 
+            // Initialize form components when the form is loaded
             if (FormEventManipulation.eventObjectList.Count != 0)
             {
+                // Populate listEvents ListBox with event names
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
                     EventsClass eventClass = (EventsClass)val;
                     listEvents.Items.Add(eventClass.EventName.ToString());
                 }
+                // Select the first event by default
                 EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
                 listEvents.Text = eventClass1.EventName.ToString();
             }
-
         }
 
+        // Method to set the username
         public void GetUsername(string username)
         {
-            this.Username = username;
+            Username = username;
         }
 
-
+        // Method to set the registered event name
         public void getRegisteredEvent(string EventName)
         {
-
             registeredEventName = EventName;
-
         }
 
+        // Method to add attendee to an event
         public void addAttendee(string eventName, string username, string attendeeName, string phone, string emailid, string studentno)
         {
-
             try
             {
                 FormMain.mySqlConnection.Open();
@@ -68,21 +67,21 @@ namespace EventManagementSystem
                 {
                     if (FormAttendeeHome.eventName == val.EventName.ToString())
                     {
-                        
+                        // Update event capacity in the database
                         string updateCapacity = $"UPDATE event SET event_capacity = {val.EventCapacity - 1} WHERE event_name = \"{FormAttendeeHome.eventName}\"";
                         val.EventCapacity -= 1;
                         MySqlCommand mySqlUpdateCommand = new MySqlCommand(updateCapacity, FormMain.mySqlConnection);
                         mySqlUpdateCommand.ExecuteNonQuery();
+                        // Insert attendee registration details into the database
                         string insertCmd = $"INSERT INTO attendeeregistration VALUES (\"{eventName}\", \"{username}\", \"{attendeeName}\", \"{phone}\", \"{emailid}\", \"{studentno}\")";
                         MySqlCommand mySqlInsertCommand = new MySqlCommand(insertCmd, FormMain.mySqlConnection);
                         mySqlInsertCommand.ExecuteNonQuery();
+                        // Add attendee object to the list
                         Attendees attendees = new Attendees(eventName, username, attendeeName, phone, emailid, studentno);
                         attendeeObjectList.Add(attendees);
                         eventNames.Add(eventName);
-                        
                     }
                 }
-                
             }
             catch (Exception ex)
             {
@@ -92,47 +91,64 @@ namespace EventManagementSystem
             {
                 FormMain.mySqlConnection.Close();
             }
-
         }
 
+        // Method to load all attendees from the database
         public void LoadAllAttendee()
         {
-            FormMain.mySqlConnection.Open();
-            string selectLoadSQL = "SELECT * FROM attendeeregistration";
-            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
-            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
-            while (dataReader.Read())
+            try
             {
-                string eventName = dataReader["event_name"] + "";
-                string username = dataReader["username"] + "";
-                string attendeeName = dataReader["attendee_name"] + "";
-                string attendeePhone = dataReader["attendee_phone"] + "";
-                string attendeeEmail = dataReader["attendee_email"] + "";
-                string attendeeStudentNo = dataReader["attendee_student_no"] + "";
+                // Get all attendees from the database
+                FormMain.mySqlConnection.Open();
+                string selectLoadSQL = "SELECT * FROM attendeeregistration";
+                MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
+                MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    string eventName = dataReader["event_name"] + "";
+                    string username = dataReader["username"] + "";
+                    string attendeeName = dataReader["attendee_name"] + "";
+                    string attendeePhone = dataReader["attendee_phone"] + "";
+                    string attendeeEmail = dataReader["attendee_email"] + "";
+                    string attendeeStudentNo = dataReader["attendee_student_no"] + "";
 
-                Attendees attendees = new Attendees(eventName, username, attendeeName, attendeePhone, attendeeEmail, attendeeStudentNo);
-                attendeeObjectList.Add(attendees);
-
+                    // Create and add attendee object to the list
+                    Attendees attendees = new Attendees(eventName, username, attendeeName, attendeePhone, attendeeEmail, attendeeStudentNo);
+                    attendeeObjectList.Add(attendees);
+                }
             }
-
-            FormMain.mySqlConnection.Close();
+            // Show any error
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                FormMain.mySqlConnection.Close();
+            }
         }
 
-
+        // Method to view event details
         private void viewEvent_Click(object sender, EventArgs e)
         {
-
+            // Check if there are events in the list
             if (FormEventManipulation.eventObjectList.Count == 0)
             {
                 MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-                listEventDetails.Items.Clear();
             {
+                // Show all event details of the event
+                listEventDetails.Items.Clear();
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
                     if (listEvents.SelectedItem.ToString() == val.EventName.ToString())
                     {
+                        // Display event details in listEventDetails ListBox
                         string eventName = $"Event Name: {val.EventName}";
                         string eventDate = $"Event Date: {val.EventDate}";
                         string eventDesc = $"Event Description: {val.EventDescription}";
@@ -150,9 +166,9 @@ namespace EventManagementSystem
             }
         }
 
+        // Method to handle registration button click
         private void register_Click(object sender, EventArgs e)
         {
-
             if (FormEventManipulation.eventObjectList.Count == 0)
             {
                 MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -160,53 +176,56 @@ namespace EventManagementSystem
             else
             {
                 eventName = listEvents.SelectedItem.ToString();
-
-                            bool registeredBefore = false;
-                            foreach (Attendees atn in attendeeObjectList)
-                            {
-                                if (eventName.Equals(atn.EventName) && Username.Equals(atn.Username))
-                                {
-                                    registeredBefore = true;
-                                }
-                            }
+                // Check if the user has registered before
+                bool registeredBefore = false;
+                foreach (Attendees atn in attendeeObjectList)
+                {
+                    if (eventName.Equals(atn.EventName) && Username.Equals(atn.Username))
+                    {
+                        registeredBefore = true;
+                    }
+                }
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
                     if (eventName == val.EventName.ToString())
                     {
+                        // Check if the event capacity is full
                         if (val.EventCapacity == 0)
                         {
                             MessageBox.Show("Sorry, the event is fully booked.", "Capacity Full", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        
-                        } else if (registeredBefore)
+                        }
+                        else if (registeredBefore)
                         {
                             MessageBox.Show(" This user has already registered for this event", "Already registered", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
                         }
                         else
                         {
+                            // Open registration form
                             FormRegister register = new FormRegister();
                             register.ShowDialog();
                         }
                     }
                 }
-
             }
         }
 
+        // Method to view registered events
         private void View_Click(object sender, EventArgs e)
         {
-            
+            // If there is no events
             if (eventNames.Count == 0)
             {
                 MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
+                // List the registered event details
                 listEventDetails.Items.Clear();
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
                     if (regiterEvents.SelectedItem.ToString() == val.EventName.ToString())
                     {
+                        // Display event details in listEventDetails ListBox
                         string eventName = $"Event Name: {val.EventName}";
                         string eventDate = $"Event Date: {val.EventDate}";
                         string eventDesc = $"Event Description: {val.EventDescription}";
@@ -222,23 +241,21 @@ namespace EventManagementSystem
                     }
                 }
             }
-
-
         }
 
+        // Method to load registered events when the form is activated
         private void FormAttendeeHome_Activated(object sender, EventArgs e)
         {
-            
             listEventDetails.Items.Clear();
             regiterEvents.Items.Clear();
-
+            // Load the registered event 
             if (eventNames.Count == 0)
             {
                 loadRegisteredEvents();
-
             }
             else if (eventNames.Count > 0)
             {
+                // Add the events 
                 foreach (string name in eventNames)
                 {
                     regiterEvents.Items.Add(name);
@@ -247,27 +264,45 @@ namespace EventManagementSystem
                 {
                     regiterEvents.Text = eventNames[0].ToString();
                 }
-
             }
         }
 
+        // Method to load registered events from the database
         public void loadRegisteredEvents()
         {
-            FormMain.mySqlConnection.Open();
-            string selectLoadSQL = "SELECT * FROM attendeeregistration WHERE username = \"Attendee1\"";
-            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
-            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
-            if (dataReader.HasRows)
+            try
             {
-                while (dataReader.Read())
+                // Get events from database
+                FormMain.mySqlConnection.Open();
+                string selectLoadSQL = $"SELECT * FROM attendeeregistration WHERE username = \"{Username}\"";
+                MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
+                MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+                if (dataReader.HasRows)
                 {
-                    string eventName = dataReader["event_name"] + "";
-                    eventNames.Add(eventName);
+                    while (dataReader.Read())
+                    {
+                        // Add the events in the array
+                        string eventName = dataReader["event_name"] + "";
+                        eventNames.Add(eventName);
+                    }
                 }
             }
-            FormMain.mySqlConnection.Close();
+            // Show error message
+            catch (MySqlException ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                FormMain.mySqlConnection.Close();
+            }
         }
 
+        // Method to handle logout menu item click
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLogIn formLogIn = new FormLogIn();
@@ -275,12 +310,14 @@ namespace EventManagementSystem
             formLogIn.Show();
         }
 
+        // Method to handle edit profile menu item click
         private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEditProfile formEditProfile = new FormEditProfile();
             formEditProfile.ShowDialog();
         }
 
+        // Methods to handle button hover events
         private void viewEvent_MouseHover(object sender, EventArgs e)
         {
             viewEvent.BackColor = Color.MediumPurple;
@@ -289,7 +326,7 @@ namespace EventManagementSystem
 
         private void viewEvent_MouseLeave_1(object sender, EventArgs e)
         {
-            viewEvent.BackColor = Color.Gainsboro; ;
+            viewEvent.BackColor = Color.Gainsboro;
             viewEvent.ForeColor = Color.Black;
         }
 
@@ -301,7 +338,7 @@ namespace EventManagementSystem
 
         private void register_MouseLeave_1(object sender, EventArgs e)
         {
-            register.BackColor = Color.Gainsboro; ;
+            register.BackColor = Color.Gainsboro;
             register.ForeColor = Color.Black;
         }
 
@@ -313,10 +350,8 @@ namespace EventManagementSystem
 
         private void View_MouseLeave(object sender, EventArgs e)
         {
-            View.BackColor = Color.Gainsboro; ;
+            View.BackColor = Color.Gainsboro;
             View.ForeColor = Color.Black;
         }
-
-   
     }
 }

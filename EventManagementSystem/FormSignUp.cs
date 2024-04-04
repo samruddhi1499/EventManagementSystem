@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,9 +14,12 @@ namespace EventManagementSystem
 {
     public partial class FormSignUp : Form
     {
+
         public FormSignUp()
         {
             InitializeComponent();
+            txtPassword.UseSystemPasswordChar = true;
+            txtConfrmPass.UseSystemPasswordChar = true;
         }
 
 
@@ -22,8 +27,8 @@ namespace EventManagementSystem
         private void Login_Click(object sender, EventArgs e)
         {
             FormLogIn formLogin = new FormLogIn();
-            this.Hide();
-            formLogin.ShowDialog();
+            this.Close();
+            formLogin.Show();
         }
 
         private void Signup_Click(object sender, EventArgs e)
@@ -32,31 +37,43 @@ namespace EventManagementSystem
             string pass = txtPassword.Text;
             string confirm = txtConfrmPass.Text;
 
-            if (username == "admin" && pass == "admin123" && confirm == "admin123")
+            if (pass != confirm)
             {
-                MessageBox.Show("Register Successful", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FormEventManipulation formEventManipulation = new FormEventManipulation();
-                this.Hide();
-                formEventManipulation.ShowDialog();
+                MessageBox.Show("Passwords do not match", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // Insert user into database
+            try
+            {
+                FormMain.mySqlConnection.Open();
+                string query = "INSERT INTO User (username, password) VALUES (@username, @password)";
+
+                MySqlCommand command = new MySqlCommand(query, FormMain.mySqlConnection);
+                command.Parameters.AddWithValue("@username", username);
+                command.Parameters.AddWithValue("@password", pass);
+                command.ExecuteNonQuery();
+
+                MessageBox.Show("Registration successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                FormLogIn formLogin = new FormLogIn();
+                this.Close();
+                formLogin.Show();
 
             }
-            else if ((username == "Sam" && pass == "sam123" && confirm == "sam123") || (username == "Saloni" && pass == "saloni123" && confirm == "saloni123") || (username == "Sruthi" && pass == "sruthi123" && confirm == "sruthi123"))
+            catch (Exception ex)
             {
-                MessageBox.Show("Register Successful", "Registration", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                EMAfterLogin eMAfterLogin = new EMAfterLogin();
-                this.Hide();
-                eMAfterLogin.ShowDialog();
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else
+
+            finally
             {
-                MessageBox.Show("Please Check Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                FormMain.mySqlConnection.Close();
             }
 
             txtuser.ResetText();
             txtPassword.ResetText();
             txtConfrmPass.ResetText();
 
-            this.Hide();
         }
 
         private void Login_MouseHover(object sender, EventArgs e)

@@ -11,16 +11,18 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySqlConnector;
 
-
 namespace EventManagementSystem
 {
     public partial class FormManipulateAttendee : Form
     {
+        // ArrayList to store attendee objects
         ArrayList attendeeList = FormAttendeeHome.attendeeObjectList;
+
         public FormManipulateAttendee()
         {
             InitializeComponent();
 
+            // Populate event names in the eventName ComboBox
             if (FormEventManipulation.eventObjectList.Count != 0)
             {
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
@@ -28,27 +30,30 @@ namespace EventManagementSystem
                     EventsClass eventClass = (EventsClass)val;
                     eventName.Items.Add(eventClass.EventName.ToString());
                 }
+                // Set the default selected event name
                 EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
                 eventName.Text = eventClass1.EventName.ToString();
             }
         }
 
-       
-
-        
-
-
+        // Event handler for eventName ComboBox selection change
         private void eventName_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Clear the attendeeInfo and username ComboBoxes
             attendeeInfo.Items.Clear();
             username.Items.Clear();
+
+            // Open MySQL connection
             FormMain.mySqlConnection.Open();
+            // SQL command to select all users
             string selectLoadSQL = "SELECT * FROM user";
             MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
-            
-                attendeeInfo.Items.Add("Attendee Name\tUsername\n");
 
+            // Add header to attendeeInfo
+            attendeeInfo.Items.Add("Attendee Name\tUsername\n");
+
+            // Loop through each attendee and check if they are registered for the selected event
             if (attendeeList.Count > 0)
             {
                 foreach (Attendees attendees in attendeeList)
@@ -58,39 +63,45 @@ namespace EventManagementSystem
                         if (eventName.SelectedItem.ToString().Equals(attendees.EventName) && !dataReader["username"].Equals(attendees.Username))
                         {
                             username.Items.Add(dataReader["username"]);
-
                         }
                         else if (!eventName.SelectedItem.ToString().Equals(attendees.EventName))
                         {
                             username.Items.Add(dataReader["username"]);
-
                         }
-
-
                     }
+                    // Display attendee information for the selected event
                     if (eventName.SelectedItem.ToString() == attendees.EventName.ToString())
                         attendeeInfo.Items.Add($"{attendees.AttendeeName}\t\t{attendees.Username}");
                 }
-            }else if (attendeeList.Count == 0)
+            }
+            // If there are no attendees registered for any event
+            else if (attendeeList.Count == 0)
             {
+                // Display all usernames
                 while (dataReader.Read())
                     username.Items.Add(dataReader["username"]);
             }
 
-
-
-
+            // Close MySQL connection
             FormMain.mySqlConnection.Close();
         }
 
+        // Event handler for adding an attendee to an event
         private void add_Click(object sender, EventArgs e)
         {
+            // Open MySQL connection
             FormMain.mySqlConnection.Open();
+
+            // SQL command to insert attendee registration into the database
             string selectLoadSQL = $"INSERT INTO attendeeregistration (event_name, username, attendee_name) VALUES (\"{eventName.SelectedItem.ToString()}\", \"{username.SelectedItem.ToString()}\", \"{attendeeName.Text}\")";
             MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
             mySqlCommand.ExecuteNonQuery();
+
+            // Create new Attendees object for the new attendee
             Attendees newAttendee = new Attendees(eventName.SelectedItem.ToString(), username.SelectedItem.ToString(), attendeeName.Text);
             attendeeList.Add(newAttendee);
+
+            // Update event capacity
             foreach (EventsClass val in FormEventManipulation.eventObjectList)
             {
                 if (eventName.SelectedItem.ToString() == val.EventName.ToString())
@@ -104,33 +115,37 @@ namespace EventManagementSystem
                         string updateCapacity = $"UPDATE event SET event_capacity = {val.EventCapacity - 1} WHERE event_name = \"{FormAttendeeHome.eventName}\"";
                         MySqlCommand mySqlUpdateCommand = new MySqlCommand(updateCapacity, FormMain.mySqlConnection);
                         mySqlUpdateCommand.ExecuteNonQuery();
-                        
-                       MessageBox.Show("Attendee Added ", "Adding Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        MessageBox.Show("Attendee Added ", "Adding Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         val.EventCapacity -= 1;
                         attendeeInfo.Items.Add($"{attendeeName.Text}\t\t{username.SelectedItem.ToString()}");
                     }
-
                 }
             }
-            FormMain.mySqlConnection.Close();
 
+            // Close MySQL connection
+            FormMain.mySqlConnection.Close();
         }
 
+        // Event handler for deleting an attendee from an event
         private void delete_Click(object sender, EventArgs e)
         {
+            // Variables to store attendee information
             int count = 0;
             bool deleted = false;
             string[] attendee = attendeeInfo.SelectedItem.ToString().Split('\t');
             string username = attendee[2];
             string attendeeName = attendee[0];
+
+            // Open MySQL connection
             FormMain.mySqlConnection.Open();
+
+            // Loop through each attendee
             foreach (Attendees attendees in attendeeList)
             {
-
+                // If attendee is found, delete from database and remove from attendeeList
                 if (attendees.AttendeeName.ToString() == attendeeName && attendees.EventName.ToString() == eventName.Text)
                 {
-                   
-                    
                     string deleteSQL = $"DELETE FROM attendeeregistration WHERE username = \"{username}\" AND event_name = \"{eventName.SelectedItem.ToString()}\"";
                     MySqlCommand mySqlCommand = new MySqlCommand(deleteSQL, FormMain.mySqlConnection);
                     mySqlCommand.ExecuteNonQuery();
@@ -141,10 +156,9 @@ namespace EventManagementSystem
                     break;
                 }
                 count++;
-
             }
-            
 
+            // If attendee is deleted successfully, update event capacity
             if (deleted)
             {
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
@@ -156,60 +170,64 @@ namespace EventManagementSystem
                         mySqlUpdateCommand.ExecuteNonQuery();
                         val.EventCapacity += 1;
                         MessageBox.Show("Attendee Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
                     }
                 }
-                
-
             }
             else
             {
                 MessageBox.Show("Attendee not present", "Invalid attendee", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            // Close MySQL connection
             FormMain.mySqlConnection.Close();
-            
         }
 
+        // Event handler for mouse hover effect on add button
         private void add_MouseHover(object sender, EventArgs e)
         {
             add.BackColor = Color.MediumPurple;
             add.ForeColor = Color.White;
         }
 
+        // Event handler for mouse leave effect on add button
         private void add_MouseLeave(object sender, EventArgs e)
         {
             add.BackColor = Color.Gainsboro; ;
             add.ForeColor = Color.Black;
         }
 
+        // Event handler for mouse hover effect on delete button
         private void delete_MouseHover(object sender, EventArgs e)
         {
             delete.BackColor = Color.MediumPurple;
             delete.ForeColor = Color.White;
         }
 
+        // Event handler for mouse leave effect on delete button
         private void delete_MouseLeave(object sender, EventArgs e)
         {
             delete.BackColor = Color.Gainsboro; ;
             delete.ForeColor = Color.Black;
         }
 
+        // Event handler for mouse hover effect on close button
         private void button1_MouseHover(object sender, EventArgs e)
         {
             button1.BackColor = Color.MediumPurple;
             button1.ForeColor = Color.White;
         }
 
+        // Event handler for mouse leave effect on close button
         private void button1_MouseLeave(object sender, EventArgs e)
         {
             button1.BackColor = Color.Gainsboro; ;
             button1.ForeColor = Color.Black;
         }
 
+        // Event handler for close button click event
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close(); // Close the form
         }
     }
 }

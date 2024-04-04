@@ -1,10 +1,10 @@
-﻿using System;
+﻿using MySqlConnector;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,57 +20,77 @@ namespace EventManagementSystem
         public FormLogIn()
         {
             InitializeComponent();
+            txtPass.UseSystemPasswordChar = true;
         }
 
         private void LogIn_Click(object sender, EventArgs e)
         {
-
-
             UserName = txtUser.Text;
             PasswordLogin = txtPass.Text;
-            
 
-            if (UserName == "admin" && PasswordLogin == "admin123")
+            try
             {
-                MessageBox.Show("LogIn Successful", "LogIn", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FormAdminHome formAdminHome = new FormAdminHome();
-                FormEditProfile formEditProfile = new FormEditProfile();
-                formEditProfile.getCredsForView(UserName, PasswordLogin);
-                this.Hide();
-                formAdminHome.Show();
+                FormMain.mySqlConnection.Open();
+
+                string queryLoginCheck = "SELECT * FROM User WHERE username = @username AND password = @password";
+                MySqlCommand command = new MySqlCommand(queryLoginCheck, FormMain.mySqlConnection);
+                command.Parameters.AddWithValue("@username", UserName);
+                command.Parameters.AddWithValue("@password", PasswordLogin);
+                MySqlDataReader reader = command.ExecuteReader();
+                string role = "";
+                while (reader.Read())
+                {
+
+                    MessageBox.Show("Login successful", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                    role = reader["role"] + "";
+
+
+                    if (role == "admin")
+                    {
+                        FormAdminHome formAdminHome = new FormAdminHome();
+                        FormEditProfile formEditProfile = new FormEditProfile();
+                        formEditProfile.getCredsForView(UserName, PasswordLogin);
+                        formAdminHome.Show();
+                        this.Hide();
+                    }
+                    else if (role == "EM")
+                    {
+
+                        EMAfterLogin eMAfterLogin = new EMAfterLogin();
+                        FormEventEMEdit formEventEMEdit = new FormEventEMEdit();
+                        FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+                        formEventEMEdit.getUserName(UserName);
+                        FormEditProfile formEditProfile = new FormEditProfile();
+                        formEditProfile.getCredsForView(UserName, PasswordLogin);
+                        formAttendeeHome.GetUsername(UserName);
+                        this.Hide();
+                        eMAfterLogin.Show();
+                    }
+                    else
+                    {
+                        FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+                        FormEditProfile formEditProfile = new FormEditProfile();
+                        formEditProfile.getCredsForView(UserName, PasswordLogin);
+                        formAttendeeHome.GetUsername(UserName);
+                        this.Hide();
+                        formAttendeeHome.Show();
+                    }
+                }
+                if (role == "")
+                    MessageBox.Show("Invalid username or password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
-            else if ((UserName == "Sam" && PasswordLogin == "sam123") || (UserName == "Saloni" && PasswordLogin == "saloni123") || (UserName == "Sruthi" && PasswordLogin == "sruthi123"))
+            catch (Exception ex)
             {
-                MessageBox.Show("Login Successful", "LogIn", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                EMAfterLogin eMAfterLogin = new EMAfterLogin();
-                FormEventEMEdit formEventEMEdit = new FormEventEMEdit();
-                formEventEMEdit.getUserName(UserName);
-                FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
-                FormEditProfile formEditProfile = new FormEditProfile();
-                formEditProfile.getCredsForView(UserName, PasswordLogin);
-                formAttendeeHome.GetUsername(UserName);
-                this.Hide();
-                eMAfterLogin.Show();
-
+                MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            else if ((UserName == "Attendee1" && PasswordLogin == "a123") || (UserName == "Attendee2" && PasswordLogin == "attendee_2_123"))
+            finally
             {
-                MessageBox.Show("Login Successful", "LogIn", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
-                FormEditProfile formEditProfile = new FormEditProfile();
-                formEditProfile.getCredsForView(UserName, PasswordLogin);
-                formAttendeeHome.GetUsername(UserName);
-                this.Hide();
-                formAttendeeHome.Show();
-            }
-            else
-            {
-                MessageBox.Show("Enter valid Username and Password", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                FormMain.mySqlConnection.Close();
             }
 
-            txtUser.ResetText();
-            txtPass.ResetText();
         }
 
         private void SignUp_Click(object sender, EventArgs e)

@@ -148,6 +148,7 @@
             // eventListEdit
             // 
             eventListEdit.BackColor = SystemColors.ControlLight;
+            eventListEdit.DropDownStyle = ComboBoxStyle.DropDownList;
             eventListEdit.FormattingEnabled = true;
             eventListEdit.Location = new Point(154, 39);
             eventListEdit.Name = "eventListEdit";
@@ -183,6 +184,7 @@
             // 
             eventManagerListEdit.BackColor = SystemColors.ControlLight;
             eventManagerListEdit.DisplayMember = "(none)";
+            eventManagerListEdit.DropDownStyle = ComboBoxStyle.DropDownList;
             eventManagerListEdit.FormattingEnabled = true;
             eventManagerListEdit.Location = new Point(154, 374);
             eventManagerListEdit.Name = "eventManagerListEdit";

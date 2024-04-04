@@ -30,20 +30,20 @@ namespace EventManagementSystem
             InitializeComponent();
         }
 
-        public void receiveData(string eventName, string eventDate, string eventTime, string eventCapacity, string eventLoc, string eventDes, string em)
+        public void receiveData(string eventName, string eventDate, string eventTime, int eventCapacity, string eventLoc, string eventDes, string em)
         {
 
-            int capacity = Convert.ToInt32(eventCapacity);
             
-            EventsClass eventsClass = new EventsClass(eventName, eventDate, eventTime, eventLoc, eventDes, capacity, em);
+            
+            EventsClass eventsClass = new EventsClass(eventName, eventDate, eventTime, eventLoc, eventDes, eventCapacity, em);
             eventObjectList.Add(eventsClass);
             string txt = eventName + " - " + em;
             eventNames.Add(txt);
 
         }
-        public void receiveDataEdit(string eventName, string eventDate, string eventTime, string eventCapacity, string eventLoc, string eventDes, string em)
+        public void receiveDataEdit(string eventName, string eventDate, string eventTime, int eventCapacity, string eventLoc, string eventDes, string em)
         {
-            int capacity = Convert.ToInt32(eventCapacity);
+            
 
             foreach (EventsClass val in eventObjectList)
             {
@@ -54,7 +54,7 @@ namespace EventManagementSystem
                     val.EventDate = eventDate;
                     val.EventDescription = eventDes;
                     val.EventLocation = eventLoc;
-                    val.EventCapacity = capacity;
+                    val.EventCapacity = eventCapacity;
                     break;
                 }
             }

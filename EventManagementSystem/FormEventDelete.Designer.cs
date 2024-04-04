@@ -79,6 +79,7 @@
             // eventListDelete
             // 
             eventListDelete.BackColor = SystemColors.ControlLight;
+            eventListDelete.DropDownStyle = ComboBoxStyle.DropDownList;
             eventListDelete.FormattingEnabled = true;
             eventListDelete.Location = new Point(210, 61);
             eventListDelete.Margin = new Padding(4, 3, 4, 3);
