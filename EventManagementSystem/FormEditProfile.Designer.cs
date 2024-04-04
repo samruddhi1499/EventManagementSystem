@@ -84,7 +84,7 @@
             txtViewPass.ReadOnly = true;
             txtViewPass.Size = new Size(161, 27);
             txtViewPass.TabIndex = 4;
-            txtViewPass.TextChanged += txtViewPass_TextChanged;
+            //txtViewPass.TextChanged += txtViewPass_TextChanged;
             // 
             // button1
             // 
