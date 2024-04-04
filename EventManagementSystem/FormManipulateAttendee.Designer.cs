@@ -37,6 +37,8 @@
             delete = new Button();
             attendeeInfo = new ListBox();
             button1 = new Button();
+            label3 = new Label();
+            username = new ComboBox();
             SuspendLayout();
             // 
             // label1
@@ -53,7 +55,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label2.Location = new Point(12, 132);
+            label2.Location = new Point(12, 103);
             label2.Name = "label2";
             label2.Size = new Size(131, 23);
             label2.TabIndex = 1;
@@ -72,7 +74,7 @@
             // attendeeName
             // 
             attendeeName.BackColor = SystemColors.ControlLight;
-            attendeeName.Location = new Point(169, 128);
+            attendeeName.Location = new Point(169, 103);
             attendeeName.Name = "attendeeName";
             attendeeName.Size = new Size(184, 27);
             attendeeName.TabIndex = 3;
@@ -129,12 +131,33 @@
             button1.MouseLeave += button1_MouseLeave;
             button1.MouseHover += button1_MouseHover;
             // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
+            label3.Location = new Point(12, 171);
+            label3.Name = "label3";
+            label3.Size = new Size(87, 23);
+            label3.TabIndex = 9;
+            label3.Text = "Username";
+            // 
+            // username
+            // 
+            username.BackColor = SystemColors.ControlLight;
+            username.FormattingEnabled = true;
+            username.Location = new Point(169, 171);
+            username.Name = "username";
+            username.Size = new Size(184, 28);
+            username.TabIndex = 10;
+            // 
             // FormManipulateAttendee
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(667, 401);
+            Controls.Add(username);
+            Controls.Add(label3);
             Controls.Add(button1);
             Controls.Add(attendeeInfo);
             Controls.Add(delete);
@@ -161,5 +184,7 @@
         private Button delete;
         private ListBox attendeeInfo;
         private Button button1;
+        private Label label3;
+        private ComboBox username;
     }
 }

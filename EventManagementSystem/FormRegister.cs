@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using MySqlConnector;
 
 namespace EventManagementSystem
 {
@@ -49,8 +50,8 @@ namespace EventManagementSystem
         private void register_Click(object sender, EventArgs e)
         {
 
-            FormAttendeeHome attendeeHome = new FormAttendeeHome();
-            validateFields(nameVal.Text, phoneval.Text, emailval.Text, student.Text);
+                validateFields(nameVal.Text, phoneval.Text, emailval.Text, student.Text);
+            
 
         }
 
@@ -59,6 +60,7 @@ namespace EventManagementSystem
         {
             Regex regexName = new Regex("^[a-zA-Z]+$");
             int phoneNumber;
+            
             if (nameVal.Text == "" || phoneval.Text == "" || emailval.Text == "" || student.Text == "")
             {
                 MessageBox.Show(" You need to fill all the fields", "Empty Field", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -77,19 +79,13 @@ namespace EventManagementSystem
             }
             else
             {
-                foreach (EventsClass val in FormEventManipulation.eventObjectList)
-                {
-                    if (FormAttendeeHome.eventName == val.EventName.ToString())
-                    {
-                        val.EventCapacity -= 1;
-                        MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        attendeeHome.addAttendee(FormAttendeeHome.eventName, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
-                        attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
-
-                        this.Close();
-                    }
-
-                }
+                attendeeHome.addAttendee(FormAttendeeHome.eventName, FormAttendeeHome.Username, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
+                attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
+                MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                
+                        
+                    
 
             }
         }

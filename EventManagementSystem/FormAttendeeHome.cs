@@ -12,6 +12,8 @@ using System.Windows.Forms;
 using System.Xml.Linq;
 using static System.Runtime.InteropServices.JavaScript.JSType;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using MySqlConnector;
+
 
 namespace EventManagementSystem
 {
@@ -21,18 +23,14 @@ namespace EventManagementSystem
 
         public static ArrayList eventNames = new ArrayList();
         public static ArrayList attendeeObjectList = new ArrayList();
+        public static string Username;
 
         public static string eventName;
         public static string registeredEventName;
-        BindingSource bs = new BindingSource();
 
         public FormAttendeeHome()
         {
             InitializeComponent();
-            //if (FormEventManipulation.eventObjectList.Count == 0)
-            //{
-            //    MessageBox.Show("No Events in List", "Invalid Operation", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //}
 
             if (FormEventManipulation.eventObjectList.Count != 0)
             {
@@ -45,41 +43,79 @@ namespace EventManagementSystem
                 listEvents.Text = eventClass1.EventName.ToString();
             }
 
-
-
         }
+
+        public void GetUsername(string username)
+        {
+            this.Username = username;
+        }
+
 
         public void getRegisteredEvent(string EventName)
         {
-
-
 
             registeredEventName = EventName;
 
         }
 
-        public void addAttendee(string eventName, string attendeeName, string phone, string emailid, string studentno)
+        public void addAttendee(string eventName, string username, string attendeeName, string phone, string emailid, string studentno)
         {
 
-            Attendees attendees = new Attendees(eventName, attendeeName, phone, emailid, studentno);
-            attendeeObjectList.Add(attendees);
+            try
+            {
+                FormMain.mySqlConnection.Open();
+                foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                {
+                    if (FormAttendeeHome.eventName == val.EventName.ToString())
+                    {
+                        
+                        string updateCapacity = $"UPDATE event SET event_capacity = {val.EventCapacity - 1} WHERE event_name = \"{FormAttendeeHome.eventName}\"";
+                        val.EventCapacity -= 1;
+                        MySqlCommand mySqlUpdateCommand = new MySqlCommand(updateCapacity, FormMain.mySqlConnection);
+                        mySqlUpdateCommand.ExecuteNonQuery();
+                        string insertCmd = $"INSERT INTO attendeeregistration VALUES (\"{eventName}\", \"{username}\", \"{attendeeName}\", \"{phone}\", \"{emailid}\", \"{studentno}\")";
+                        MySqlCommand mySqlInsertCommand = new MySqlCommand(insertCmd, FormMain.mySqlConnection);
+                        mySqlInsertCommand.ExecuteNonQuery();
+                        Attendees attendees = new Attendees(eventName, username, attendeeName, phone, emailid, studentno);
+                        attendeeObjectList.Add(attendees);
+                        eventNames.Add(eventName);
+                        
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                FormMain.mySqlConnection.Close();
+            }
 
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void LoadAllAttendee()
         {
+            FormMain.mySqlConnection.Open();
+            string selectLoadSQL = "SELECT * FROM attendeeregistration";
+            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            while (dataReader.Read())
+            {
+                string eventName = dataReader["event_name"] + "";
+                string username = dataReader["username"] + "";
+                string attendeeName = dataReader["attendee_name"] + "";
+                string attendeePhone = dataReader["attendee_phone"] + "";
+                string attendeeEmail = dataReader["attendee_email"] + "";
+                string attendeeStudentNo = dataReader["attendee_student_no"] + "";
 
+                Attendees attendees = new Attendees(eventName, username, attendeeName, attendeePhone, attendeeEmail, attendeeStudentNo);
+                attendeeObjectList.Add(attendees);
 
-        }
+            }
 
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void listEvents_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
+            FormMain.mySqlConnection.Close();
         }
 
 
@@ -91,7 +127,7 @@ namespace EventManagementSystem
                 MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
-            listEventDetails.Items.Clear();
+                listEventDetails.Items.Clear();
             {
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
@@ -116,14 +152,7 @@ namespace EventManagementSystem
 
         private void register_Click(object sender, EventArgs e)
         {
-            //foreach (EventsClass val in eventObjectList)
-            //{
-            //    if (listEvents.SelectedItem.ToString() == val.EventName.ToString())
-            //    {
-            //        eventName = val.EventName.ToString();
 
-            //    }
-            //}
             if (FormEventManipulation.eventObjectList.Count == 0)
             {
                 MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -131,6 +160,15 @@ namespace EventManagementSystem
             else
             {
                 eventName = listEvents.SelectedItem.ToString();
+
+                            bool registeredBefore = false;
+                            foreach (Attendees atn in attendeeObjectList)
+                            {
+                                if (eventName.Equals(atn.EventName) && Username.Equals(atn.Username))
+                                {
+                                    registeredBefore = true;
+                                }
+                            }
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
                     if (eventName == val.EventName.ToString())
@@ -138,6 +176,11 @@ namespace EventManagementSystem
                         if (val.EventCapacity == 0)
                         {
                             MessageBox.Show("Sorry, the event is fully booked.", "Capacity Full", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
+                        } else if (registeredBefore)
+                        {
+                            MessageBox.Show(" This user has already registered for this event", "Already registered", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
                         }
                         else
                         {
@@ -152,6 +195,7 @@ namespace EventManagementSystem
 
         private void View_Click(object sender, EventArgs e)
         {
+            
             if (eventNames.Count == 0)
             {
                 MessageBox.Show("No items in list", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -184,10 +228,17 @@ namespace EventManagementSystem
 
         private void FormAttendeeHome_Activated(object sender, EventArgs e)
         {
+            
             listEventDetails.Items.Clear();
-            if (registeredEventName != null)
+            regiterEvents.Items.Clear();
+
+            if (eventNames.Count == 0)
             {
-                eventNames.Add(eventName);
+                loadRegisteredEvents();
+
+            }
+            else if (eventNames.Count > 0)
+            {
                 foreach (string name in eventNames)
                 {
                     regiterEvents.Items.Add(name);
@@ -196,8 +247,25 @@ namespace EventManagementSystem
                 {
                     regiterEvents.Text = eventNames[0].ToString();
                 }
-            }
 
+            }
+        }
+
+        public void loadRegisteredEvents()
+        {
+            FormMain.mySqlConnection.Open();
+            string selectLoadSQL = "SELECT * FROM attendeeregistration WHERE username = \"Attendee1\"";
+            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
+            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+            if (dataReader.HasRows)
+            {
+                while (dataReader.Read())
+                {
+                    string eventName = dataReader["event_name"] + "";
+                    eventNames.Add(eventName);
+                }
+            }
+            FormMain.mySqlConnection.Close();
         }
 
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
@@ -248,5 +316,7 @@ namespace EventManagementSystem
             View.BackColor = Color.Gainsboro; ;
             View.ForeColor = Color.Black;
         }
+
+   
     }
 }

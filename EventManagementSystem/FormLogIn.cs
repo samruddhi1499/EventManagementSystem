@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -27,6 +28,7 @@ namespace EventManagementSystem
 
             UserName = txtUser.Text;
             PasswordLogin = txtPass.Text;
+            
 
             if (UserName == "admin" && PasswordLogin == "admin123")
             {
@@ -44,8 +46,10 @@ namespace EventManagementSystem
                 EMAfterLogin eMAfterLogin = new EMAfterLogin();
                 FormEventEMEdit formEventEMEdit = new FormEventEMEdit();
                 formEventEMEdit.getUserName(UserName);
+                FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
                 FormEditProfile formEditProfile = new FormEditProfile();
                 formEditProfile.getCredsForView(UserName, PasswordLogin);
+                formAttendeeHome.GetUsername(UserName);
                 this.Hide();
                 eMAfterLogin.Show();
 
@@ -56,6 +60,7 @@ namespace EventManagementSystem
                 FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
                 FormEditProfile formEditProfile = new FormEditProfile();
                 formEditProfile.getCredsForView(UserName, PasswordLogin);
+                formAttendeeHome.GetUsername(UserName);
                 this.Hide();
                 formAttendeeHome.Show();
             }

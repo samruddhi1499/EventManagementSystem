@@ -25,9 +25,7 @@ namespace EventManagementSystem
             //FormMain formMain = new FormMain();
             //this.Hide();
             //formMain.ShowDialog();
-            FormEventManipulation formEventManipulation = new FormEventManipulation();
-            formEventManipulation.LoadAll();
-            formEventManipulation.LoadAllEM();
+           
 
             FormLogIn formLogin = new FormLogIn();
 
@@ -74,10 +72,15 @@ namespace EventManagementSystem
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            MYDB = new Database("localhost", "root", "S@mmy123", "event_management", "3306");
+            MYDB = new Database("localhost", "root", "SruPan#3", "event_management", "3306");
             mySqlConnection = MYDB.Connect();
-            
-            
+            FormEventManipulation formEventManipulation = new FormEventManipulation();
+            FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+            formEventManipulation.LoadAll();
+            formEventManipulation.LoadAllEM();
+            formAttendeeHome.LoadAllAttendee();
+
+
 
 
         }

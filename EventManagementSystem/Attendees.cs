@@ -10,21 +10,24 @@ namespace EventManagementSystem
      class Attendees
     {
         public string EventName { get; set; }
+        public string Username { get; set; }
         public string AttendeeName { get; set; }
         public string Phone { get; set; }
         public string Emailid { get; set; }
         public string Studentno { get; set; }
 
-        public Attendees(string eventName, string attendeeName)
+        public Attendees(string eventName, string username, string attendeeName)
         {
 
             EventName = eventName;
+            Username = username;
             AttendeeName = attendeeName;
         }
-        public Attendees(string eventName, string attendeeName, string phone, string emailid, string studentno)
+        public Attendees(string eventName, string userName, string attendeeName, string phone, string emailid, string studentno)
         {
 
             EventName = eventName;
+            Username = userName;
             AttendeeName = attendeeName;
             Phone = phone;
             Emailid = emailid;

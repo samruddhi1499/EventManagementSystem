@@ -54,7 +54,6 @@ namespace EventManagementSystem
             listEvents.Name = "listEvents";
             listEvents.Size = new Size(203, 28);
             listEvents.TabIndex = 1;
-            listEvents.SelectedIndexChanged += listEvents_SelectedIndexChanged;
             // 
             // viewEvent
             // 
