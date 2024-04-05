@@ -27,6 +27,12 @@ namespace EventManagementSystem
         {
             UserName = txtUser.Text;
             PasswordLogin = txtPass.Text;
+            FormManipulateAttendee formManipulateAttendee = new FormManipulateAttendee();
+            FormEditProfile formEditProfile = new FormEditProfile();
+            FormAdminHome formAdminHome = new FormAdminHome();
+            EMAfterLogin eMAfterLogin = new EMAfterLogin();
+            FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+            FormEventEMEdit formEventEMEdit = new FormEventEMEdit();
 
             try
             {
@@ -49,9 +55,8 @@ namespace EventManagementSystem
 
                     if (role == "admin")
                     {
-                        
-                        FormAdminHome formAdminHome = new FormAdminHome();
-                        FormEditProfile formEditProfile = new FormEditProfile();
+                      
+                        formManipulateAttendee.GetRole(role);
                         formEditProfile.getCredsForView(UserName, PasswordLogin);
                         formAdminHome.Show();
                         this.Hide();
@@ -59,14 +64,11 @@ namespace EventManagementSystem
                     }
                     else if (role == "EM")
                     {
-                       
-                        EMAfterLogin eMAfterLogin = new EMAfterLogin();
-                        FormEventEMEdit formEventEMEdit = new FormEventEMEdit();
-                        FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+                   
                         formEventEMEdit.getUserName(UserName);
-                        FormEditProfile formEditProfile = new FormEditProfile();
                         formEditProfile.getCredsForView(UserName, PasswordLogin);
-                        formAttendeeHome.GetUsername(UserName);
+                        formAttendeeHome.GetUsernameRole(UserName, role);
+                        formManipulateAttendee.GetRole(role);
                         this.Hide();
                         eMAfterLogin.Show();
                         break;
@@ -74,10 +76,9 @@ namespace EventManagementSystem
                     else
                     {
                         FormMain.mySqlConnection.Close();
-                        FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
-                        FormEditProfile formEditProfile = new FormEditProfile();
+                 
                         formEditProfile.getCredsForView(UserName, PasswordLogin);
-                        formAttendeeHome.GetUsername(UserName);
+                        formAttendeeHome.GetUsernameRole(UserName,role);
                         this.Hide();
                         formAttendeeHome.Show();
                         break;

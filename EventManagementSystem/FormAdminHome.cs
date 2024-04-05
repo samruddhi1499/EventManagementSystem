@@ -42,8 +42,8 @@ namespace EventManagementSystem
         private void btnAttendeeMan_Click(object sender, EventArgs e)
         {
             FormManipulateAttendee formManipulateAttendee = new FormManipulateAttendee();
-
-            formManipulateAttendee.ShowDialog();
+            this.Close();
+            formManipulateAttendee.Show();
         }
 
         private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)

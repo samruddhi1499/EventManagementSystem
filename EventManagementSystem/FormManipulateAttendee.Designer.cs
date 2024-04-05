@@ -36,9 +36,14 @@
             add = new Button();
             delete = new Button();
             attendeeInfo = new ListBox();
-            button1 = new Button();
             label3 = new Label();
             username = new ComboBox();
+            menuStrip1 = new MenuStrip();
+            profileToolStripMenuItem = new ToolStripMenuItem();
+            viewProfileToolStripMenuItem = new ToolStripMenuItem();
+            logoutToolStripMenuItem = new ToolStripMenuItem();
+            homeToolStripMenuItem = new ToolStripMenuItem();
+            menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -83,7 +88,7 @@
             // 
             add.BackColor = SystemColors.ControlLight;
             add.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            add.Location = new Point(12, 235);
+            add.Location = new Point(35, 261);
             add.Name = "add";
             add.Size = new Size(108, 36);
             add.TabIndex = 4;
@@ -97,7 +102,7 @@
             // 
             delete.BackColor = SystemColors.ControlLight;
             delete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            delete.Location = new Point(143, 235);
+            delete.Location = new Point(234, 261);
             delete.Name = "delete";
             delete.Size = new Size(108, 36);
             delete.TabIndex = 5;
@@ -116,20 +121,6 @@
             attendeeInfo.Size = new Size(257, 324);
             attendeeInfo.TabIndex = 6;
             attendeeInfo.TabStop = false;
-            // 
-            // button1
-            // 
-            button1.BackColor = SystemColors.ControlLight;
-            button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            button1.Location = new Point(273, 235);
-            button1.Name = "button1";
-            button1.Size = new Size(108, 36);
-            button1.TabIndex = 8;
-            button1.Text = "Close";
-            button1.UseVisualStyleBackColor = false;
-            button1.Click += button1_Click;
-            button1.MouseLeave += button1_MouseLeave;
-            button1.MouseHover += button1_MouseHover;
             // 
             // label3
             // 
@@ -150,6 +141,44 @@
             username.Size = new Size(184, 28);
             username.TabIndex = 10;
             // 
+            // menuStrip1
+            // 
+            menuStrip1.ImageScalingSize = new Size(20, 20);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, homeToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 0);
+            menuStrip1.Name = "menuStrip1";
+            menuStrip1.Size = new Size(667, 28);
+            menuStrip1.TabIndex = 11;
+            menuStrip1.Text = "menuStrip1";
+            // 
+            // profileToolStripMenuItem
+            // 
+            profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { viewProfileToolStripMenuItem, logoutToolStripMenuItem });
+            profileToolStripMenuItem.Name = "profileToolStripMenuItem";
+            profileToolStripMenuItem.Size = new Size(66, 24);
+            profileToolStripMenuItem.Text = "Profile";
+            // 
+            // viewProfileToolStripMenuItem
+            // 
+            viewProfileToolStripMenuItem.Name = "viewProfileToolStripMenuItem";
+            viewProfileToolStripMenuItem.Size = new Size(171, 26);
+            viewProfileToolStripMenuItem.Text = "View Profile";
+            viewProfileToolStripMenuItem.Click += viewProfileToolStripMenuItem_Click;
+            // 
+            // logoutToolStripMenuItem
+            // 
+            logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
+            logoutToolStripMenuItem.Size = new Size(171, 26);
+            logoutToolStripMenuItem.Text = "Logout";
+            logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
+            // 
+            // homeToolStripMenuItem
+            // 
+            homeToolStripMenuItem.Name = "homeToolStripMenuItem";
+            homeToolStripMenuItem.Size = new Size(64, 24);
+            homeToolStripMenuItem.Text = "Home";
+            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
+            // 
             // FormManipulateAttendee
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -158,7 +187,6 @@
             ClientSize = new Size(667, 401);
             Controls.Add(username);
             Controls.Add(label3);
-            Controls.Add(button1);
             Controls.Add(attendeeInfo);
             Controls.Add(delete);
             Controls.Add(add);
@@ -166,10 +194,14 @@
             Controls.Add(eventName);
             Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
+            MainMenuStrip = menuStrip1;
             Name = "FormManipulateAttendee";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Attendee Manipulation";
+            menuStrip1.ResumeLayout(false);
+            menuStrip1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -183,8 +215,12 @@
         private Button add;
         private Button delete;
         private ListBox attendeeInfo;
-        private Button button1;
         private Label label3;
         private ComboBox username;
+        private MenuStrip menuStrip1;
+        private ToolStripMenuItem profileToolStripMenuItem;
+        private ToolStripMenuItem viewProfileToolStripMenuItem;
+        private ToolStripMenuItem logoutToolStripMenuItem;
+        private ToolStripMenuItem homeToolStripMenuItem;
     }
 }

@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySqlConnector;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace EventManagementSystem
 {
@@ -17,6 +18,8 @@ namespace EventManagementSystem
     {
         // ArrayList to store attendee objects
         ArrayList attendeeList = FormAttendeeHome.attendeeObjectList;
+       
+        public static string RoleHome;
 
         public FormManipulateAttendee()
         {
@@ -98,7 +101,7 @@ namespace EventManagementSystem
                 FormMain.mySqlConnection.Close();
             }
 
-            
+
         }
 
         // Event handler for adding an attendee to an event
@@ -154,7 +157,7 @@ namespace EventManagementSystem
                 // Close MySQL connection
                 FormMain.mySqlConnection.Close();
             }
-        
+
 
         }
 
@@ -242,23 +245,48 @@ namespace EventManagementSystem
         }
 
         // Event handler for mouse hover effect on close button
-        private void button1_MouseHover(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.MediumPurple;
-            button1.ForeColor = Color.White;
-        }
-
-        // Event handler for mouse leave effect on close button
-        private void button1_MouseLeave(object sender, EventArgs e)
-        {
-            button1.BackColor = Color.Gainsboro; ;
-            button1.ForeColor = Color.Black;
-        }
+       
 
         // Event handler for close button click event
         private void button1_Click(object sender, EventArgs e)
         {
             this.Close(); // Close the form
+        }
+
+        private void viewProfileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormEditProfile formEditProfile = new FormEditProfile();
+            formEditProfile.ShowDialog();
+        }
+
+        private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormLogIn formLogIn = new FormLogIn();
+            this.Close();
+            formLogIn.Show();
+        }
+
+        public void GetRole(string role)
+        {
+            RoleHome = role;
+
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(RoleHome == "admin")
+            {
+                FormAdminHome formAdminHome = new FormAdminHome();
+                formAdminHome.Show();
+                this.Close();
+            }
+            else if (RoleHome == "EM")
+            {
+                EMAfterLogin eMAfterLogin = new EMAfterLogin();
+                eMAfterLogin.Show();
+                this.Close();
+            }
+
         }
     }
 }

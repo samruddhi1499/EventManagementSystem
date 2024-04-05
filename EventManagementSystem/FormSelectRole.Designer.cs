@@ -52,10 +52,10 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            label1.Location = new Point(108, 179);
-            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Location = new Point(43, 75);
+            label1.Margin = new Padding(2, 0, 2, 0);
             label1.Name = "label1";
-            label1.Size = new Size(211, 55);
+            label1.Size = new Size(87, 23);
             label1.TabIndex = 0;
             label1.Text = "Username";
             // 
@@ -63,10 +63,10 @@
             // 
             roleDropDown.AutoSize = true;
             roleDropDown.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            roleDropDown.Location = new Point(183, 474);
-            roleDropDown.Margin = new Padding(5, 0, 5, 0);
+            roleDropDown.Location = new Point(73, 198);
+            roleDropDown.Margin = new Padding(2, 0, 2, 0);
             roleDropDown.Name = "roleDropDown";
-            roleDropDown.Size = new Size(106, 55);
+            roleDropDown.Size = new Size(44, 23);
             roleDropDown.TabIndex = 1;
             roleDropDown.Text = "Role";
             // 
@@ -74,10 +74,10 @@
             // 
             btnAdd.BackColor = SystemColors.ControlLight;
             btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnAdd.Location = new Point(28, 689);
-            btnAdd.Margin = new Padding(5);
+            btnAdd.Location = new Point(11, 287);
+            btnAdd.Margin = new Padding(2, 2, 2, 2);
             btnAdd.Name = "btnAdd";
-            btnAdd.Size = new Size(270, 86);
+            btnAdd.Size = new Size(108, 36);
             btnAdd.TabIndex = 2;
             btnAdd.Text = "Add";
             btnAdd.UseVisualStyleBackColor = false;
@@ -89,10 +89,10 @@
             // 
             btnEdit.BackColor = SystemColors.ControlLight;
             btnEdit.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnEdit.Location = new Point(28, 689);
-            btnEdit.Margin = new Padding(5);
+            btnEdit.Location = new Point(11, 287);
+            btnEdit.Margin = new Padding(2, 2, 2, 2);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(270, 86);
+            btnEdit.Size = new Size(108, 36);
             btnEdit.TabIndex = 3;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = false;
@@ -104,10 +104,10 @@
             // 
             btnDelete.BackColor = SystemColors.ControlLight;
             btnDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnDelete.Location = new Point(742, 689);
-            btnDelete.Margin = new Padding(5);
+            btnDelete.Location = new Point(297, 287);
+            btnDelete.Margin = new Padding(2, 2, 2, 2);
             btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(270, 86);
+            btnDelete.Size = new Size(108, 36);
             btnDelete.TabIndex = 4;
             btnDelete.Text = "Delete";
             btnDelete.UseVisualStyleBackColor = false;
@@ -118,10 +118,10 @@
             // name
             // 
             name.BackColor = SystemColors.ControlLight;
-            name.Location = new Point(442, 179);
-            name.Margin = new Padding(5);
+            name.Location = new Point(177, 75);
+            name.Margin = new Padding(2, 2, 2, 2);
             name.Name = "name";
-            name.Size = new Size(404, 55);
+            name.Size = new Size(164, 27);
             name.TabIndex = 5;
             // 
             // addList
@@ -129,11 +129,11 @@
             addList.BackColor = Color.Lavender;
             addList.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             addList.FormattingEnabled = true;
-            addList.ItemHeight = 55;
-            addList.Location = new Point(1115, 111);
-            addList.Margin = new Padding(5);
+            addList.ItemHeight = 23;
+            addList.Location = new Point(446, 46);
+            addList.Margin = new Padding(2, 2, 2, 2);
             addList.Name = "addList";
-            addList.Size = new Size(513, 664);
+            addList.Size = new Size(208, 257);
             addList.TabIndex = 7;
             addList.SelectedIndexChanged += addList_SelectedIndexChanged;
             addList.DoubleClick += addList_DoubleClick;
@@ -145,10 +145,10 @@
             selectRole.ForeColor = SystemColors.WindowText;
             selectRole.FormattingEnabled = true;
             selectRole.Items.AddRange(new object[] { "Admin", "EM", "Attendee" });
-            selectRole.Location = new Point(442, 476);
-            selectRole.Margin = new Padding(5);
+            selectRole.Location = new Point(177, 198);
+            selectRole.Margin = new Padding(2, 2, 2, 2);
             selectRole.Name = "selectRole";
-            selectRole.Size = new Size(404, 56);
+            selectRole.Size = new Size(164, 28);
             selectRole.TabIndex = 8;
             // 
             // menuStrip1
@@ -158,8 +158,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, homeToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Padding = new Padding(15, 5, 0, 5);
-            menuStrip1.Size = new Size(1664, 62);
+            menuStrip1.Size = new Size(666, 28);
             menuStrip1.TabIndex = 10;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -167,27 +166,27 @@
             // 
             profileToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { editProfileToolStripMenuItem, logoutToolStripMenuItem });
             profileToolStripMenuItem.Name = "profileToolStripMenuItem";
-            profileToolStripMenuItem.Size = new Size(150, 52);
+            profileToolStripMenuItem.Size = new Size(66, 24);
             profileToolStripMenuItem.Text = "Profile";
             // 
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(406, 66);
+            editProfileToolStripMenuItem.Size = new Size(171, 26);
             editProfileToolStripMenuItem.Text = "View Profile";
             editProfileToolStripMenuItem.Click += editProfileToolStripMenuItem_Click;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(406, 66);
+            logoutToolStripMenuItem.Size = new Size(171, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
             // homeToolStripMenuItem
             // 
             homeToolStripMenuItem.Name = "homeToolStripMenuItem";
-            homeToolStripMenuItem.Size = new Size(145, 52);
+            homeToolStripMenuItem.Size = new Size(64, 24);
             homeToolStripMenuItem.Text = "Home";
             homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
@@ -195,10 +194,10 @@
             // 
             btnClear.BackColor = SystemColors.ControlLight;
             btnClear.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnClear.Location = new Point(380, 689);
-            btnClear.Margin = new Padding(5);
+            btnClear.Location = new Point(154, 287);
+            btnClear.Margin = new Padding(2, 2, 2, 2);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(270, 86);
+            btnClear.Size = new Size(108, 36);
             btnClear.TabIndex = 11;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = false;
@@ -209,29 +208,27 @@
             // pass
             // 
             pass.BackColor = SystemColors.ControlLight;
-            pass.Location = new Point(442, 331);
-            pass.Margin = new Padding(8, 7, 8, 7);
+            pass.Location = new Point(177, 138);
             pass.Name = "pass";
-            pass.Size = new Size(404, 55);
+            pass.Size = new Size(164, 27);
             pass.TabIndex = 12;
             // 
             // label2
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label2.Location = new Point(105, 332);
-            label2.Margin = new Padding(8, 0, 8, 0);
+            label2.Location = new Point(42, 138);
             label2.Name = "label2";
-            label2.Size = new Size(193, 54);
+            label2.Size = new Size(82, 23);
             label2.TabIndex = 13;
             label2.Text = "Password";
             // 
             // FormSelectRole
             // 
-            AutoScaleDimensions = new SizeF(20F, 48F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
-            ClientSize = new Size(1664, 864);
+            ClientSize = new Size(666, 360);
             Controls.Add(label2);
             Controls.Add(pass);
             Controls.Add(btnClear);
@@ -246,7 +243,7 @@
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(5);
+            Margin = new Padding(2, 2, 2, 2);
             Name = "FormSelectRole";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "User Maipulation";

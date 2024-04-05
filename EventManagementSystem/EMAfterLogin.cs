@@ -19,7 +19,7 @@ namespace EventManagementSystem
 
         private void btnEMEditEvent_Click(object sender, EventArgs e)
         {
-            
+
             FormEventEMEdit formEMEventEdit = new FormEventEMEdit();
             formEMEventEdit.ShowDialog();
 
@@ -35,7 +35,8 @@ namespace EventManagementSystem
         private void btnAttendee_Click(object sender, EventArgs e)
         {
             FormManipulateAttendee formManipulateAttendee = new FormManipulateAttendee();
-            formManipulateAttendee.ShowDialog();
+            formManipulateAttendee.Show();
+            this.Close();
 
         }
 
@@ -67,6 +68,14 @@ namespace EventManagementSystem
         {
             btnAttendee.BackColor = Color.Gainsboro;
             btnAttendee.ForeColor = Color.Black;
+        }
+
+        private void registerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+            this.Close();
+            formAttendeeHome.Show();
+
         }
     }
 }

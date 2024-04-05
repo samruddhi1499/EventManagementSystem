@@ -40,6 +40,7 @@ namespace EventManagementSystem
             profileToolStripMenuItem = new ToolStripMenuItem();
             editProfileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
+            homeToolStripMenuItem = new ToolStripMenuItem();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -122,7 +123,7 @@ namespace EventManagementSystem
             // 
             menuStrip1.BackColor = SystemColors.MenuBar;
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, homeToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(800, 28);
@@ -149,6 +150,14 @@ namespace EventManagementSystem
             logoutToolStripMenuItem.Size = new Size(171, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
+            // 
+            // homeToolStripMenuItem
+            // 
+            homeToolStripMenuItem.Name = "homeToolStripMenuItem";
+            homeToolStripMenuItem.Size = new Size(64, 24);
+            homeToolStripMenuItem.Text = "Home";
+            homeToolStripMenuItem.Visible = false;
+            homeToolStripMenuItem.Click += homeToolStripMenuItem_Click;
             // 
             // label1
             // 
@@ -200,6 +209,7 @@ namespace EventManagementSystem
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Attendee Home";
             Activated += FormAttendeeHome_Activated;
+            Load += FormAttendeeHome_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -225,5 +235,6 @@ namespace EventManagementSystem
         private Label label1;
         private Label label2;
         private Label label3;
+        private ToolStripMenuItem homeToolStripMenuItem;
     }
 }

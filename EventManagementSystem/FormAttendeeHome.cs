@@ -22,6 +22,7 @@ namespace EventManagementSystem
         public static ArrayList eventNames = new ArrayList();
         public static ArrayList attendeeObjectList = new ArrayList();
         public static string Username;
+        public static string Role;
 
         public static string eventName;
         public static string registeredEventName;
@@ -45,9 +46,11 @@ namespace EventManagementSystem
         }
 
         // Method to set the username
-        public void GetUsername(string username)
+        public void GetUsernameRole(string username, string role)
         {
             Username = username;
+            Role = role;
+
         }
 
         // Method to set the registered event name
@@ -249,18 +252,18 @@ namespace EventManagementSystem
             regiterEvents.Items.Clear();
             // Load the registered event 
             eventNames.Clear();
-                loadRegisteredEvents();
-            
-                // Add the events 
-                foreach (string name in eventNames)
-                {
-                    regiterEvents.Items.Add(name);
-                }
-                if (eventNames.Count == 1)
-                {
-                    regiterEvents.Text = eventNames[0].ToString();
-                }
-            
+            loadRegisteredEvents();
+
+            // Add the events 
+            foreach (string name in eventNames)
+            {
+                regiterEvents.Items.Add(name);
+            }
+            if (eventNames.Count == 1)
+            {
+                regiterEvents.Text = eventNames[0].ToString();
+            }
+
         }
 
         // Method to load registered events from the database
@@ -348,6 +351,21 @@ namespace EventManagementSystem
         {
             View.BackColor = Color.Gainsboro;
             View.ForeColor = Color.Black;
+        }
+
+        private void homeToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            EMAfterLogin eMAfterLogin = new EMAfterLogin();
+            this.Close();
+            eMAfterLogin.Show();
+        }
+
+        private void FormAttendeeHome_Load(object sender, EventArgs e)
+        {
+            if(Role == "EM")
+            {
+                homeToolStripMenuItem.Visible = true;
+            }
         }
     }
 }

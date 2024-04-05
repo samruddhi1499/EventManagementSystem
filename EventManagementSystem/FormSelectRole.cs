@@ -44,10 +44,7 @@ namespace EventManagementSystem
                         MessageBox.Show("UserRole Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         setListValues(); // Refresh the list after deletion
                     }
-                    else
-                    {
-                        MessageBox.Show("Failed to delete user", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    
                 }
                 else
                 {
@@ -73,7 +70,18 @@ namespace EventManagementSystem
             {
                 string Delete_query = "DELETE FROM User WHERE username = @username ";
                 //  string Delete_query = "DELETE FROM user WHERE username = @username AND role = @role";
-
+                if (selectRole.Text == "EM")
+                {
+                    string selectQuery = $"Select event_name from event where event_manager = '{username}'";
+                    MySqlCommand mySqlCommand = new MySqlCommand(selectQuery, FormMain.mySqlConnection);
+                    MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+                    if(dataReader.HasRows)
+                    {
+                        MessageBox.Show("EM has assigned Event", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return false;
+                    }
+                    dataReader.Close();
+                }
                 using (MySqlCommand cmd = new MySqlCommand(Delete_query, FormMain.mySqlConnection))
                 {
                     cmd.Parameters.AddWithValue("@username", username);
@@ -84,7 +92,7 @@ namespace EventManagementSystem
             catch (Exception ex)
             {
                 Console.WriteLine("Error deleting user: " + ex.Message);
-                return false;
+                throw new Exception("Unable to delete user");
             }
         }
 

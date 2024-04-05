@@ -36,6 +36,7 @@
             editProfileToolStripMenuItem = new ToolStripMenuItem();
             logoutToolStripMenuItem = new ToolStripMenuItem();
             pictureBox1 = new PictureBox();
+            registerToolStripMenuItem = new ToolStripMenuItem();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
@@ -72,7 +73,7 @@
             // 
             menuStrip1.BackColor = SystemColors.MenuBar;
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem });
+            menuStrip1.Items.AddRange(new ToolStripItem[] { profileToolStripMenuItem, registerToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(591, 28);
@@ -89,14 +90,14 @@
             // editProfileToolStripMenuItem
             // 
             editProfileToolStripMenuItem.Name = "editProfileToolStripMenuItem";
-            editProfileToolStripMenuItem.Size = new Size(171, 26);
+            editProfileToolStripMenuItem.Size = new Size(224, 26);
             editProfileToolStripMenuItem.Text = "View Profile";
             editProfileToolStripMenuItem.Click += editProfileToolStripMenuItem_Click;
             // 
             // logoutToolStripMenuItem
             // 
             logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            logoutToolStripMenuItem.Size = new Size(171, 26);
+            logoutToolStripMenuItem.Size = new Size(224, 26);
             logoutToolStripMenuItem.Text = "Logout";
             logoutToolStripMenuItem.Click += logoutToolStripMenuItem_Click;
             // 
@@ -108,6 +109,13 @@
             pictureBox1.Size = new Size(307, 162);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
+            // 
+            // registerToolStripMenuItem
+            // 
+            registerToolStripMenuItem.Name = "registerToolStripMenuItem";
+            registerToolStripMenuItem.Size = new Size(77, 24);
+            registerToolStripMenuItem.Text = "Register";
+            registerToolStripMenuItem.Click += registerToolStripMenuItem_Click;
             // 
             // EMAfterLogin
             // 
@@ -140,5 +148,6 @@
         private ToolStripMenuItem editProfileToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private PictureBox pictureBox1;
+        private ToolStripMenuItem registerToolStripMenuItem;
     }
 }
