@@ -149,6 +149,7 @@ namespace EventManagementSystem
         public void LoadAllEM()
         {
             FormMain.mySqlConnection.Open();
+            eventManager.Clear();
             string selectLoadEMSQL = $"select username from user where role = 'EM'";
             MySqlCommand mySqlCommand = new MySqlCommand(selectLoadEMSQL, FormMain.mySqlConnection);
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();

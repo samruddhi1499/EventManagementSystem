@@ -33,6 +33,8 @@ namespace EventManagementSystem
 
         private void FormEventEdit_Load(object sender, EventArgs e)
         {
+            FormEventManipulation formEventManipulation = new FormEventManipulation();
+            formEventManipulation.LoadAllEM();
             foreach (string em in FormEventManipulation.eventManager)
             {
                 eventManagerListEdit.Items.Add(em);

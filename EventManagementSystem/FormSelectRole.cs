@@ -20,6 +20,8 @@ namespace EventManagementSystem
             btnAdd.Show();
             btnEdit.Hide();
             name.ResetText();
+            pass.Enabled = true;
+            label2.Enabled = true;
             selectRole.SelectedItem = null;
             currentItem = null;
         }
@@ -199,12 +201,10 @@ namespace EventManagementSystem
             try
             {
                 string Update_query = $"UPDATE user SET role = '{role}' WHERE username = '{username}'";
-                //string Update_query = $"UPDATE User SET role = '{role}' WHERE ";
 
                 using (MySqlCommand cmd = new MySqlCommand(Update_query, FormMain.mySqlConnection))
                 {
-                    //cmd.Parameters.AddWithValue("@role", role);
-                    //cmd.Parameters.AddWithValue("@username", username);
+
                     cmd.ExecuteNonQuery();
                 }
                 return true;
@@ -254,6 +254,7 @@ namespace EventManagementSystem
                 userObjectList.Add(addRoleClass);
             }
 
+            pass.Text = "";
             setListValues();
             SetControlsToDefault();
         }
@@ -343,7 +344,7 @@ namespace EventManagementSystem
                 string username = dataReader["username"] + "";
                 string password = dataReader["password"] + "";
                 string role = dataReader["role"] + "";
-                addRoleClass addRoleClass =  new addRoleClass(username,role,password);
+                addRoleClass addRoleClass = new addRoleClass(username, role, password);
                 userObjectList.Add(addRoleClass);
 
             }

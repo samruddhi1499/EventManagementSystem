@@ -29,6 +29,7 @@ namespace EventManagementSystem
 
         private void FormEventEMEdit_Load(object sender, EventArgs e)
         {
+
             ArrayList arrayList = FormEventManipulation.eventObjectList;
 
 

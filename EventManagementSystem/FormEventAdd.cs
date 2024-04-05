@@ -99,6 +99,8 @@ namespace EventManagementSystem
 
         private void FormEventAdd_Load(object sender, EventArgs e)
         {
+            FormEventManipulation formEventManipulation = new FormEventManipulation();
+            formEventManipulation.LoadAllEM();
             foreach(string em in FormEventManipulation.eventManager)
             {
                 emListAddEvent.Items.Add(em);
