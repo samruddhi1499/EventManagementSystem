@@ -53,9 +53,6 @@
             name.Size = new Size(56, 23);
             name.TabIndex = 0;
             name.Text = "Name";
-            // 
-            // phone
-            // 
             phone.AutoSize = true;
             phone.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
             phone.Location = new Point(419, 195);

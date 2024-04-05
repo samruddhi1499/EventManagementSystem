@@ -49,15 +49,17 @@ namespace EventManagementSystem
 
                     if (role == "admin")
                     {
+                        
                         FormAdminHome formAdminHome = new FormAdminHome();
                         FormEditProfile formEditProfile = new FormEditProfile();
                         formEditProfile.getCredsForView(UserName, PasswordLogin);
                         formAdminHome.Show();
                         this.Hide();
+                        break;
                     }
                     else if (role == "EM")
                     {
-
+                       
                         EMAfterLogin eMAfterLogin = new EMAfterLogin();
                         FormEventEMEdit formEventEMEdit = new FormEventEMEdit();
                         FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
@@ -67,15 +69,18 @@ namespace EventManagementSystem
                         formAttendeeHome.GetUsername(UserName);
                         this.Hide();
                         eMAfterLogin.Show();
+                        break;
                     }
                     else
                     {
+                        FormMain.mySqlConnection.Close();
                         FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
                         FormEditProfile formEditProfile = new FormEditProfile();
                         formEditProfile.getCredsForView(UserName, PasswordLogin);
                         formAttendeeHome.GetUsername(UserName);
                         this.Hide();
                         formAttendeeHome.Show();
+                        break;
                     }
                 }
                 if (role == "")

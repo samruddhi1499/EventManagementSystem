@@ -248,12 +248,9 @@ namespace EventManagementSystem
             listEventDetails.Items.Clear();
             regiterEvents.Items.Clear();
             // Load the registered event 
-            if (eventNames.Count == 0)
-            {
+            eventNames.Clear();
                 loadRegisteredEvents();
-            }
-            else if (eventNames.Count > 0)
-            {
+            
                 // Add the events 
                 foreach (string name in eventNames)
                 {
@@ -263,7 +260,7 @@ namespace EventManagementSystem
                 {
                     regiterEvents.Text = eventNames[0].ToString();
                 }
-            }
+            
         }
 
         // Method to load registered events from the database

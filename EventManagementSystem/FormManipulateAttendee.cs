@@ -129,7 +129,7 @@ namespace EventManagementSystem
                         }
                         else
                         {
-                            string updateCapacity = $"UPDATE event SET event_capacity = {val.EventCapacity - 1} WHERE event_name = \"{FormAttendeeHome.eventName}\"";
+                            string updateCapacity = $"UPDATE event SET event_capacity = {val.EventCapacity - 1} WHERE event_name = \"{eventName.SelectedItem.ToString()}\"";
                             MySqlCommand mySqlUpdateCommand = new MySqlCommand(updateCapacity, FormMain.mySqlConnection);
                             mySqlUpdateCommand.ExecuteNonQuery();
 
@@ -175,7 +175,7 @@ namespace EventManagementSystem
             foreach (Attendees attendees in attendeeList)
             {
                 // If attendee is found, delete from database and remove from attendeeList
-                if (attendees.AttendeeName.ToString() == attendeeName && attendees.EventName.ToString() == eventName.Text)
+                if (attendees.AttendeeName.ToString() == attendeeName && attendees.EventName.ToString() == eventName.SelectedItem.ToString())
                 {
                     string deleteSQL = $"DELETE FROM attendeeregistration WHERE username = \"{username}\" AND event_name = \"{eventName.SelectedItem.ToString()}\"";
                     MySqlCommand mySqlCommand = new MySqlCommand(deleteSQL, FormMain.mySqlConnection);
@@ -196,7 +196,7 @@ namespace EventManagementSystem
                 {
                     if (eventName.SelectedItem.ToString() == val.EventName.ToString())
                     {
-                        string updateCapacity = $"UPDATE event SET event_capacity = {val.EventCapacity + 1} WHERE event_name = \"{FormAttendeeHome.eventName}\"";
+                        string updateCapacity = $"UPDATE event SET event_capacity = {val.EventCapacity + 1} WHERE event_name = \"{eventName.SelectedItem.ToString()}\"";
                         MySqlCommand mySqlUpdateCommand = new MySqlCommand(updateCapacity, FormMain.mySqlConnection);
                         mySqlUpdateCommand.ExecuteNonQuery();
                         val.EventCapacity += 1;
