@@ -76,9 +76,11 @@ namespace EventManagementSystem
             mySqlConnection = MYDB.Connect();
             FormEventManipulation formEventManipulation = new FormEventManipulation();
             FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+            FormSelectRole formSelectRole = new FormSelectRole();
             formEventManipulation.LoadAll();
             formEventManipulation.LoadAllEM();
             formAttendeeHome.LoadAllAttendee();
+            formSelectRole.LoadAllUser();
 
 
 
