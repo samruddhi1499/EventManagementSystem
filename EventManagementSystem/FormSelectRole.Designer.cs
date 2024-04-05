@@ -43,6 +43,8 @@
             logoutToolStripMenuItem = new ToolStripMenuItem();
             homeToolStripMenuItem = new ToolStripMenuItem();
             btnClear = new Button();
+            pass = new TextBox();
+            label2 = new Label();
             menuStrip1.SuspendLayout();
             SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             // 
             roleDropDown.AutoSize = true;
             roleDropDown.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold);
-            roleDropDown.Location = new Point(62, 173);
+            roleDropDown.Location = new Point(43, 223);
             roleDropDown.Margin = new Padding(2, 0, 2, 0);
             roleDropDown.Name = "roleDropDown";
             roleDropDown.Size = new Size(44, 23);
@@ -72,7 +74,7 @@
             // 
             btnAdd.BackColor = SystemColors.ControlLight;
             btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnAdd.Location = new Point(11, 247);
+            btnAdd.Location = new Point(11, 287);
             btnAdd.Margin = new Padding(2);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(108, 36);
@@ -87,7 +89,7 @@
             // 
             btnEdit.BackColor = SystemColors.ControlLight;
             btnEdit.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnEdit.Location = new Point(11, 247);
+            btnEdit.Location = new Point(11, 287);
             btnEdit.Margin = new Padding(2);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(108, 36);
@@ -102,7 +104,7 @@
             // 
             btnDelete.BackColor = SystemColors.ControlLight;
             btnDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnDelete.Location = new Point(297, 247);
+            btnDelete.Location = new Point(297, 287);
             btnDelete.Margin = new Padding(2);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(108, 36);
@@ -143,7 +145,7 @@
             selectRole.ForeColor = SystemColors.WindowText;
             selectRole.FormattingEnabled = true;
             selectRole.Items.AddRange(new object[] { "Admin", "Event Manager", "Attendee" });
-            selectRole.Location = new Point(177, 165);
+            selectRole.Location = new Point(177, 223);
             selectRole.Margin = new Padding(2);
             selectRole.Name = "selectRole";
             selectRole.Size = new Size(164, 28);
@@ -192,7 +194,7 @@
             // 
             btnClear.BackColor = SystemColors.ControlLight;
             btnClear.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            btnClear.Location = new Point(153, 247);
+            btnClear.Location = new Point(152, 287);
             btnClear.Margin = new Padding(2);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(108, 36);
@@ -203,12 +205,30 @@
             btnClear.MouseLeave += btnClear_MouseLeave;
             btnClear.MouseHover += btnClear_MouseHover;
             // 
+            // pass
+            // 
+            pass.Location = new Point(198, 162);
+            pass.Name = "pass";
+            pass.Size = new Size(125, 27);
+            pass.TabIndex = 12;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(59, 159);
+            label2.Name = "label2";
+            label2.Size = new Size(70, 20);
+            label2.TabIndex = 13;
+            label2.Text = "Password";
+            // 
             // FormSelectRole
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ControlLightLight;
             ClientSize = new Size(640, 360);
+            Controls.Add(label2);
+            Controls.Add(pass);
             Controls.Add(btnClear);
             Controls.Add(selectRole);
             Controls.Add(addList);
@@ -225,6 +245,7 @@
             Name = "FormSelectRole";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "User Maipulation";
+            Load += FormSelectRole_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);
@@ -247,5 +268,7 @@
         private ToolStripMenuItem logoutToolStripMenuItem;
         private ToolStripMenuItem homeToolStripMenuItem;
         private Button btnClear;
+        private TextBox pass;
+        private Label label2;
     }
 }

@@ -10,14 +10,22 @@ namespace EventManagementSystem
     class addRoleClass
     {
         public string Name { get; set; }
+
+        public string Password { get; set; }
         public string Role { get; set; }
-
-
 
         public addRoleClass(string name, string role)
         {
             Name = name;
             Role = role;
+           
+        }
+
+        public addRoleClass(string name, string role, string pass)
+        {
+            Name = name;
+            Role = role;
+            Password = pass;
         }
 
         public String ToString()
@@ -26,6 +34,6 @@ namespace EventManagementSystem
             return s;
         }
 
-      
+
     }
 }
