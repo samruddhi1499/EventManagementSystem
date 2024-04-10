@@ -14,9 +14,11 @@ using Mysqlx.Crud;
 
 namespace EventManagementSystem
 {
+
     public partial class FormEventEMEdit : Form
     {
         public static string userName;
+        private int capacityCheck;
         public FormEventEMEdit()
         {
             InitializeComponent();
@@ -66,16 +68,24 @@ namespace EventManagementSystem
             {
                 FormMain.mySqlConnection.Open();
                 int capacity = Convert.ToInt32(txtCapaEMEdit.Text);
-                FormEventManipulation formEventManipulation = new FormEventManipulation();
+                if (capacityCheck > capacity)
+                {
+                    MessageBox.Show("Capacity should be greater than older capacity", "Check Value ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    FormEventManipulation formEventManipulation = new FormEventManipulation();
 
-                string eventName = eventListEMEdit.SelectedItem.ToString();
-                string sqlUpdateEMEvent = $"UPDATE event SET event_date = '{dateTimePickerEMEdit.Text}', event_time = '{timePickerEMEdit.Text}', event_loaction = '{txtLocEMEdit.Text}', event_capacity = {capacity}, event_description = '{txtDesEMEdit.Text}' WHERE event_name = '{eventName}'";
-                MySqlCommand cmd = new MySqlCommand(sqlUpdateEMEvent, FormMain.mySqlConnection);
-                cmd.ExecuteNonQuery();
-                formEventManipulation.receiveDataEdit(eventName, dateTimePickerEMEdit.Text, timePickerEMEdit.Text, capacity, txtLocEMEdit.Text, txtDesEMEdit.Text
-                    , userName);
-                MessageBox.Show("Event Edit Sucessfull", "Event Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                    string eventName = eventListEMEdit.SelectedItem.ToString();
+                    string sqlUpdateEMEvent = $"UPDATE event SET event_date = '{dateTimePickerEMEdit.Text}', event_time = '{timePickerEMEdit.Text}', event_loaction = '{txtLocEMEdit.Text}', event_capacity = {capacity}, event_description = '{txtDesEMEdit.Text}' WHERE event_name = '{eventName}'";
+                    MySqlCommand cmd = new MySqlCommand(sqlUpdateEMEvent, FormMain.mySqlConnection);
+                    cmd.ExecuteNonQuery();
+                    formEventManipulation.receiveDataEdit(eventName, dateTimePickerEMEdit.Text, timePickerEMEdit.Text, capacity, txtLocEMEdit.Text, txtDesEMEdit.Text
+                        , userName);
+                    MessageBox.Show("Event Edit Sucessfull", "Event Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
+                }
+                
 
             }
             catch (MySqlException msqlex)
@@ -111,6 +121,7 @@ namespace EventManagementSystem
                     dateTimePickerEMEdit.Text = array.EventDate.ToString();
                     timePickerEMEdit.Text = array.EventTime.ToString();
                     txtCapaEMEdit.Text = array.EventCapacity.ToString();
+                    capacityCheck = array.EventCapacity;
                     txtLocEMEdit.Text = array.EventLocation.ToString();
                     txtDesEMEdit.Text = array.EventDescription.ToString();
                     break;

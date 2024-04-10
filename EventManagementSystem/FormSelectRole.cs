@@ -1,5 +1,6 @@
 ﻿using MySqlConnector;
 using System.Collections;
+using System.Data;
 
 namespace EventManagementSystem
 {
@@ -81,6 +82,61 @@ namespace EventManagementSystem
                         return false;
                     }
                     dataReader.Close();
+                }
+                if(selectRole.Text == "Attendee" || selectRole.Text == "EM")
+                {
+                    string selectQuery = $"Select event_name from attendeeregistration where username = '{username}'";
+                    MySqlCommand mySqlCommand = new MySqlCommand(selectQuery, FormMain.mySqlConnection);
+                    MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+                    string event_name = "";
+                    if (dataReader.HasRows)
+                    {
+                        
+                        while (dataReader.Read())
+                        {
+                            if(dataReader.HasRows && event_name !="") 
+                            {
+                                event_name += ", ";
+                            }
+                            
+                            event_name += "'" + dataReader["event_name"] + "'";
+   
+                        }
+                      
+
+
+                    }
+                    dataReader.Close();
+                    if(event_name != "")
+                    {
+                        string deleteAttendee = $"DELETE FROM attendeeregistration WHERE username = \"{username}\" AND event_name in ({event_name})";
+                        MySqlCommand mySqlCommand1 = new MySqlCommand(deleteAttendee, FormMain.mySqlConnection);
+                        mySqlCommand1.ExecuteNonQuery();
+                        FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
+                        formAttendeeHome.LoadAllAttendee();
+                        if (FormMain.mySqlConnection.State != ConnectionState.Open)
+                            FormMain.mySqlConnection.Open();
+                        string[] events = event_name.Split(",");
+                        foreach(string s in events)
+                        {
+                            foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                            {
+                                string item = "\'" + val.EventName.ToString() + "\'";
+                                if (s == item)
+                                {
+                                    
+                                    string updateCapacity = $"UPDATE event SET event_capacity =  {val.EventCapacity + 1} WHERE event_name = {s}";
+                                    MySqlCommand mySqlUpdateCommand = new MySqlCommand(updateCapacity, FormMain.mySqlConnection);
+                                    mySqlUpdateCommand.ExecuteNonQuery();
+                                    val.EventCapacity += 1;
+                                }
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    
                 }
                 using (MySqlCommand cmd = new MySqlCommand(Delete_query, FormMain.mySqlConnection))
                 {

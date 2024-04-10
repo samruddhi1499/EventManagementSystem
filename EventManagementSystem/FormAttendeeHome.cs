@@ -101,7 +101,9 @@ namespace EventManagementSystem
             try
             {
                 // Get all attendees from the database
-                FormMain.mySqlConnection.Open();
+                if(FormMain.mySqlConnection.State != ConnectionState.Open)
+                    FormMain.mySqlConnection.Open();
+                attendeeObjectList.Clear();
                 string selectLoadSQL = "SELECT * FROM attendeeregistration";
                 MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
                 MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
