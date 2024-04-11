@@ -86,13 +86,16 @@ namespace EventManagementSystem
                     {
                         while (dataReader.Read())
                         {
-                            if (eventName.SelectedItem.ToString().Equals(attendees.EventName) && !dataReader["username"].Equals(attendees.Username))
+                            if (dataReader["username"].ToString() != "admin")
                             {
-                                username.Items.Add(dataReader["username"]);
-                            }
-                            else if (!eventName.SelectedItem.ToString().Equals(attendees.EventName))
-                            {
-                                username.Items.Add(dataReader["username"]);
+                                if (eventName.SelectedItem.ToString().Equals(attendees.EventName) && !dataReader["username"].Equals(attendees.Username))
+                                {
+                                    username.Items.Add(dataReader["username"]);
+                                }
+                                else if (!eventName.SelectedItem.ToString().Equals(attendees.EventName))
+                                {
+                                    username.Items.Add(dataReader["username"]);
+                                }
                             }
                         }
                         // Display attendee information for the selected event

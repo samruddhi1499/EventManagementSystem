@@ -46,7 +46,7 @@ namespace EventManagementSystem
                         MessageBox.Show("UserRole Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         setListValues(); // Refresh the list after deletion
                     }
-                    
+
                 }
                 else
                 {
@@ -77,14 +77,14 @@ namespace EventManagementSystem
                     string selectQuery = $"Select event_name from event where event_manager = '{username}'";
                     MySqlCommand mySqlCommand = new MySqlCommand(selectQuery, FormMain.mySqlConnection);
                     MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
-                    if(dataReader.HasRows)
+                    if (dataReader.HasRows)
                     {
                         MessageBox.Show("EM has assigned Event", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return false;
                     }
                     dataReader.Close();
                 }
-                if(selectRole.Text == "Attendee" || selectRole.Text == "EM")
+                if (selectRole.Text == "Attendee" || selectRole.Text == "EM")
                 {
                     string selectQuery = $"Select event_name from attendeeregistration where username = '{username}'";
                     MySqlCommand mySqlCommand = new MySqlCommand(selectQuery, FormMain.mySqlConnection);
@@ -92,23 +92,23 @@ namespace EventManagementSystem
                     string event_name = "";
                     if (dataReader.HasRows)
                     {
-                        
+
                         while (dataReader.Read())
                         {
-                            if(dataReader.HasRows && event_name !="") 
+                            if (dataReader.HasRows && event_name != "")
                             {
                                 event_name += ", ";
                             }
-                            
+
                             event_name += "'" + dataReader["event_name"] + "'";
-   
+
                         }
-                      
+
 
 
                     }
                     dataReader.Close();
-                    if(event_name != "")
+                    if (event_name != "")
                     {
                         string deleteAttendee = $"DELETE FROM attendeeregistration WHERE username = \"{username}\" AND event_name in ({event_name})";
                         MySqlCommand mySqlCommand1 = new MySqlCommand(deleteAttendee, FormMain.mySqlConnection);
@@ -118,26 +118,26 @@ namespace EventManagementSystem
                         if (FormMain.mySqlConnection.State != ConnectionState.Open)
                             FormMain.mySqlConnection.Open();
                         string[] events = event_name.Split(",");
-                        foreach(string s in events)
+                        foreach (string s in events)
                         {
                             foreach (EventsClass val in FormEventManipulation.eventObjectList)
                             {
                                 string item = "\'" + val.EventName.ToString() + "\'";
                                 if (s == item)
                                 {
-                                    
+
                                     string updateCapacity = $"UPDATE event SET event_capacity =  {val.EventCapacity + 1} WHERE event_name = {s}";
                                     MySqlCommand mySqlUpdateCommand = new MySqlCommand(updateCapacity, FormMain.mySqlConnection);
                                     mySqlUpdateCommand.ExecuteNonQuery();
                                     val.EventCapacity += 1;
                                 }
                             }
-                            
+
                         }
-                        
+
                     }
-                    
-                    
+
+
                 }
                 using (MySqlCommand cmd = new MySqlCommand(Delete_query, FormMain.mySqlConnection))
                 {
@@ -408,15 +408,19 @@ namespace EventManagementSystem
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
             while (dataReader.Read())
             {
-                string username = dataReader["username"] + "";
-                string password = dataReader["password"] + "";
-                string role = dataReader["role"] + "";
-                addRoleClass addRoleClass = new addRoleClass(username, role, password);
-                userObjectList.Add(addRoleClass);
+                if (dataReader["username"].ToString() != "admin")
+                {
+                    string username = dataReader["username"] + "";
+                    string password = dataReader["password"] + "";
+                    string role = dataReader["role"] + "";
+                    addRoleClass addRoleClass = new addRoleClass(username, role, password);
+                    userObjectList.Add(addRoleClass);
 
+                }
             }
             setListValues();
             FormMain.mySqlConnection.Close();
         }
+
     }
 }

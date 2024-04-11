@@ -75,7 +75,7 @@
             btnAdd.BackColor = SystemColors.ControlLight;
             btnAdd.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnAdd.Location = new Point(11, 287);
-            btnAdd.Margin = new Padding(2, 2, 2, 2);
+            btnAdd.Margin = new Padding(2);
             btnAdd.Name = "btnAdd";
             btnAdd.Size = new Size(108, 36);
             btnAdd.TabIndex = 2;
@@ -90,7 +90,7 @@
             btnEdit.BackColor = SystemColors.ControlLight;
             btnEdit.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnEdit.Location = new Point(11, 287);
-            btnEdit.Margin = new Padding(2, 2, 2, 2);
+            btnEdit.Margin = new Padding(2);
             btnEdit.Name = "btnEdit";
             btnEdit.Size = new Size(108, 36);
             btnEdit.TabIndex = 3;
@@ -105,7 +105,7 @@
             btnDelete.BackColor = SystemColors.ControlLight;
             btnDelete.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnDelete.Location = new Point(297, 287);
-            btnDelete.Margin = new Padding(2, 2, 2, 2);
+            btnDelete.Margin = new Padding(2);
             btnDelete.Name = "btnDelete";
             btnDelete.Size = new Size(108, 36);
             btnDelete.TabIndex = 4;
@@ -119,7 +119,7 @@
             // 
             name.BackColor = SystemColors.ControlLight;
             name.Location = new Point(177, 75);
-            name.Margin = new Padding(2, 2, 2, 2);
+            name.Margin = new Padding(2);
             name.Name = "name";
             name.Size = new Size(164, 27);
             name.TabIndex = 5;
@@ -131,7 +131,7 @@
             addList.FormattingEnabled = true;
             addList.ItemHeight = 23;
             addList.Location = new Point(446, 46);
-            addList.Margin = new Padding(2, 2, 2, 2);
+            addList.Margin = new Padding(2);
             addList.Name = "addList";
             addList.Size = new Size(208, 257);
             addList.TabIndex = 7;
@@ -146,7 +146,7 @@
             selectRole.FormattingEnabled = true;
             selectRole.Items.AddRange(new object[] { "Admin", "EM", "Attendee" });
             selectRole.Location = new Point(177, 198);
-            selectRole.Margin = new Padding(2, 2, 2, 2);
+            selectRole.Margin = new Padding(2);
             selectRole.Name = "selectRole";
             selectRole.Size = new Size(164, 28);
             selectRole.TabIndex = 8;
@@ -195,7 +195,7 @@
             btnClear.BackColor = SystemColors.ControlLight;
             btnClear.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
             btnClear.Location = new Point(154, 287);
-            btnClear.Margin = new Padding(2, 2, 2, 2);
+            btnClear.Margin = new Padding(2);
             btnClear.Name = "btnClear";
             btnClear.Size = new Size(108, 36);
             btnClear.TabIndex = 11;
@@ -243,7 +243,7 @@
             Controls.Add(menuStrip1);
             Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
-            Margin = new Padding(2, 2, 2, 2);
+            Margin = new Padding(2);
             Name = "FormSelectRole";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "User Maipulation";
