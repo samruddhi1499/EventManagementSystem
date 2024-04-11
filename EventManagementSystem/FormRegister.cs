@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,7 @@ using System.Text.RegularExpressions; // Import for regular expressions
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySqlConnector;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace EventManagementSystem
 {
@@ -76,11 +78,43 @@ namespace EventManagementSystem
             }
             else
             {
-                // Add attendee and register for the event
-                attendeeHome.addAttendee(FormAttendeeHome.eventName, FormAttendeeHome.Username, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
-                attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
-                MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.Close();
+                try
+                {
+                    // Add attendee and register for the event
+                    string selectQuery = $"Select event_name from event where event_manager = '{FormAttendeeHome.Username}'";
+                    // Open MySQL connection
+                    FormMain.mySqlConnection.Open();
+                    MySqlCommand mySqlCommand = new MySqlCommand(selectQuery, FormMain.mySqlConnection);
+                    MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+                    if (dataReader.HasRows)
+                    {
+                        MessageBox.Show("EM cannot register", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                    else
+                    {
+
+                        attendeeHome.addAttendee(FormAttendeeHome.eventName, FormAttendeeHome.Username, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
+                        attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
+                        MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Close();
+                    }
+                    dataReader.Close();
+                }
+                catch(MySqlException e)
+                {
+                    MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    FormMain.mySqlConnection.Close();
+                }
+
+
+
             }
         }
 

@@ -56,7 +56,7 @@ namespace EventManagementSystem
                     if (role == "admin")
                     {
                       
-                        formManipulateAttendee.GetRole(role);
+                        formManipulateAttendee.GetUserNameRole(UserName, role);
                         formEditProfile.getCredsForView(UserName, PasswordLogin);
                         formAdminHome.Show();
                         this.Hide();
@@ -68,7 +68,7 @@ namespace EventManagementSystem
                         formEventEMEdit.getUserName(UserName);
                         formEditProfile.getCredsForView(UserName, PasswordLogin);
                         formAttendeeHome.GetUsernameRole(UserName, role);
-                        formManipulateAttendee.GetRole(role);
+                        formManipulateAttendee.GetUserNameRole(UserName, role);
                         this.Hide();
                         eMAfterLogin.Show();
                         break;

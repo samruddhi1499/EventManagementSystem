@@ -121,46 +121,77 @@ namespace EventManagementSystem
         }
         public void LoadAll()
         {
-            FormMain.mySqlConnection.Open();
-            string selectLoadSQL = "select * from event";
-            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
-            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
-            while (dataReader.Read())
+            try
             {
-                string eventName = dataReader["event_name"] + "";
-                string eventDate = dataReader["event_date"] + "";
-                string eventTime = dataReader["event_time"] + "";
-                string eventLocation = dataReader["event_loaction"] + "";
-                string eventDes = dataReader["event_description"] + "";
-                string em = dataReader["event_manager"] + "";
-                int capacity = Convert.ToInt32(dataReader["event_capacity"]);
+                FormMain.mySqlConnection.Open();
+                string selectLoadSQL = "select * from event";
+                MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
+                MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+                while (dataReader.Read())
+                {
+                    string eventName = dataReader["event_name"] + "";
+                    string eventDate = dataReader["event_date"] + "";
+                    string eventTime = dataReader["event_time"] + "";
+                    string eventLocation = dataReader["event_loaction"] + "";
+                    string eventDes = dataReader["event_description"] + "";
+                    string em = dataReader["event_manager"] + "";
+                    int capacity = Convert.ToInt32(dataReader["event_capacity"]);
 
-                EventsClass events = new EventsClass(eventName, eventDate, eventTime, eventLocation, eventDes, capacity, em);
-                eventObjectList.Add(events);
+                    EventsClass events = new EventsClass(eventName, eventDate, eventTime, eventLocation, eventDes, capacity, em);
+                    eventObjectList.Add(events);
 
+                }
+                foreach (EventsClass array in eventObjectList)
+                {
+                    EventsClass eventClass = (EventsClass)array;
+                    eventNames.Add(eventClass.EventName + " - " + eventClass.EventEM);
+                }
+                
             }
-            foreach (EventsClass array in eventObjectList)
-            {
-                EventsClass eventClass = (EventsClass)array;
-                eventNames.Add(eventClass.EventName + " - " + eventClass.EventEM);
+            catch(MySqlException e) {
+
+                MessageBox.Show("Database Error", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            FormMain.mySqlConnection.Close();
+            catch (Exception ex) {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally {
+                FormMain.mySqlConnection.Close();
+            }
+            
         }
         public void LoadAllEM()
         {
-            FormMain.mySqlConnection.Open();
-            eventManager.Clear();
-            string selectLoadEMSQL = $"select username from user where role = 'EM'";
-            MySqlCommand mySqlCommand = new MySqlCommand(selectLoadEMSQL, FormMain.mySqlConnection);
-            MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
-            while (dataReader.Read())
+            try
             {
-                
-                string eventEM = dataReader["username"] + "";
-                eventManager.Add(eventEM);
+                FormMain.mySqlConnection.Open();
+                eventManager.Clear();
+                string selectLoadEMSQL = $"select username from user where role = 'EM'";
+                MySqlCommand mySqlCommand = new MySqlCommand(selectLoadEMSQL, FormMain.mySqlConnection);
+                MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
+                while (dataReader.Read())
+                {
 
+                    string eventEM = dataReader["username"] + "";
+                    eventManager.Add(eventEM);
+
+                }
+                
             }
-            FormMain.mySqlConnection.Close();
+            catch (MySqlException e)
+            {
+
+                MessageBox.Show("Database Error", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                FormMain.mySqlConnection.Close();
+            }
+            
         }
 
         private void FormEventManipulation_Activated(object sender, EventArgs e)

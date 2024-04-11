@@ -200,6 +200,7 @@
             Name = "FormManipulateAttendee";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Attendee Manipulation";
+            Load += FormManipulateAttendee_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
             ResumeLayout(false);

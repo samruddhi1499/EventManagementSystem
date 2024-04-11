@@ -18,8 +18,9 @@ namespace EventManagementSystem
     {
         // ArrayList to store attendee objects
         ArrayList attendeeList = FormAttendeeHome.attendeeObjectList;
-       
+
         public static string RoleHome;
+        public static string UserHome;
 
         public FormManipulateAttendee()
         {
@@ -28,14 +29,34 @@ namespace EventManagementSystem
             // Populate event names in the eventName ComboBox
             if (FormEventManipulation.eventObjectList.Count != 0)
             {
-                foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                if (RoleHome == "EM")
                 {
-                    EventsClass eventClass = (EventsClass)val;
-                    eventName.Items.Add(eventClass.EventName.ToString());
+                    int count = 0;
+                    foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                    {
+                        EventsClass eventClass = (EventsClass)val;
+                        if (eventClass.EventEM == UserHome)
+                        {
+                            eventName.Items.Add(eventClass.EventName.ToString());
+                            eventName.Text = eventClass.EventName.ToString();
+                        }
+                            
+
+                    }
+                 
                 }
-                // Set the default selected event name
-                EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
-                eventName.Text = eventClass1.EventName.ToString();
+                else
+                {
+                    foreach (EventsClass val in FormEventManipulation.eventObjectList)
+                    {
+                        EventsClass eventClass = (EventsClass)val;
+                        eventName.Items.Add(eventClass.EventName.ToString());
+                    }
+                    // Set the default selected event name
+                    EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
+                    eventName.Text = eventClass1.EventName.ToString();
+                }
+
             }
         }
 
@@ -76,7 +97,7 @@ namespace EventManagementSystem
                         }
                         // Display attendee information for the selected event
                         if (eventName.SelectedItem.ToString() == attendees.EventName.ToString())
-                            attendeeInfo.Items.Add($"{attendees.AttendeeName}\t\t{attendees.Username}");
+                            attendeeInfo.Items.Add($"{attendees.AttendeeName}\t{attendees.Username}");
                     }
                 }
                 // If there are no attendees registered for any event
@@ -138,7 +159,7 @@ namespace EventManagementSystem
 
                             MessageBox.Show("Attendee Added ", "Adding Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             val.EventCapacity -= 1;
-                            attendeeInfo.Items.Add($"{attendeeName.Text}\t\t{username.SelectedItem.ToString()}");
+                            attendeeInfo.Items.Add($"{attendeeName.Text}\t{username.SelectedItem.ToString()}");
                         }
                     }
                 }
@@ -185,7 +206,7 @@ namespace EventManagementSystem
                     mySqlCommand.ExecuteNonQuery();
                     deleted = true;
                     attendeeList.RemoveAt(count);
-                    attendeeInfo.Items.Remove($"{attendeeName}\t\t{username}");
+                    attendeeInfo.Items.Remove($"{attendeeName}\t{username}");
                     deleted = true;
                     break;
                 }
@@ -245,7 +266,7 @@ namespace EventManagementSystem
         }
 
         // Event handler for mouse hover effect on close button
-       
+
 
         // Event handler for close button click event
         private void button1_Click(object sender, EventArgs e)
@@ -266,15 +287,16 @@ namespace EventManagementSystem
             formLogIn.Show();
         }
 
-        public void GetRole(string role)
+        public void GetUserNameRole(string name, string role)
         {
+            UserHome = name;
             RoleHome = role;
 
         }
 
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if(RoleHome == "admin")
+            if (RoleHome == "admin")
             {
                 FormAdminHome formAdminHome = new FormAdminHome();
                 formAdminHome.Show();
@@ -286,6 +308,11 @@ namespace EventManagementSystem
                 eMAfterLogin.Show();
                 this.Close();
             }
+
+        }
+
+        private void FormManipulateAttendee_Load(object sender, EventArgs e)
+        {
 
         }
     }

@@ -22,6 +22,7 @@ namespace EventManagementSystem
             btnEdit.Hide();
             name.ResetText();
             pass.Enabled = true;
+            pass.Clear();
             label2.Enabled = true;
             selectRole.SelectedItem = null;
             currentItem = null;
@@ -393,13 +394,15 @@ namespace EventManagementSystem
 
         private void FormSelectRole_Load(object sender, EventArgs e)
         {
-            setListValues();
+            //setListValues();
+            LoadAllUser();
 
         }
 
         public void LoadAllUser()
         {
             FormMain.mySqlConnection.Open();
+            userObjectList.Clear();
             string selectLoadSQL = "select * from user";
             MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
             MySqlDataReader dataReader = mySqlCommand.ExecuteReader();

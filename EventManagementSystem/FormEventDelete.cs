@@ -36,10 +36,16 @@ namespace EventManagementSystem
                 FormEventManipulation formEventManipulation = new FormEventManipulation();
                 string eventName = eventListDelete.SelectedItem.ToString();
                 string sqlDeleteEvent = $"DELETE FROM event WHERE event_name = '{eventName}'";
-               
+
+                string regDelete = $"DELETE FROM attendeeregistration WHERE event_name = '{eventName}'";
+                MySqlCommand cmd1 = new MySqlCommand(regDelete, FormMain.mySqlConnection);
+                cmd1.ExecuteNonQuery();
+
                 MySqlCommand cmd = new MySqlCommand(sqlDeleteEvent, FormMain.mySqlConnection);
                 cmd.ExecuteNonQuery();
                 formEventManipulation.receiveDataDelete(eventName);
+
+                
                 MessageBox.Show("Event Deletion Sucessfull", "Event Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
 
