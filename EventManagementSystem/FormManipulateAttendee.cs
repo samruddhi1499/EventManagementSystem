@@ -17,7 +17,7 @@ namespace EventManagementSystem
     public partial class FormManipulateAttendee : Form
     {
         // ArrayList to store attendee objects
-        ArrayList attendeeList = FormAttendeeHome.attendeeObjectList;
+        ArrayList attendeeList= FormAttendeeHome.attendeeObjectList;
 
         public static string RoleHome;
         public static string UserHome;
@@ -68,7 +68,7 @@ namespace EventManagementSystem
                 // Clear the attendeeInfo and username ComboBoxes
                 attendeeInfo.Items.Clear();
                 username.Items.Clear();
-
+                attendeeList= FormAttendeeHome.attendeeObjectList;
                 // Open MySQL connection
                 FormMain.mySqlConnection.Open();
                 // SQL command to select all users
