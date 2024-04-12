@@ -89,7 +89,7 @@
             // 
             button1.BackColor = SystemColors.ControlLight;
             button1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(82, 468);
+            button1.Location = new Point(98, 465);
             button1.Name = "button1";
             button1.Size = new Size(190, 36);
             button1.TabIndex = 5;

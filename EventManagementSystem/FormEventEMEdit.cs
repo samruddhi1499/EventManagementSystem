@@ -1,40 +1,36 @@
 ﻿using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySqlConnector;
-using System.Data;
-using Mysqlx.Crud;
 
 namespace EventManagementSystem
 {
-
     public partial class FormEventEMEdit : Form
     {
+        // Static variable to hold the logged-in user's name
         public static string userName;
+
+        // Variable to store the capacity of the event before editing
         private int capacityCheck;
+
+        // Constructor
         public FormEventEMEdit()
         {
             InitializeComponent();
         }
 
+        // Event handler for the cancel button click
         private void btnCancelEMEdit_Click(object sender, EventArgs e)
         {
+            // Closes the form
             this.Close();
         }
 
+        // Event handler for the form load event
         private void FormEventEMEdit_Load(object sender, EventArgs e)
         {
-
+            // Populates the event list with events associated with the logged-in user
             ArrayList arrayList = FormEventManipulation.eventObjectList;
-
-
 
             foreach (EventsClass array in arrayList)
             {
@@ -45,35 +41,35 @@ namespace EventManagementSystem
                     if (eventListEMEdit.Items.Count == 1)
                         eventListEMEdit.Text = eventClass.EventName.ToString();
                 }
-
-
             }
-            if(eventListEMEdit.Items.Count == 0)
+
+            // If no events are assigned to the user, displays a message box and closes the form
+            if (eventListEMEdit.Items.Count == 0)
             {
                 MessageBox.Show("No Event Assigned", "No Event", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
             }
-            
-
-
-
         }
 
-
+        // Event handler for the OK button click
         private void btnOKEMEdit_Click(object sender, EventArgs e)
         {
-
-
             try
             {
+                // Opens the database connection
                 FormMain.mySqlConnection.Open();
+
+                // Converts the capacity input to an integer
                 int capacity = Convert.ToInt32(txtCapaEMEdit.Text);
+
+                // Checks if the new capacity is greater than the previous one
                 if (capacityCheck > capacity)
                 {
                     MessageBox.Show("Capacity should be greater than older capacity", "Check Value ", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else
                 {
+                    // If capacity is valid, updates the event information in the database
                     FormEventManipulation formEventManipulation = new FormEventManipulation();
 
                     string eventName = eventListEMEdit.SelectedItem.ToString();
@@ -85,8 +81,6 @@ namespace EventManagementSystem
                     MessageBox.Show("Event Edit Sucessfull", "Event Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
-                
-
             }
             catch (MySqlException msqlex)
             {
@@ -102,13 +96,15 @@ namespace EventManagementSystem
             }
             finally
             {
+                // Closes the database connection
                 FormMain.mySqlConnection.Close();
             }
         }
 
+        // Event handler for the event list selection change
         private void eventListEMEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            // Updates form fields with details of the selected event
             string selectedValue = eventListEMEdit.SelectedItem.ToString();
 
             ArrayList arrayList = FormEventManipulation.eventObjectList;
@@ -129,11 +125,13 @@ namespace EventManagementSystem
             }
         }
 
+        // Method to set the logged-in user's name
         public void getUserName(string userName)
         {
             FormEventEMEdit.userName = userName;
         }
 
+        // Event handlers for hover effects on buttons
         private void btnCancelEMEdit_MouseHover(object sender, EventArgs e)
         {
             btnCancelEMEdit.BackColor = Color.MediumPurple;

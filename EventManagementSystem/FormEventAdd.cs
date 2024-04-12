@@ -1,33 +1,29 @@
-﻿using MySqlConnector;
+﻿using MySqlConnector; // Import MySQL Connector for database operations
 using System.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-
-
 namespace EventManagementSystem
 {
     public partial class FormEventAdd : Form
     {
-
+        // Constructor
         public FormEventAdd()
         {
             InitializeComponent();
         }
 
+        // Ok button click event handler
         private void btnAddEventOk_Click(object sender, EventArgs e)
         {
-            // close form add event and go back to event manipulation with saved changes
-
-
+            // Close form add event and go back to event manipulation with saved changes
             try
             {
                 FormMain.mySqlConnection.Open();
@@ -35,14 +31,15 @@ namespace EventManagementSystem
                 FormEventManipulation formEventManipulation = new FormEventManipulation();
                 string em = emListAddEvent.SelectedItem.ToString();
 
-                string sqlInertEvent = $"INSERT INTO event VALUES ('{txtAddEventName.Text}','{dateTimePickerEventAdd.Text}','{timePickerEventAdd.Text}','{txtLocAddEvent.Text}',{capacity},'{txtDesAddEvent.Text}','{em}')";
-                MySqlCommand cmd = new MySqlCommand(sqlInertEvent, FormMain.mySqlConnection);
+                // Insert event data into the database
+                string sqlInsertEvent = $"INSERT INTO event VALUES ('{txtAddEventName.Text}','{dateTimePickerEventAdd.Text}','{timePickerEventAdd.Text}','{txtLocAddEvent.Text}',{capacity},'{txtDesAddEvent.Text}','{em}')";
+                MySqlCommand cmd = new MySqlCommand(sqlInsertEvent, FormMain.mySqlConnection);
                 cmd.ExecuteNonQuery();
-                formEventManipulation.receiveData(txtAddEventName.Text, dateTimePickerEventAdd.Text, timePickerEventAdd.Text, capacity, txtLocAddEvent.Text, txtDesAddEvent.Text
-                    , em);
-                MessageBox.Show("Event Addition Sucessfull", "Event Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Pass event data to the FormEventManipulation form
+                formEventManipulation.receiveData(txtAddEventName.Text, dateTimePickerEventAdd.Text, timePickerEventAdd.Text, capacity, txtLocAddEvent.Text, txtDesAddEvent.Text, em);
+                MessageBox.Show("Event Addition Successful", "Event Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-
+                // Close the form
                 this.Close();
             }
             catch (MySqlException msqlex)
@@ -61,16 +58,17 @@ namespace EventManagementSystem
             {
                 FormMain.mySqlConnection.Close();
             }
-
         }
 
+        // Cancel button click event handler
         private void btnAddEventCancel_Click(object sender, EventArgs e)
         {
-            // clear all text box and close form add event without saving
+            // Clear all text boxes and close form add event without saving
             txtAddEventName.ResetText();
             this.Close();
         }
 
+        // Cancel button hover event handlers
         private void btnAddEventCancel_MouseHover(object sender, EventArgs e)
         {
             btnAddEventCancel.BackColor = Color.MediumPurple;
@@ -83,8 +81,7 @@ namespace EventManagementSystem
             btnAddEventCancel.ForeColor = Color.Black;
         }
 
-
-
+        // Ok button hover event handlers
         private void btnAddEventOk_MouseLeave(object sender, EventArgs e)
         {
             btnAddEventOk.BackColor = Color.Gainsboro;
@@ -97,15 +94,16 @@ namespace EventManagementSystem
             btnAddEventOk.ForeColor = Color.White;
         }
 
+        // Form load event handler
         private void FormEventAdd_Load(object sender, EventArgs e)
         {
+            // Load event managers into the combo box
             FormEventManipulation formEventManipulation = new FormEventManipulation();
             formEventManipulation.LoadAllEM();
-            foreach(string em in FormEventManipulation.eventManager)
+            foreach (string em in FormEventManipulation.eventManager)
             {
                 emListAddEvent.Items.Add(em);
             }
-                
         }
     }
 }

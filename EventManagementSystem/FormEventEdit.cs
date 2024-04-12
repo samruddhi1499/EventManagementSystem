@@ -9,7 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using static System.Runtime.InteropServices.JavaScript.JSType;
 using MySqlConnector;
 using System.Data;
 using Mysqlx.Crud;
@@ -18,6 +17,7 @@ namespace EventManagementSystem
 {
     public partial class FormEventEdit : Form
     {
+        // Variable to store the initial capacity for comparison
         private int capacityCheck;
 
         public FormEventEdit()
@@ -25,14 +25,17 @@ namespace EventManagementSystem
             InitializeComponent();
         }
 
+        // Cancel button click event handler
         private void btnEditCancel_Click(object sender, EventArgs e)
         {
-            // clear all text box and close form add event without saving
+            // Clear all text boxes and close the form without saving
             this.Close();
         }
 
+        // Form load event handler
         private void FormEventEdit_Load(object sender, EventArgs e)
         {
+            // Load event managers into the dropdown list
             FormEventManipulation formEventManipulation = new FormEventManipulation();
             formEventManipulation.LoadAllEM();
             foreach (string em in FormEventManipulation.eventManager)
@@ -40,31 +43,29 @@ namespace EventManagementSystem
                 eventManagerListEdit.Items.Add(em);
             }
 
+            // Load events into the event list
             ArrayList arrayList = FormEventManipulation.eventObjectList;
-
-
             foreach (EventsClass array in arrayList)
             {
                 EventsClass eventClass = (EventsClass)array;
                 eventListEdit.Items.Add(eventClass.EventName.ToString());
             }
+            // Select the first event by default
             EventsClass eventClass1 = (EventsClass)arrayList[0];
             eventListEdit.Text = eventClass1.EventName.ToString();
-
-
-
         }
 
+        // Form activated event handler
         private void FormEventEdit_Activated(object sender, EventArgs e)
         {
-
-
+            // No action required
         }
 
+        // Event list selection changed event handler
         private void eventListEdit_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Update form fields based on the selected event
             string selectedValue = eventListEdit.SelectedItem.ToString();
-
             ArrayList arrayList = FormEventManipulation.eventObjectList;
             foreach (EventsClass array in arrayList)
             {
@@ -80,11 +81,12 @@ namespace EventManagementSystem
                     break;
                 }
             }
-
         }
 
+        // OK button click event handler
         private void btnEditOK_Click(object sender, EventArgs e)
         {
+            // Update event details in the database
             FormEventManipulation formEventManipulation = new FormEventManipulation();
             string em = eventManagerListEdit.SelectedItem.ToString();
             string eventName = eventListEdit.SelectedItem.ToString();
@@ -92,7 +94,7 @@ namespace EventManagementSystem
             try
             {
                 FormMain.mySqlConnection.Open();
-                
+
                 int capacity = Convert.ToInt32(txtCapaEdit.Text);
                 if (capacityCheck > capacity)
                 {
@@ -109,7 +111,7 @@ namespace EventManagementSystem
 
                     this.Close();
                 }
-                
+
             }
             catch (MySqlException msqlex)
             {
@@ -127,15 +129,16 @@ namespace EventManagementSystem
             {
                 FormMain.mySqlConnection.Close();
             }
-
         }
 
+        // Cancel button mouse hover event handler
         private void btnEditCancel_MouseHover(object sender, EventArgs e)
         {
             btnEditCancel.BackColor = Color.MediumPurple;
             btnEditCancel.ForeColor = Color.White;
         }
 
+        // Cancel button mouse leave event handler
         private void btnEditCancel_MouseLeave(object sender, EventArgs e)
         {
             btnEditCancel.BackColor = Color.Gainsboro;
@@ -143,12 +146,14 @@ namespace EventManagementSystem
 
         }
 
+        // OK button mouse hover event handler
         private void btnEditOK_MouseHover(object sender, EventArgs e)
         {
             btnEditOK.BackColor = Color.MediumPurple;
             btnEditOK.ForeColor = Color.White;
         }
 
+        // OK button mouse leave event handler
         private void btnEditOK_MouseLeave(object sender, EventArgs e)
         {
             btnEditOK.BackColor = Color.Gainsboro;

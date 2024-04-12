@@ -14,14 +14,17 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace EventManagementSystem
 {
+    // Form for manipulating attendees
     public partial class FormManipulateAttendee : Form
     {
         // ArrayList to store attendee objects
-        ArrayList attendeeList= FormAttendeeHome.attendeeObjectList;
+        ArrayList attendeeList = FormAttendeeHome.attendeeObjectList;
 
+        // Static variables to store user role and username
         public static string RoleHome;
         public static string UserHome;
 
+        // Constructor
         public FormManipulateAttendee()
         {
             InitializeComponent();
@@ -40,10 +43,7 @@ namespace EventManagementSystem
                             eventName.Items.Add(eventClass.EventName.ToString());
                             eventName.Text = eventClass.EventName.ToString();
                         }
-                            
-
                     }
-                 
                 }
                 else
                 {
@@ -56,7 +56,6 @@ namespace EventManagementSystem
                     EventsClass eventClass1 = (EventsClass)FormEventManipulation.eventObjectList[0];
                     eventName.Text = eventClass1.EventName.ToString();
                 }
-
             }
         }
 
@@ -68,9 +67,11 @@ namespace EventManagementSystem
                 // Clear the attendeeInfo and username ComboBoxes
                 attendeeInfo.Items.Clear();
                 username.Items.Clear();
-                attendeeList= FormAttendeeHome.attendeeObjectList;
+                attendeeList = FormAttendeeHome.attendeeObjectList;
+
                 // Open MySQL connection
                 FormMain.mySqlConnection.Open();
+
                 // SQL command to select all users
                 string selectLoadSQL = "SELECT * FROM user";
                 MySqlCommand mySqlCommand = new MySqlCommand(selectLoadSQL, FormMain.mySqlConnection);
@@ -124,8 +125,6 @@ namespace EventManagementSystem
                 // Close MySQL connection
                 FormMain.mySqlConnection.Close();
             }
-
-
         }
 
         // Event handler for adding an attendee to an event
@@ -181,8 +180,6 @@ namespace EventManagementSystem
                 // Close MySQL connection
                 FormMain.mySqlConnection.Close();
             }
-
-
         }
 
         // Event handler for deleting an attendee from an event
@@ -250,7 +247,7 @@ namespace EventManagementSystem
         // Event handler for mouse leave effect on add button
         private void add_MouseLeave(object sender, EventArgs e)
         {
-            add.BackColor = Color.Gainsboro; ;
+            add.BackColor = Color.Gainsboro;
             add.ForeColor = Color.Black;
         }
 
@@ -264,12 +261,9 @@ namespace EventManagementSystem
         // Event handler for mouse leave effect on delete button
         private void delete_MouseLeave(object sender, EventArgs e)
         {
-            delete.BackColor = Color.Gainsboro; ;
+            delete.BackColor = Color.Gainsboro;
             delete.ForeColor = Color.Black;
         }
-
-        // Event handler for mouse hover effect on close button
-
 
         // Event handler for close button click event
         private void button1_Click(object sender, EventArgs e)
@@ -277,12 +271,14 @@ namespace EventManagementSystem
             this.Close(); // Close the form
         }
 
+        // Event handler for view profile menu item click event
         private void viewProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEditProfile formEditProfile = new FormEditProfile();
             formEditProfile.ShowDialog();
         }
 
+        // Event handler for logout menu item click event
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLogIn formLogIn = new FormLogIn();
@@ -290,13 +286,14 @@ namespace EventManagementSystem
             formLogIn.Show();
         }
 
+        // Method to get username and role
         public void GetUserNameRole(string name, string role)
         {
             UserHome = name;
             RoleHome = role;
-
         }
 
+        // Event handler for home menu item click event
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (RoleHome == "admin")
@@ -311,9 +308,9 @@ namespace EventManagementSystem
                 eMAfterLogin.Show();
                 this.Close();
             }
-
         }
 
+        // Event handler for form load event
         private void FormManipulateAttendee_Load(object sender, EventArgs e)
         {
 

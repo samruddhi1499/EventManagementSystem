@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -45,7 +44,7 @@ namespace EventManagementSystem
             }
         }
 
-        // Method to set the username
+        // Method to set the username and role
         public void GetUsernameRole(string username, string role)
         {
             Username = username;
@@ -64,7 +63,9 @@ namespace EventManagementSystem
         {
             try
             {
+                // Open the database connection
                 FormMain.mySqlConnection.Open();
+                // Loop through event list
                 foreach (EventsClass val in FormEventManipulation.eventObjectList)
                 {
                     if (FormAttendeeHome.eventName == val.EventName.ToString())
@@ -91,6 +92,7 @@ namespace EventManagementSystem
             }
             finally
             {
+                // Close the database connection
                 FormMain.mySqlConnection.Close();
             }
         }
@@ -101,7 +103,7 @@ namespace EventManagementSystem
             try
             {
                 // Get all attendees from the database
-                if(FormMain.mySqlConnection.State != ConnectionState.Open)
+                if (FormMain.mySqlConnection.State != ConnectionState.Open)
                     FormMain.mySqlConnection.Open();
                 attendeeObjectList.Clear();
                 string selectLoadSQL = "SELECT * FROM attendeeregistration";
@@ -132,6 +134,7 @@ namespace EventManagementSystem
             }
             finally
             {
+                // Close the database connection
                 FormMain.mySqlConnection.Close();
             }
         }
@@ -355,6 +358,7 @@ namespace EventManagementSystem
             View.ForeColor = Color.Black;
         }
 
+        // Method to navigate back to the main form
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             EMAfterLogin eMAfterLogin = new EMAfterLogin();
@@ -362,9 +366,11 @@ namespace EventManagementSystem
             eMAfterLogin.Show();
         }
 
+        // Method to handle form load event
         private void FormAttendeeHome_Load(object sender, EventArgs e)
         {
-            if(Role == "EM")
+            // If the user is an event manager, show home menu item
+            if (Role == "EM")
             {
                 homeToolStripMenuItem.Visible = true;
             }

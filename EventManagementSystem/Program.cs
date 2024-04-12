@@ -3,27 +3,15 @@ namespace EventManagementSystem
     internal static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// The main entry point for the application.
         /// </summary>
         [STAThread]
         static void Main()
         {
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
-            ApplicationConfiguration.Initialize();
-            //Application.Run(new FormEventManipulation());
-            //  Application.Run(new FormLogIn());
-              //Application.Run(new FormSignUp());
-         //Application.Run(new FormSelectRole());
-            //Application.Run(new FormAttendeeHome());
-            //Application.Run(new FormRegister());
-
-            Application.Run(new FormMain());
-
-
-            // Application.Run(new EMAfterLogin());
-
-
+            ApplicationConfiguration.Initialize(); // Initialize application configuration
+            Application.Run(new FormMain()); // Run the main form of the application
         }
     }
 }

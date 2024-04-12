@@ -9,9 +9,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySqlConnector;
-using System.Data;
-using Mysqlx.Crud;
-
 
 namespace EventManagementSystem
 {
@@ -22,76 +19,73 @@ namespace EventManagementSystem
             InitializeComponent();
         }
 
-
+        // Cancel button click event handler
         private void btnDeleteCancel_Click(object sender, EventArgs e)
         {
-            // clear all text box and close form add event without saving
+            // Clear all text boxes and close the form without saving
             this.Close();
         }
 
+        // OK button click event handler
         private void btnDeleteOK_Click(object sender, EventArgs e)
         {
-            try {
+            try
+            {
                 FormMain.mySqlConnection.Open();
                 FormEventManipulation formEventManipulation = new FormEventManipulation();
                 string eventName = eventListDelete.SelectedItem.ToString();
-                string sqlDeleteEvent = $"DELETE FROM event WHERE event_name = '{eventName}'";
 
+                // Delete event and associated registrations from the database
+                string sqlDeleteEvent = $"DELETE FROM event WHERE event_name = '{eventName}'";
                 string regDelete = $"DELETE FROM attendeeregistration WHERE event_name = '{eventName}'";
+
+                // Execute SQL commands
                 MySqlCommand cmd1 = new MySqlCommand(regDelete, FormMain.mySqlConnection);
                 cmd1.ExecuteNonQuery();
 
                 MySqlCommand cmd = new MySqlCommand(sqlDeleteEvent, FormMain.mySqlConnection);
                 cmd.ExecuteNonQuery();
+
+                // Notify the main form about the deletion
                 formEventManipulation.receiveDataDelete(eventName);
 
-                
-                MessageBox.Show("Event Deletion Sucessfull", "Event Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Event Deletion Successful", "Event Deleted", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.Close();
-
-
             }
             catch (MySqlException msqlex)
             {
-                MessageBox.Show("Database Error", "Error ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Database Error", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error Occured", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error Occurred", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             finally
             {
                 FormMain.mySqlConnection.Close();
             }
-
-
-        }
-        private void FormEventDelete_Activated(object sender, EventArgs e)
-        {
-
-
         }
 
+        // Form load event handler
         private void FormEventDelete_Load(object sender, EventArgs e)
         {
-           
-
-
+            // Populate the event list with available events
             ArrayList arrayList = FormEventManipulation.eventObjectList;
-
-
-
             foreach (EventsClass array in arrayList)
             {
                 EventsClass eventClass = (EventsClass)array;
                 eventListDelete.Items.Add(eventClass.EventName);
             }
-            EventsClass eventClass1 = (EventsClass)arrayList[0];
 
-            eventListDelete.Text = eventClass1.EventName.ToString();
-
+            // Select the first event by default
+            if (arrayList.Count > 0)
+            {
+                EventsClass eventClass1 = (EventsClass)arrayList[0];
+                eventListDelete.Text = eventClass1.EventName.ToString();
+            }
         }
 
+        // Cancel button hover event handlers
         private void btnDeleteCancel_MouseHover(object sender, EventArgs e)
         {
             btnDeleteCancel.BackColor = Color.MediumPurple;
@@ -104,6 +98,7 @@ namespace EventManagementSystem
             btnDeleteCancel.ForeColor = Color.Black;
         }
 
+        // OK button hover event handlers
         private void btnDeleteOK_MouseHover(object sender, EventArgs e)
         {
             btnDeleteOK.BackColor = Color.MediumPurple;

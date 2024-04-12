@@ -1,92 +1,99 @@
-﻿using MySqlConnector;
-using System.Collections;
-using System.Data;
+﻿// Import necessary libraries
+using MySqlConnector; // Library for MySQL database connection
+using System.Collections; // Library for ArrayList
+using System.Data; // Library for database operations
 
 namespace EventManagementSystem
 {
+    // Partial class for selecting user roles
     public partial class FormSelectRole : Form
     {
+        // Static array list to hold user objects
         public static ArrayList userObjectList = new ArrayList();
         BindingSource bs = new BindingSource();
-        addRoleClass? currentItem = null;
+        addRoleClass? currentItem = null; // Nullable variable to hold the current user item
 
+        // Constructor
         public FormSelectRole()
         {
             InitializeComponent();
-            SetControlsToDefault();
+            SetControlsToDefault(); // Set controls to default state
         }
 
+        // Set controls to default state
         private void SetControlsToDefault()
         {
-            btnAdd.Show();
-            btnEdit.Hide();
-            name.ResetText();
-            pass.Enabled = true;
-            pass.Clear();
-            label2.Enabled = true;
-            selectRole.SelectedItem = null;
-            currentItem = null;
+            btnAdd.Show(); // Show add button
+            btnEdit.Hide(); // Hide edit button
+            name.ResetText(); // Reset name textbox
+            pass.Enabled = true; // Enable password field
+            pass.Clear(); // Clear password field
+            label2.Enabled = true; // Enable label
+            selectRole.SelectedItem = null; // Set selected item in role dropdown to null
+            currentItem = null; // Reset current item
         }
 
+        // Event handler for delete button click
         private void btnDelete_Click(object sender, EventArgs e)
         {
             bool deleted = false;
             try
             {
-                FormMain.mySqlConnection.Open();
+                FormMain.mySqlConnection.Open(); // Open database connection
 
-                if (currentItem != null)
+                if (currentItem != null) // Check if an item is selected
                 {
                     // Delete the user from the database
                     if (DeleteUser(currentItem.Name))
                     {
-                        userObjectList.Remove(currentItem);
-                        setListValues();
+                        userObjectList.Remove(currentItem); // Remove user from list
+                        setListValues(); // Refresh the list
                         deleted = true;
-                        MessageBox.Show("UserRole Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("UserRole Deleted", "Deletion Completed", MessageBoxButtons.OK, MessageBoxIcon.Information); // Show success message
                         setListValues(); // Refresh the list after deletion
                     }
 
                 }
                 else
                 {
-                    MessageBox.Show("User not selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("User not selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Show error message
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Error: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Show error message
             }
             finally
             {
-                FormMain.mySqlConnection.Close();
+                FormMain.mySqlConnection.Close(); // Close database connection
             }
 
-
-
-            SetControlsToDefault();
+            SetControlsToDefault(); // Reset controls to default state
         }
+
+        // Method to delete a user from the database
         private bool DeleteUser(string username)
         {
             try
             {
-                string Delete_query = "DELETE FROM User WHERE username = @username ";
-                //  string Delete_query = "DELETE FROM user WHERE username = @username AND role = @role";
-                if (selectRole.Text == "EM")
+                string Delete_query = "DELETE FROM User WHERE username = @username "; // SQL query to delete user
+
+                if (selectRole.Text == "EM") // Check if role is EM
                 {
-                    string selectQuery = $"Select event_name from event where event_manager = '{username}'";
+                    string selectQuery = $"Select event_name from event where event_manager = '{username}'"; // SQL query to check associated events
                     MySqlCommand mySqlCommand = new MySqlCommand(selectQuery, FormMain.mySqlConnection);
                     MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
                     if (dataReader.HasRows)
                     {
-                        MessageBox.Show("EM has assigned Event", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("EM has assigned Event", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Show error message
                         return false;
                     }
                     dataReader.Close();
                 }
-                if (selectRole.Text == "Attendee" || selectRole.Text == "EM")
+
+                if (selectRole.Text == "Attendee" || selectRole.Text == "EM") // Check if role is Attendee or EM
                 {
-                    string selectQuery = $"Select event_name from attendeeregistration where username = '{username}'";
+                    string selectQuery = $"Select event_name from attendeeregistration where username = '{username}'"; // SQL query to check registered events
                     MySqlCommand mySqlCommand = new MySqlCommand(selectQuery, FormMain.mySqlConnection);
                     MySqlDataReader dataReader = mySqlCommand.ExecuteReader();
                     string event_name = "";
@@ -103,8 +110,6 @@ namespace EventManagementSystem
                             event_name += "'" + dataReader["event_name"] + "'";
 
                         }
-
-
 
                     }
                     dataReader.Close();
@@ -148,11 +153,12 @@ namespace EventManagementSystem
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error deleting user: " + ex.Message);
-                throw new Exception("Unable to delete user");
+                Console.WriteLine("Error deleting user: " + ex.Message); // Log error message
+                throw new Exception("Unable to delete user"); // Throw exception
             }
         }
 
+        // Event handler for add button click
         private void btnAdd_Click(object sender, EventArgs e)
         {
             try
@@ -163,31 +169,31 @@ namespace EventManagementSystem
                 if (InsertUser(name.Text, pass.Text, Convert.ToString(selectRole.SelectedItem)))
                 {
                     AddEditData();
-                    MessageBox.Show("Role Added Successfully", "Role Added", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    setListValues();
-                    SetControlsToDefault();
+                    MessageBox.Show("Role Added Successfully", "Role Added", MessageBoxButtons.OK, MessageBoxIcon.Information); // Show success message
+                    setListValues(); // Refresh the list
+                    SetControlsToDefault(); // Reset controls to default state
                 }
                 else
                 {
-                    MessageBox.Show("Failed to add role", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Failed to add role", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Show error message
                 }
             }
             catch
             {
-                MessageBox.Show("Check field", "Invalid Type ", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Check field", "Invalid Type ", MessageBoxButtons.OK, MessageBoxIcon.Error); // Show error message
             }
             finally
             {
-                FormMain.mySqlConnection.Close();
-
+                FormMain.mySqlConnection.Close(); // Close database connection
             }
-
         }
+
+        // Method to insert a new user into the database
         private bool InsertUser(string username, string password, string role)
         {
             try
             {
-                string query = "INSERT INTO User (username, password, role) VALUES (@username, @password, @role)";
+                string query = "INSERT INTO User (username, password, role) VALUES (@username, @password, @role)"; // SQL query to insert user
                 using (MySqlCommand cmd = new MySqlCommand(query, FormMain.mySqlConnection))
                 {
                     cmd.Parameters.AddWithValue("@username", username);
@@ -199,11 +205,12 @@ namespace EventManagementSystem
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error inserting user: " + ex.Message);
+                Console.WriteLine("Error inserting user: " + ex.Message); // Log error message
                 return false;
             }
         }
 
+        // Event handler for logout menu item click
         private void logoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormLogIn formLogIn = new FormLogIn();
@@ -211,6 +218,7 @@ namespace EventManagementSystem
             formLogIn.Show();
         }
 
+        // Event handler for home menu item click
         private void homeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormAdminHome home = new FormAdminHome();
@@ -218,10 +226,13 @@ namespace EventManagementSystem
             home.Show();
         }
 
+        // Event handler for form activation
         private void FormSelectRole_Activated(object sender, EventArgs e)
         {
             bs.ResetBindings(false);
         }
+
+        // Event handler for edit button click
         private void btnEdit_Click(object sender, EventArgs e)
         {
             try
@@ -236,51 +247,49 @@ namespace EventManagementSystem
                         currentItem.Name = name.Text;
                         currentItem.Role = Convert.ToString(selectRole.SelectedItem);
                         AddEditData();
-                        MessageBox.Show("Role Edited Successfully", "Role Edited", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        //setListValues();
-                        //SetControlsToDefault();
+                        MessageBox.Show("Role Edited Successfully", "Role Edited", MessageBoxButtons.OK, MessageBoxIcon.Information); // Show success message
                     }
                     else
                     {
-                        MessageBox.Show("Failed to edit role", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Failed to edit role", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Show error message
                     }
                 }
                 else
                 {
-                    MessageBox.Show("User not selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("User not selected", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error); // Show error message
                 }
             }
             catch
             {
-                Console.WriteLine("Error Update");
+                Console.WriteLine("Error Update"); // Log error message
             }
             finally
             {
-                FormMain.mySqlConnection.Close();
-
+                FormMain.mySqlConnection.Close(); // Close database connection
             }
-
         }
+
+        // Method to update user's role in the database
         private bool UpdateUserRole(string username, string role)
         {
             try
             {
-                string Update_query = $"UPDATE user SET role = '{role}' WHERE username = '{username}'";
+                string Update_query = $"UPDATE user SET role = '{role}' WHERE username = '{username}'"; // SQL query to update user role
 
                 using (MySqlCommand cmd = new MySqlCommand(Update_query, FormMain.mySqlConnection))
                 {
-
                     cmd.ExecuteNonQuery();
                 }
                 return true;
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error updating user role: " + ex.Message);
+                Console.WriteLine("Error updating user role: " + ex.Message); // Log error message
                 return false;
             }
         }
 
+        // Event handler for double click on listbox
         private void addList_DoubleClick(object sender, EventArgs e)
         {
             var SelectedItem = Convert.ToString(((ListBox)sender).SelectedItem);
@@ -291,8 +300,6 @@ namespace EventManagementSystem
                 btnEdit.Show();
                 pass.Enabled = false;
                 label2.Enabled = false;
-
-
 
                 foreach (addRoleClass item in userObjectList)
                 {
@@ -306,11 +313,13 @@ namespace EventManagementSystem
             }
         }
 
+        // Event handler for clear button click
         private void btnClear_Click(object sender, EventArgs e)
         {
             SetControlsToDefault();
         }
 
+        // Method to add or edit user data
         private void AddEditData()
         {
             if (currentItem == null)
@@ -324,6 +333,7 @@ namespace EventManagementSystem
             SetControlsToDefault();
         }
 
+        // Method to set values in the listbox
         private void setListValues()
         {
             addList.Items.Clear();
@@ -333,58 +343,60 @@ namespace EventManagementSystem
             }
         }
 
+        // Event handler for edit profile menu item click
         private void editProfileToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormEditProfile formEditProfile = new FormEditProfile();
             formEditProfile.ShowDialog();
         }
 
+        // Event handlers for button mouse hover and leave events
         private void btnAdd_MouseHover(object sender, EventArgs e)
         {
-            btnAdd.BackColor = Color.MediumPurple;
-            btnAdd.ForeColor = Color.White;
+            btnAdd.BackColor = Color.MediumPurple; // Change button background color
+            btnAdd.ForeColor = Color.White; // Change button text color
         }
 
         private void btnAdd_MouseLeave(object sender, EventArgs e)
         {
-            btnAdd.BackColor = Color.Gainsboro; ;
-            btnAdd.ForeColor = Color.Black;
+            btnAdd.BackColor = Color.Gainsboro; // Change button background color
+            btnAdd.ForeColor = Color.Black; // Change button text color
         }
 
         private void btnEdit_MouseHover(object sender, EventArgs e)
         {
-            btnEdit.BackColor = Color.MediumPurple;
-            btnEdit.ForeColor = Color.White;
+            btnEdit.BackColor = Color.MediumPurple; // Change button background color
+            btnEdit.ForeColor = Color.White; // Change button text color
         }
 
         private void btnEdit_MouseLeave(object sender, EventArgs e)
         {
-            btnEdit.BackColor = Color.Gainsboro; ;
-            btnEdit.ForeColor = Color.Black;
+            btnEdit.BackColor = Color.Gainsboro; // Change button background color
+            btnEdit.ForeColor = Color.Black; // Change button text color
         }
 
         private void btnClear_MouseHover(object sender, EventArgs e)
         {
-            btnClear.BackColor = Color.MediumPurple;
-            btnClear.ForeColor = Color.White;
+            btnClear.BackColor = Color.MediumPurple; // Change button background color
+            btnClear.ForeColor = Color.White; // Change button text color
         }
 
         private void btnClear_MouseLeave(object sender, EventArgs e)
         {
-            btnClear.BackColor = Color.Gainsboro; ;
-            btnClear.ForeColor = Color.Black;
+            btnClear.BackColor = Color.Gainsboro; // Change button background color
+            btnClear.ForeColor = Color.Black; // Change button text color
         }
 
         private void btnDelete_MouseHover(object sender, EventArgs e)
         {
-            btnDelete.BackColor = Color.MediumPurple;
-            btnDelete.ForeColor = Color.White;
+            btnDelete.BackColor = Color.MediumPurple; // Change button background color
+            btnDelete.ForeColor = Color.White; // Change button text color
         }
 
         private void btnDelete_MouseLeave(object sender, EventArgs e)
         {
-            btnDelete.BackColor = Color.Gainsboro; ;
-            btnDelete.ForeColor = Color.Black;
+            btnDelete.BackColor = Color.Gainsboro; // Change button background color
+            btnDelete.ForeColor = Color.Black; // Change button text color
         }
 
         private void addList_SelectedIndexChanged(object sender, EventArgs e)
@@ -392,13 +404,13 @@ namespace EventManagementSystem
 
         }
 
+        // Event handler for form load
         private void FormSelectRole_Load(object sender, EventArgs e)
         {
-            //setListValues();
-            LoadAllUser();
-
+            LoadAllUser(); // Load all users
         }
 
+        // Method to load all users
         public void LoadAllUser()
         {
             FormMain.mySqlConnection.Open();
@@ -415,7 +427,6 @@ namespace EventManagementSystem
                     string role = dataReader["role"] + "";
                     addRoleClass addRoleClass = new addRoleClass(username, role, password);
                     userObjectList.Add(addRoleClass);
-
                 }
             }
             setListValues();

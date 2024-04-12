@@ -7,20 +7,22 @@ using System.Threading.Tasks;
 
 namespace EventManagementSystem
 {
+    // Class to represent user roles
     class addRoleClass
     {
-        public string Name { get; set; }
+        // Properties
+        public string Name { get; set; } // User name
+        public string Password { get; set; } // User password
+        public string Role { get; set; } // User role
 
-        public string Password { get; set; }
-        public string Role { get; set; }
-
+        // Constructor for user with no password
         public addRoleClass(string name, string role)
         {
             Name = name;
             Role = role;
-           
         }
 
+        // Constructor for user with password
         public addRoleClass(string name, string role, string pass)
         {
             Name = name;
@@ -28,12 +30,11 @@ namespace EventManagementSystem
             Password = pass;
         }
 
+        // ToString method to represent object as a string
         public String ToString()
         {
             String s = $"Id: {Name}";
             return s;
         }
-
-
     }
 }

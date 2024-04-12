@@ -15,6 +15,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace EventManagementSystem
 {
+    // Form for attendee registration
     public partial class FormRegister : Form
     {
         // ArrayList to store attendee objects
@@ -101,9 +102,9 @@ namespace EventManagementSystem
                         MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
-                    
+
                 }
-                catch(MySqlException e)
+                catch (MySqlException e)
                 {
                     MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
@@ -111,11 +112,6 @@ namespace EventManagementSystem
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                 
-                
-
-
-
             }
         }
 

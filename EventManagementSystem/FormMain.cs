@@ -11,41 +11,38 @@ using System.Windows.Forms;
 
 namespace EventManagementSystem
 {
+    // Main form of the application
     public partial class FormMain : Form
     {
+        // Database instance
         public Database MYDB;
+
+        // MySqlConnection instance
         public static MySqlConnection mySqlConnection;
+
+        // Constructor
         public FormMain()
         {
             InitializeComponent();
         }
 
+        // Event handler for login button click
         private void login_Click(object sender, EventArgs e)
         {
-            //FormMain formMain = new FormMain();
-            //this.Hide();
-            //formMain.ShowDialog();
-           
-
             FormLogIn formLogin = new FormLogIn();
-
             formLogin.Show();
             this.Hide();
         }
 
+        // Event handler for signup button click
         private void signup_Click(object sender, EventArgs e)
         {
             FormSignUp formSignUp = new FormSignUp();
-
             formSignUp.Show();
             this.Hide();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
+        // Event handlers for hover effects on buttons
         private void login_MouseHover(object sender, EventArgs e)
         {
             login.BackColor = Color.MediumPurple;
@@ -70,10 +67,14 @@ namespace EventManagementSystem
             signup.ForeColor = Color.Black;
         }
 
+        // Event handler for form load event
         private void FormMain_Load(object sender, EventArgs e)
         {
+            // Initialize database connection
             MYDB = new Database("localhost", "root", "S@mmy123", "event_management", "3306");
             mySqlConnection = MYDB.Connect();
+
+            // Load necessary data on form load
             FormEventManipulation formEventManipulation = new FormEventManipulation();
             FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
             FormSelectRole formSelectRole = new FormSelectRole();
@@ -81,10 +82,6 @@ namespace EventManagementSystem
             formEventManipulation.LoadAllEM();
             formAttendeeHome.LoadAllAttendee();
             formSelectRole.LoadAllUser();
-
-
-
-
         }
     }
 }
