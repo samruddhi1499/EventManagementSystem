@@ -81,7 +81,7 @@ namespace EventManagementSystem
                 try
                 {
                     // Add attendee and register for the event
-                    string selectQuery = $"Select event_name from event where event_manager = '{FormAttendeeHome.Username}'";
+                    string selectQuery = $"Select event_name from event where event_manager = '{FormAttendeeHome.Username}' and event_name = '{FormAttendeeHome.eventName}'";
                     // Open MySQL connection
                     FormMain.mySqlConnection.Open();
                     MySqlCommand mySqlCommand = new MySqlCommand(selectQuery, FormMain.mySqlConnection);
@@ -89,16 +89,19 @@ namespace EventManagementSystem
                     if (dataReader.HasRows)
                     {
                         MessageBox.Show("EM cannot register", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        dataReader.Close();
+                        FormMain.mySqlConnection.Close();
                     }
                     else
                     {
-
+                        dataReader.Close();
+                        FormMain.mySqlConnection.Close();
                         attendeeHome.addAttendee(FormAttendeeHome.eventName, FormAttendeeHome.Username, nameVal.Text, phoneval.Text, emailval.Text, student.Text);
                         attendeeHome.getRegisteredEvent(FormAttendeeHome.eventName);
                         MessageBox.Show("Event Registration Sucessfull", "Registration Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Close();
                     }
-                    dataReader.Close();
+                    
                 }
                 catch(MySqlException e)
                 {
@@ -108,10 +111,8 @@ namespace EventManagementSystem
                 {
                     MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                finally
-                {
-                    FormMain.mySqlConnection.Close();
-                }
+                 
+                
 
 
 

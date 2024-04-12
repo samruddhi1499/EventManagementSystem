@@ -192,7 +192,7 @@ namespace EventManagementSystem
             int count = 0;
             bool deleted = false;
             string[] attendee = attendeeInfo.SelectedItem.ToString().Split('\t');
-            string username = attendee[2];
+            string username = attendee[1];
             string attendeeName = attendee[0];
 
             // Open MySQL connection

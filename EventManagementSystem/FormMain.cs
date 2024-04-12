@@ -72,7 +72,7 @@ namespace EventManagementSystem
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            MYDB = new Database("localhost", "root", "SruPan#3", "event_management", "3306");
+            MYDB = new Database("localhost", "root", "S@mmy123", "event_management", "3306");
             mySqlConnection = MYDB.Connect();
             FormEventManipulation formEventManipulation = new FormEventManipulation();
             FormAttendeeHome formAttendeeHome = new FormAttendeeHome();
