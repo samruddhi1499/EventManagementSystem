@@ -67,7 +67,7 @@ namespace EventManagementSystem
                 // Clear the attendeeInfo and username ComboBoxes
                 attendeeInfo.Items.Clear();
                 username.Items.Clear();
-                attendeeList = FormAttendeeHome.attendeeObjectList;
+               // attendeeList = FormAttendeeHome.attendeeObjectList;
 
                 // Open MySQL connection
                 FormMain.mySqlConnection.Open();
@@ -101,15 +101,20 @@ namespace EventManagementSystem
                         }
                         // Display attendee information for the selected event
                         if (eventName.SelectedItem.ToString() == attendees.EventName.ToString())
-                            attendeeInfo.Items.Add($"{attendees.AttendeeName}\t{attendees.Username}");
+                            attendeeInfo.Items.Add($"{attendees.AttendeeName}\t\t{attendees.Username}");
                     }
                 }
                 // If there are no attendees registered for any event
                 else if (attendeeList.Count == 0)
                 {
+
                     // Display all usernames
                     while (dataReader.Read())
-                        username.Items.Add(dataReader["username"]);
+                        if (dataReader["username"].ToString() != "admin")
+                        {
+                            username.Items.Add(dataReader["username"]);
+                        }
+                    
                 }
             } // Show any error
             catch (MySqlException ex)
@@ -161,7 +166,7 @@ namespace EventManagementSystem
 
                             MessageBox.Show("Attendee Added ", "Adding Completed", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             val.EventCapacity -= 1;
-                            attendeeInfo.Items.Add($"{attendeeName.Text}\t{username.SelectedItem.ToString()}");
+                            attendeeInfo.Items.Add($"{attendeeName.Text}\t\t{username.SelectedItem.ToString()}");
                         }
                     }
                 }
@@ -189,7 +194,7 @@ namespace EventManagementSystem
             int count = 0;
             bool deleted = false;
             string[] attendee = attendeeInfo.SelectedItem.ToString().Split('\t');
-            string username = attendee[1];
+            string username = attendee[2];
             string attendeeName = attendee[0];
 
             // Open MySQL connection
@@ -206,7 +211,7 @@ namespace EventManagementSystem
                     mySqlCommand.ExecuteNonQuery();
                     deleted = true;
                     attendeeList.RemoveAt(count);
-                    attendeeInfo.Items.Remove($"{attendeeName}\t{username}");
+                    attendeeInfo.Items.Remove($"{attendeeName}\t\t{username}");
                     deleted = true;
                     break;
                 }

@@ -71,7 +71,7 @@ namespace EventManagementSystem
         private void FormMain_Load(object sender, EventArgs e)
         {
             // Initialize database connection
-            MYDB = new Database("localhost", "root", "S@mmy123", "event_management", "3306");
+            MYDB = new Database("localhost", "root", "SruPan#3", "event_management", "3306");
             mySqlConnection = MYDB.Connect();
 
             // Load necessary data on form load
